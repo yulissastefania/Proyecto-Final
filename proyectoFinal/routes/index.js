@@ -13,6 +13,9 @@ router.get('/loginFinal', function(req, res, next) {
 router.get('/app', function(req, res, next) {
   res.render('templates/app');
 });
-
+//Pagina de inicio
+router.get('/home', (req, res, nexr) => {
+    res.render('templates/index');
+});
 
 module.exports = router;
