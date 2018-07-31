@@ -11,7 +11,7 @@ router.get('/loginFinal', function(req, res, next) {
 });
 /*get app*/
 router.get('/app', function(req, res, next) {
-  res.render('templates/app');
+  res.render('templates/app',{factura:'../fragmentos/frm_factura'});
 });
 //Pagina de inicio
 router.get('/home', (req, res, nexr) => {

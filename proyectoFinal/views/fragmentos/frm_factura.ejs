@@ -1,0 +1,190 @@
+<div class="column " id="vista_factura">
+    <div class="card">
+
+        <header class="clearfix">
+
+            <div id="logo">
+                <img src="../images/logo.png">
+            </div>
+            <h1>Nombre Comercial (si consta el en RUC)</h1>
+            <div id="company" class="clearfix">
+                <div><span>RUC emisor</span><input type="text" placeholder="ruc Emisor" disabled/></div>
+                <div>Factura</div>
+                <div><input type="text" placeholder="numero factura" disabled/></div>
+                <div><span>AUT. SRI:</span><input type="text" placeholder="auto Sri" disabled/></div>
+                <div><span style="width: 12em;">FECHA DE AUTORIZACIÓN:</span><input type="date" placeholder="dd/mm/aa" disabled/></div>
+            </div>
+            <div id="project">
+                <div><span>Razón Social emisor:</span> <input type="text" placeholder="Razon social" disabled/></div>
+                <div><span>Dirección de la matriz:</span> <input type="text" placeholder="direccion matriz" disabled/></div>
+                <div><span>Dirección Sucursal: </span> <input type="text" placeholder="direccion sucursal" disabled/></div>
+            </div>
+            <div id="datosComprador">
+                <div><span>Sr (es):</span> <input type="text" placeholder="ingrese  nombre" require/><span class="spanDere">R.U.C / C.I.</span> <input type="text" placeholder="ingrese  ruc" require/></div>
+                <div><span>FECHA EMISIÓN:</span>
+                    <input type="text" placeholder="ingrese  fecha de emision" require/>
+                    <span class="spanDere">GUÍA DE REMISIÓN: </span>
+                    <input type="text" placeholder="ingrese  número de guia de emision" require/>
+                </div>
+            </div>
+
+        </header>
+        <main>
+            <div class="row grid-responsive">
+                <div class="column ">
+                    <div class="card">
+                        <div class="card-block">
+                            <table id="tabla">
+                                <thead>
+                                    <tr>
+                                        <th class="service">CANTIDAD</th>
+                                        <th class="desc">DESCRIPCION</th>
+                                        <th>PRECIO UNITARIO</th>
+                                        <th>TOTAL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="service"><input type="number" placeholder="N°" class="cantidad" /></td>
+                                        <td class="desc"><a href="#popup" class="popup-link"><button>Agregar Producto</button></a></td>
+                                        <td class="unit">$<input type="text" disabled class="unidades"></td>
+                                        <td class="total">$<input type="text" disabled class="unidades"></td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <button id="add" style="width: 40em;">añadir</button>
+                            <button id="del" style="width: 40em;">eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row grid-responsive">
+                <div class="column ">
+                    <div class="card">
+                        <div class="card-block">
+                            <table id="totales">
+                                <tr>
+                                    <td class="datoTotal">VÁLIDO PARA SU EMISIÓN HASTA:</td>
+                                    <td><input class="datoTotal" type="date" placeholder="dd/mm/aa" disabled> </td>
+                                    <td class="datoTotal">SUB TOTAL 12% IVA</td>
+                                    <td><input type="number" class="cantidad" id="subTotalIva" disabled/></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="text-align: center;">FORMA DE PAGO</td>
+
+                                    <td class="datoTotal">SUB TOTAL 0% IVA</td>
+                                    <td><input type="number" class="cantidad" id="subTotalNoIva" disabled/></td>
+                                </tr>
+                                <tr>
+                                    <td class="datoTotal">FECTIVO</td>
+                                    <td><input type="number" class="cantidad" /></td>
+                                    <td class="datoTotal">SUB TOTAL EXCENTO IVA</td>
+                                    <td><input type="number" class="cantidad" id="subTotalExcentoIva" disabled/></td>
+                                </tr>
+                                <tr>
+                                    <td class="datoTotal">DINERO ELECTÓNICO</td>
+                                    <td><input type="number" class="cantidad" /></td>
+                                    <td class="datoTotal">SUB TOTAL NO OBJETO IVA</td>
+                                    <td><input type="number" class="cantidad" id="subTotalNoObjetoIva" disabled/></td>
+                                </tr>
+                                <tr>
+                                    <td class="datoTotal">TARJETA DE CRÉDITO / DÉBITO</td>
+                                    <td><input type="number" class="cantidad" /></td>
+                                    <td class="datoTotal">DESCUENTO</td>
+                                    <td><input type="number" class="cantidad" id="descuento" disabled/></td>
+                                </tr>
+                                <tr>
+                                    <td class="datoTotal">OTROS</td>
+                                    <td><input type="number" class="cantidad" /></td>
+                                    <td class="datoTotal">SUB TOTAL</td>
+                                    <td><input type="number" class="cantidad" id="subTotal" disabled/></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="datoTotal">ICE</td>
+                                    <td><input type="number" class="cantidad" id="ice" disabled/></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="datoTotal">IVA12%</td>
+                                    <td><input type="number" class="cantidad" id="iva" disabled/></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="datoTotal">PROPINA</td>
+                                    <td><input type="number" class="cantidad" id="propina" disabled/></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="datoTotal">VALOR TOTAL</td>
+                                    <td><input type="number" class="cantidad" id="valorTotal" disabled/></td>
+                                </tr>
+
+                            </table>
+                            <div class="modal-wrapper" id="popup">
+                                <div class="popup-contenedor">
+                                    <h2>AGREGAR PRODUCTO</h2>
+                                    <span>codigo principal:</span><input type="text"><br/>
+                                    <span>codigo auxiliar:</span><input type="text"><br/>
+                                    <span>nombre del producto:</span><input type="text"><br/>
+                                    <span>impuesto:</span>
+                                    <select nam="seleccion_Impuesto">
+                                       <option value="" selected disabled>Seleccione</option>
+                                        <option value="renta">renta</option>
+                                        <option value="iva">IVA</option>
+                                        <option value="ice">ICE</option>
+                                        <option value="irbpnr">IRBPNR</option>
+                                    </select>
+                                    <br/>
+                                    <span>tipo producto:</span><select nam="seleccion_tipoProducto">
+                                       <option value="" selected disabled>Seleccione</option>
+                                        <option value="bien">bien</option>
+                                        <option value="servicio">servicio</option>
+                                        
+                                    </select>
+                                    
+                                    <a class="popup-cerrar" href="#">X</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#add").click(function() {
+            var nuevaFila = "<tr>";
+            //añadimos las filas y columnas
+            nuevaFila += '<td class="service"><input type="number"';
+            nuevaFila += ' placeholder="N°" class="cantidad"/></td>';
+            nuevaFila += '<td class="desc"><a href="#popup" class="popup-link"><button>Agregar Producto</button></a></td>';
+            nuevaFila += '<td class="unit">$<input type="text" disabled class="unidades"></td>';
+            nuevaFila += '<td class="total">$<input type="text" disabled class="unidades"></td>';
+            nuevaFila += "</tr>";
+
+            $("#tabla").append(nuevaFila);
+        });
+        $("#del").click(function() {
+
+            var trs = $("#tabla tr").length;
+            if (trs > 1) {
+                // Eliminamos la ultima columna
+                $("#tabla tr:last").remove();
+            }
+        });
+    });
+
+</script>
