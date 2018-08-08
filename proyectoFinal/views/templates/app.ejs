@@ -22,9 +22,13 @@
         <!-- jquery mains -->
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
         <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <!--bootstrap -->
+        <!--bootstrap
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script> -->
 
-        
+
         <!--[if lt IE 9]>
         
 
@@ -34,9 +38,9 @@
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         <script src="http://code.jquery.com/jquery-latest.js"></script>
-        
 
-        
+
+
     </head>
 
     <body>
@@ -59,17 +63,32 @@
         </div>
         <div class="row">
             <div id="sidebar" class="column">
-                <h5>Navigation</h5>
-                <ul>
-                    <li><a href="#"><em class="fa fa-home"></em> Home</a></li>
-                    <li><a href="#factura" id="mostrar_factura" ><em class="fa fa-bar-chart"></em> factura</a></li>
-                    <li><a href="#productos" id="mostrar_producto"><em class="fa fa fa-clone"></em> productos</a></li>
-                    <li><a href="#usuario" id="mostrar_usuario"><em class="fa fa-pencil-square-o"></em> usuario</a></li>
-                    <li><a href="#alerts"><em class="fa fa-warning"></em> Alerts</a></li>
-                    <li><a href="#buttons"><em class="fa fa-hand-o-up"></em> Buttons</a></li>
-                    <li><a href="#tables"><em class="fa fa-table"></em> Tables</a></li>
-                    <li><a href="#grid"><em class="fa fa-columns"></em> Grid</a></li>
-                </ul>
+                <header>
+                    <h5>Navigation</h5>
+                   
+                    <label for="btn-menu" class="icon-menu"></label>
+                    <nav id="menu">
+                        <ul class="menu">
+
+                            <li><a href="#"><em class="fa fa-home"></em> Home</a></li>
+                            <li><a href="#factura" id="mostrar_factura" ><em class="fa fa-file"></em> Factura <i class="icon-down-open"></i></a></li>
+
+                            <li class="activado"><a id="mostrar_producto"><em class="fa fa fa-clone"></em>Productos<i class="icono derecha fa fa-chevron-down"></i></a>
+                                <ul>
+                                    <li><a href="#ingresarProductos" id="mostrar_igrProducto"><i class="fa fa-plus-square"></i>Ingresar Productos</a></li>
+                                    <li><a href="#buscarProductos"  id="mostrar_bscProducto"><i class="fa fa-search"></i>Buscar Productos</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a href="#usuario" id="mostrar_usuario"><em class="fa fa-pencil-square-o"></em> usuario</a></li>
+                            <li><a href="#alerts"><em class="fa fa-warning"></em> Alerts</a></li>
+                            <li><a href="#buttons"><em class="fa fa-hand-o-up"></em> Buttons</a></li>
+                            <li><a href="#tables"><em class="fa fa-table"></em> Tables</a></li>
+                            <li><a href="#grid"><em class="fa fa-columns"></em> Grid</a></li>
+                        </ul>
+                    </nav>
+                </header>
+                <script src="js/menu.js"></script>
             </div>
             <section id="main-content" class="column column-offset-20">
 
@@ -80,8 +99,11 @@
                 </div>
 
                 <!--Widgets-->
-                <div  class="anchor" id="productos">
-                    <h5 class="mt-2">productos</h5>
+                <div  class="row grid-responsive" id="ingresarProductos">
+                    <%- include(ingresarProductos)%>
+                </div>
+                <div  class="row grid-responsive" id="buscarProductos">
+                    <%- include(buscarProductos)%>
                 </div>
                 <!--Forms-->
                 <div  class="anchor" id="usuario">
@@ -99,7 +121,7 @@
 
             </section>
         </div>
-
+        <script src="js/menu.js"></script>
         <script src="js/chart.min.js"></script>
         <script src="js/chart-data.js"></script>
         <script>
@@ -144,23 +166,48 @@
                 $('#usuario').hide();
                 $('#tables').hide();
                 $('#grid').hide();
-                
+                $('#ingresarProductos').hide();
+                $('#buscarProductos').hide();
+
                 $('#mostrar_factura').on('click', function () {
                     $('#factura').show();
+                    $('#ingresarProductos').hide();
+                    $('#buscarProductos').hide();
                     $('#productos').hide();
                     $('#usuario').hide();
 
                 });
                 $('#mostrar_producto').on('click', function () {
                     $('#productos').show();
+                    $('#ingresarProductos').hide();
+                    $('#buscarProductos').hide();
                     $('#factura').hide();
                     $('#usuario').hide();
                 });
                 $('#mostrar_usuario').on('click', function () {
                     $('#usuario').show();
+                    $('#ingresarProductos').hide();
+                    $('#buscarProductos').hide();
                     $('#productos').hide();
                     $('#factura').hide();
                 });
+                $('#mostrar_igrProducto').on('click', function () {
+                    $('#ingresarProductos').show();
+                    $('#buscarProductos').hide();
+                    $('#productos').hide();
+                    $('#factura').hide();
+                    $('#usuario').hide();
+                });
+                $('#mostrar_bscProducto').on('click', function () {
+                    $('#buscarProductos').show();
+                    $('#ingresarProductos').hide();
+                    $('#productos').hide();
+                    $('#factura').hide();
+                    $('#usuario').hide();
+                });
+
+
+
             });
         </script>
 

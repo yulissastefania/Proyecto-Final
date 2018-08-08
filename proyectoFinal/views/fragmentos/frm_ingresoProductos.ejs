@@ -1,0 +1,67 @@
+<div class="container">
+    <h4 class="card-title ">Detalle del Producto/Servicio </h4>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title ">Características Generales</h5>
+        </div>
+
+        <div class="card-block">
+            <form>
+                <div class="form-group">
+                    <label for="text_codPrincipalA" class="form-control-label">Código Principal:</label>
+                    <input type="text" class="form-control" id="text_codPrincipalA" name="text_codPrincipalA"/>                  
+                </div>
+
+                <div class="form-group">
+                    <label for="txt_codAuxA"  class="form-control-label">Código Auxiliar:</label>
+                    <input type="text" class="form-control" id="txt_codAuxA" name="txt_codAuxA" />
+                </div>
+
+                <div>
+                    <label for="slt_tipoProductoA" class="form-control-label">Tipo Producto:</label>
+                    <select name="slt_tipoProductoA" id="slt_tipoProductoA">
+                        <option value="TODOS" selected>TODOS</option> 
+                        <option value="BIEN" >BIEN</option>
+                        <option value="SERVICIO">SERVICIO</option>
+                    </select>   
+                </div>
+
+                <div class="form-group">
+                    <label for="txt_nomProductoA" class="form-control-label">Nombre Producto:</label>
+                    <input type="text" class="form-control" id="txt_nomProductoA" name="txt_nomProductoA"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="txt_valUnitario" class="form-control-label">Valor Unitario:</label>
+                    <input type="text" class="form-control" id="txt_valUnitario" name="txt_valUnitario"/>
+                </div>
+            </form> 
+
+            <div class="card-header">
+                <h5 class="card-title ">Impuestos Aplicables</h5>
+            </div>
+
+
+            <form>
+                <div>
+                    <label for="slt_IVA" class="form-control-label">IVA:</label>
+                    <select name="slt_IVA" id="slt_IVA">
+                        <option value="0 - 0%" selected>0 - 0%</option> 
+                        <option value="2 - GRAVA IVA" >2 - GRAVA IVA</option>
+                        <option value="6 - NO OBJETO DE IMPUESTO">6 - NO OBJETO DE IMPUESTO</option>
+                        <option value="7 - EXENTO">7 - EXENTO</option>
+                    </select>   
+                </div>
+            </form> 
+            
+            <br>
+            <div class="modal-footer">
+                <center><button type="submit" class="btn btn-secondary" >Guardar</button>
+                    <button type="button" class="btn btn-secondary" >Cancelar</button></center>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

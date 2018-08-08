@@ -613,11 +613,38 @@ select:focus {
     display: block;
     height: 10px;
     border-radius: 499rem;
+
+
+}
+
+#buscarProductos input, #buscarProductos select{ 
+    width: 75%;
+
+}
+
+#ingresarProductos input, #ingresarProductos select{ 
+    width: 75%;
+
+
 }
 
 /* Mobile */
 
 @media (max-width: 640px) {
+
+    #buscarProductos input, #buscarProductos select{ 
+        
+        margin-left: 15%;
+
+    }
+
+    #ingresarProductos input, #ingresarProductos select{ 
+        margin-left: 15%;
+
+    }
+
+
+
     .row,
     .row.grid-responsive {
         flex-direction: column;
@@ -818,13 +845,13 @@ select:focus {
 }
 
 
-/*estylo de la factura*/
+/*estilo de la factura*/
 
 #factura .clearfix:after {
     content: "";
     display: table;
     clear: both;
-    
+
 }
 
 #factura a {
@@ -847,7 +874,7 @@ select:focus {
 #factura header {
     padding: 10px 0;
     margin-bottom: 30px;
-    
+
 }
 
 
@@ -855,7 +882,7 @@ select:focus {
 #factura #logo {
     text-align: center;
     margin-bottom: 10px;
-    
+
 }
 
 #factura #logo img {
@@ -878,7 +905,7 @@ select:focus {
     float: left;
 }
 #factura #project input, #factura #company input{
-    
+
     font-size: 13px;
 }
 #factura #project input{
@@ -907,7 +934,7 @@ select:focus {
 }
 #factura input{
     width: 20vw;
- 
+
     margin-right: 3vw;
 
 }
@@ -917,7 +944,7 @@ select:focus {
 }
 #factura #tabla .cantidad{
     width: 6vw;
-   
+
 }
 
 .datoTotal{
@@ -993,7 +1020,7 @@ select:focus {
 #factura table td.service,
 #factura table td.desc {
     vertical-align: top;
-    
+
 }
 
 #factura table td.unit,
@@ -1025,24 +1052,24 @@ select:focus {
 
 /*estilo modal*/
 #popup {
-   visibility: hidden;
-   opacity: 0;
-   margin-top: -300px;
+    visibility: hidden;
+    opacity: 0;
+    margin-top: -300px;
 }
 #popup:target {
-   visibility:visible;
-   opacity: 1;
-   background-color: rgba(0,0,0,0.8);
-   position: fixed;
-   top:0;
-   left:0;
-   right:0;
-   bottom:0;
-   margin:0;
-   z-index: 999;
-   transition:all 1s;
-    
-    
+    visibility:visible;
+    opacity: 1;
+    background-color: rgba(0,0,0,0.8);
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:0;
+    z-index: 999;
+    transition:all 1s;
+
+
 }
 #popup input {
     margin-left: 3vw;
@@ -1051,22 +1078,115 @@ select:focus {
     width: 20vw;
 }
 .popup-contenedor {
-   position: relative;
-   margin:7% auto;
-   padding:30px 50px;
-   background-color: #fafafa;
-   color:#333;
-   border-radius: 3px;
-   width:50%;
+    position: relative;
+    margin:7% auto;
+    padding:30px 50px;
+    background-color: #fafafa;
+    color:#333;
+    border-radius: 3px;
+    width:50%;
 }
 a.popup-cerrar {
-   position: absolute;
-   top:3px;
-   right:3px;
-   background-color: #333;
-   padding:7px 10px;
-   font-size: 20px;
-   text-decoration: none;
-   line-height: 1;
-   color:#fff;
+    position: absolute;
+    top:3px;
+    right:3px;
+    background-color: #333;
+    padding:7px 10px;
+    font-size: 20px;
+    text-decoration: none;
+    line-height: 1;
+    color:#fff;
 }
+
+
+/*Menu desplegable de Productos*/
+.menu .icono.derecha{
+    margin-left: 3vw;
+
+    max-width:4vw;
+    min-width:3vw ;
+}
+
+.menu ul{
+    display: none;
+}
+
+.menu ul li a{
+    max-width: 35vh;
+    min-width: 4vh;
+    margin-right: 2vh;
+    margin-left: 4vh;
+
+}
+
+/*estilo ingresarProductos*/
+#ingresarProductos form {
+    margin: 0 auto;
+    width: 70%;
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    text-align: center;
+}
+
+#ingresarProductos label {
+    display: inline-block;
+    width: 21%;
+    text-align: left;
+}
+
+
+
+
+
+#ingresarProductos h4 {  
+    color: #35cebe;
+    font-size: 1.5em;
+
+}
+
+/*estilo buscarProductos*/
+#buscarProductos form {
+    margin: 0 auto;
+    width: 70%;
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    text-align: center;
+}
+
+#buscarProductos label {
+    display: inline-block;
+    width: 21%;
+    text-align: left;
+}
+
+
+
+
+#buscarProductos table {  
+    font-family: sans-serif;
+    font-weight: bolder;
+}
+
+#buscarProductos thead tr td{  
+    border-radius: 0.3em;
+    background-color: #25beae; 
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: bolder;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
