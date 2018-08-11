@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -19,7 +19,7 @@ $(document).ready(function () {
             $(this).children('ul').slideDown();
         }
         $('.menu li ul li a').click(function(){
-           window.location.href = $(this).attr("href"); 
+           window.location.href = $(this).attr("href");
         });
     });
 });

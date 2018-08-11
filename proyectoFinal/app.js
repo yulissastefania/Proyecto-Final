@@ -8,7 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var nib = require('nib');//instanciamos para manejar nib
-var stylus= require('stylus');//instanciamos 
+var stylus= require('stylus');//instanciamos
 
 
 var app = express();

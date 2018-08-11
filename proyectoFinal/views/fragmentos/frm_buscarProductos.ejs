@@ -8,39 +8,39 @@
             <form>
                 <div class="form-group">
                     <label for="text_codPrincipal" class="form-control-label">Código Principal:</label>
-                    <input type="text" class="form-control" id="text_codPrincipal" name="text_codPrincipal"/>                  
+                    <input type="text" class="form-control" id="text_codPrincipal" name="text_codPrincipal" />
                 </div>
 
                 <div class="form-group">
-                    <label for="txt_codAux"  class="form-control-label">Código Auxiliar:</label>
+                    <label for="txt_codAux" class="form-control-label">Código Auxiliar:</label>
                     <input type="text" class="form-control" id="txt_codAux" name="txt_codAux" />
                 </div>
 
 
                 <div class="form-group">
                     <label for="txt_nomProducto" class="form-control-label">Nombre Producto:</label>
-                    <input type="text" class="form-control" id="txt_nomProducto" name="txt_nomProducto"/>
+                    <input type="text" class="form-control" id="txt_nomProducto" name="txt_nomProducto" />
                 </div>
                 <div>
                     <label for="slt_impuesto" class="form-control-label">Impuesto:</label>
                     <select name="slt_impuesto" id="slt_impuesto">
-                        <option value="Seleccione" selected>Seleccione</option> 
+                        <option value="Seleccione" selected>Seleccione</option>
                         <option value="IVA">IVA</option>
                     </select>
                 </div>
                 <div>
                     <label for="slt_tipoProducto" class="form-control-label">Tipo Producto:</label>
                     <select name="slt_tipoProducto" id="slt_tipoProducto">
-                        <option value="TODOS"selected>TODOS</option> 
+                        <option value="TODOS"selected>TODOS</option>
                         <option value="BIEN" >BIEN</option>
                         <option value="SERVICIO">SERVICIO</option>
-                    </select>   
+                    </select>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" >Buscar</button>
+                    <button type="button" class="btn btn-secondary">Buscar</button>
                 </div>
-            </form> 
+            </form>
         </div>
 
 
@@ -68,8 +68,21 @@
                     </tbody>
                 </table>
             </div>
-        </form> 
+        </form>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+
+        $("#txt_nomProducto").change(function() {
+            var regex = /^[a-zA-Z ]+$/;
+            var aux = regex.test($("#txt_nomProducto").val());
+            if (!aux) {
+                $("#txt_nomProducto").val("");
+            }
+        });
 
 
+    });
+
+</script>

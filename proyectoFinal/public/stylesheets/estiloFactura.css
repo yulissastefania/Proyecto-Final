@@ -1,0 +1,202 @@
+#factura .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+
+}
+
+#factura a {
+    color: #5D6975;
+    text-decoration: underline;
+}
+
+#factura body {
+    position: relative;
+    width: 21cm;
+    height: 29.7cm;
+    margin: 0 auto;
+    color: #001028;
+    background: #FFFFFF;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-family: Arial;
+}
+
+#factura header {
+    padding: 10px 0;
+    margin-bottom: 30px;
+
+}
+
+
+
+#factura #logo {
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+
+#factura #logo img {
+    width: 90px;
+}
+
+#factura h1 {
+    border-top: 1px solid #5D6975;
+    border-bottom: 1px solid #5D6975;
+    color: #5D6975;
+    font-size: 2.4em;
+    line-height: 1.4em;
+    font-weight: normal;
+    text-align: center;
+    margin: 0 0 20px 0;
+    background: url(../images/dimension.png);
+}
+
+#factura #project {
+    float: left;
+}
+#factura #project input, #factura #company input{
+
+    font-size: 13px;
+}
+#factura #project input{
+    width: 25vw;
+}
+#factura #company input{
+    width: 12vw;
+}
+
+#factura #project span, #factura #datosComprador span{
+    color: #5D6975;
+    text-align: right;
+    width: 4em;
+    margin-right: 6.3em;
+    display: inline-block;
+    font-size: 0.8em;
+}
+#factura #datosComprador {
+    float: left;
+}
+#factura #datosComprador span{
+    margin-right: 2vw;
+}
+#factura #datosComprador .spanDere{
+    margin-left: 7vw;
+}
+#factura input{
+    width: 20vw;
+
+    margin-right: 3vw;
+
+}
+#factura #tabla .unidades{
+    width: 7.1vw;
+
+}
+#factura #tabla .cantidad{
+    width: 6vw;
+
+}
+
+.datoTotal{
+    font-size:0.8vw;
+    text-align: center;
+}
+
+#factura #totales .cantidad{
+    width: 9.5vw;
+
+}
+#factura #company div{
+    margin-right: 3vw;
+}
+#factura #project div,#factura #datosComprador div{
+    margin-left: 3vw;
+}
+
+
+#factura #company span{
+    text-align: right;
+    color: #5D6975;
+    width: 4em;
+    margin-right: 2em;
+    display: inline-block;
+    font-size: 0.8em;
+}
+#factura #company {
+    float: right;
+    text-align: right;
+    margin-bottom: 2em;
+}
+
+#factura #project div,
+#factura #company div {
+    white-space: nowrap;
+}
+
+#factura table {
+
+    border-collapse: collapse;
+    border-spacing: 0;
+
+}
+
+#factura table tr:nth-child(2n-1) td {
+    background: #F5F5F5;
+}
+
+#factura table th,
+#factura table td {
+    text-align: center;
+}
+
+#factura table th {
+
+    color: #5D6975;
+    border-bottom: 1px solid #C1CED9;
+    white-space: nowrap;
+    font-weight: normal;
+}
+
+#factura table .service,
+#factura table .desc {
+    text-align: left;
+}
+
+#factura table td {
+
+    text-align: right;
+}
+
+#factura table td.service,
+#factura table td.desc {
+    vertical-align: top;
+
+}
+
+#factura table td.unit,
+#factura table td.qty,
+#factura table td.total {
+    font-size: 1.2em;
+}
+
+#factura table td.grand {
+    border-top: 1px solid #5D6975;
+    ;
+}
+
+#factura #notices .notice {
+    color: #5D6975;
+    font-size: 1.2em;
+}
+
+#factura footer {
+    color: #5D6975;
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #C1CED9;
+    padding: 8px 0;
+    text-align: center;
+}

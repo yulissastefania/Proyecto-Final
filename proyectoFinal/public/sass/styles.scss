@@ -295,7 +295,7 @@ select:focus {
 		display: block;
 		margin: 0 20px 10px 20px;
 	}
-	
+
 	.col-search {
 		position: relative;
 		.search-btn {
@@ -305,12 +305,12 @@ select:focus {
 			top: 6px;
 			right: 42px;
 		}
-		
+
 		.search-btn:hover {
 			color: $dark-gray;
 		}
 	}
-	
+
 	input[type=text] {
 		margin-top: -.6rem;
 		margin-left: -1rem;
@@ -336,7 +336,7 @@ select:focus {
 		margin-top: 20px;
 		margin-bottom: 0;
 	}
-	
+
 	ul {
 		margin-top: 10px;
 		margin-left: -20px;
@@ -353,7 +353,7 @@ select:focus {
 					margin-right: 5px;
 				}
 			}
-			
+
 			a:hover {
 				color: $primary-color;
 				background-color: $light-gray;
@@ -379,7 +379,7 @@ select:focus {
 	.canvas-wrapper {
 		width: 98%;
 	}
-	
+
 	.card-title {
 		border-bottom: 1px solid #eee;
 		padding: 15px 20px;
@@ -387,12 +387,12 @@ select:focus {
 			margin: 0;
 			padding: 0;
 		}
-		
+
 		.badge {
 			margin-top: 3px;
 		}
 	}
-	
+
 	.card-block {
 		padding: 10px 20px;
 	}
@@ -415,7 +415,7 @@ select:focus {
 		margin-right: 10px;
 		float: left;
 	}
-	
+
 	.username {
 		color: $dark-gray;
 		float: right;
@@ -423,7 +423,7 @@ select:focus {
 		h4 {
 			margin-bottom: -.5rem;
 		}
-		
+
 		p {
 			color: $medium-gray;
 			font-size: .9em;
@@ -491,7 +491,7 @@ select:focus {
 	.row, .row.grid-responsive {
 		flex-direction: column;
 	}
-	
+
 	.row.grid-responsive .column,
 	.row.grid-responsive .column.column-10,
 	.row.grid-responsive .column.column-20,
@@ -510,14 +510,14 @@ select:focus {
 		width: 100%;
 		max-width: 100%;
 	}
-	
+
 	.navbar {
 		height: auto;
 		position: static;
 		.user-section {
 			text-align: left;
 		}
-		
+
 		.row .column,
 		.row .column.column-10,
 		.row .column.column-20,
@@ -536,22 +536,22 @@ select:focus {
 			max-width: 100%;
 			padding: 0 20px;
 		}
-		
+
 		a.site-title {
 			margin-left: 0;
 		}
-		
+
 		.col-search {
 			.search-btn {
 				top: 12px;
 			}
 		}
-		
+
 		input[type=text] {
 			margin: 0;
 		}
 	}
-	
+
 	#sidebar {
 		position: static;
 		width: 100%!important;
@@ -560,20 +560,20 @@ select:focus {
 		height: auto;
 		left: 0;
 	}
-	
+
 	#main-content {
 		width: 100%!important;
 		display: block!important;
 		margin: 0;
 		padding: 1.5rem!important;
 	}
-	
+
 	.card {
 		.card-title, .card-block {
 			padding: 10px 15px;
 		}
 	}
-	
+
 	.user-section {
 		display: none;
 	}
@@ -586,12 +586,12 @@ select:focus {
 	#sidebar {
 		width: 30%!important;
 	}
-	
+
 	#main-content {
 		width: 70%!important;
 		margin-left: 30%;
 	}
-	
+
 	.navbar {
 		.row .column,
 		.row .column.column-10,
@@ -610,17 +610,17 @@ select:focus {
 			width: 50%;
 			max-width: 50%;
 		}
-		
+
 		.site-title {
 			font-size: 18px!important;
 			padding-top: 5px;
 		}
 	}
-	
+
 	.row.grid-responsive {
 		flex-direction: column;
 	}
-	
+
 	.row.grid-responsive .column,
 	.row.grid-responsive .column.column-10,
 	.row.grid-responsive .column.column-20,
@@ -639,13 +639,13 @@ select:focus {
 		width: 100%;
 		max-width: 100%;
 	}
-	
+
 	.card {
 		.canvas-wrapper {
 			width: 90%;
 		}
 	}
-	
+
 	.user-section {
 		margin-right: 20px;
 		.username {
@@ -658,7 +658,7 @@ select:focus {
 	.row.grid-responsive {
 		flex-direction: column;
 	}
-	
+
 	.row.grid-responsive .column,
 	.row.grid-responsive .column.column-10,
 	.row.grid-responsive .column.column-20,
@@ -677,22 +677,22 @@ select:focus {
 		width: 100%;
 		max-width: 100%;
 	}
-	
+
 	#sidebar {
 		width: 30%!important;
 	}
-	
+
 	#main-content {
 		width: 70%!important;
 		margin-left: 30%;
 	}
-	
+
 	.card {
 		.canvas-wrapper {
 			width: 95%;
 		}
 	}
-	
+
 	.user-section {
 		margin-right: 20px;
 		.username {

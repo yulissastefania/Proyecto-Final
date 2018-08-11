@@ -1,0 +1,117 @@
+<div class="column " id="vista_factura">
+    <div class="card">
+
+        <div class="card-title">
+            <h2 style="center">USUARIO NUEVO</h2>
+        </div>
+        <div class="card-block">
+            <form>
+
+                <div>
+                    <label for="nombreNuevo">Nombre</label>
+                    <input type="text" placeholder="Ingrese nombre" id="nombreNuevo" name="nombreNuevo">
+
+                </div>
+
+                <label for="apellidoNuevo">Apellido</label>
+                <input type="text" placeholder="Ingrese apellido" id="apellidoNuevo" name="apellidoNuevo">
+
+                <label for="cedulaRucNuevo">Cedula o Ruc </label>
+                <input type="text" placeholder="Ingrese numero de cedula" id="cedulaRucNuevo" name="cedulaRucNuevo" maxlength="13">
+
+                <label for="emailNuevo">email</label>
+                <input type="text" placeholder="ingrese email" id="emailNuevo" name="emailNuevo">
+
+                <label for="razonSocialNuevo">razon Social</label>
+                <input type="text" placeholder="ingrese razon social " id="razonSocialNuevo" name="razonSocialNuevo" maxlength="9" min="9">
+
+                <label for="direccionNuevo">Dirección</label>
+                <input type="text" placeholder="ingrese direccion" id="direccionNuevo" name="direccionNuevo">
+
+                <label for="telefonoNuevo">Teléfono</label>
+                <input type="tel" placeholder="ingrese nuemero de telefono" id="telefonoNuevo" name="telefonoNuevo" maxlength="9">
+
+
+                <div>
+                    <button class="button-primary" type="reset" value="Cancelar">Borrar todo</button>
+
+                    <button id="enviar_nuevoUser" class="button-primary" value="Enviar">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="/js/validacion_NuevoUser.js"></script>
+<script>
+    $(document).ready(function() {
+        var boton = $('#enviar_nuevoUser');
+        $('#verificarClaveNuevo').hide();
+        $('#lb_verifi').hide();
+        soloLetras($('#nombreNuevo'), boton);
+        soloLetras($('#apellidoNuevo'), boton);
+        validarClaves($('#claveNuevo'), $('#verificarClaveNuevo'), boton);
+        validarTelefono($('#telefonoNuevo'), boton);
+        validarCorreo($('#emailNuevo'), boton);
+        validarCedulaRuc($('#cedulaRucNuevo'), boton);
+
+        validarDireccion($('#direccionNuevo'), boton);
+
+        $('#enviar_nuevoUser').click(function() {
+            var aux = true;
+            if ($('#direccionNuevo').val() == "") {
+                $('#direccionNuevo').addClass("red red-border");
+                boton.attr("disabled", "disabled");
+                aux = false;
+            }
+            if ($('#telefonoNuevo').val() == "") {
+                $('#telefonoNuevo').addClass("red red-border");
+                boton.attr("disabled", "disabled");
+                aux = false;
+            }
+            if ($('#nombreNuevo').val() == "") {
+                $('#nombreNuevo').addClass("red red-border");
+                boton.attr("disabled", "disabled");
+                aux = false;
+            }
+            if ($('#apellidoNuevo').val() == "") {
+                $('#apellidoNuevo').addClass("red red-border");
+                boton.attr("disabled", "disabled");
+                aux = false;
+            }
+            if ($('#claveNuevo').val() == "") {
+                $('#claveNuevo').addClass("red red-border");
+                boton.attr("disabled", "disabled");
+                aux = false;
+            }
+            if ($('#cedulaRucNuevo').val() == "") {
+                $('#cedulaRucNuevo').addClass("red red-border");
+                boton.attr("disabled", "disabled");
+                aux = false;
+            }
+
+            if ($('#emailNuevo').val() == "") {
+                $('#emailNuevo').addClass("red red-border");
+                boton.attr("disabled", "disabled");
+                aux = false;
+            }
+            if ($('#emailNuevo').val() == "") {
+                $('#emailNuevo').addClass("red red-border");
+                boton.attr("disabled", "disabled");
+                aux = false;
+            }
+
+
+
+            if (aux == true) {
+                alert("envio de datos");
+            } else {
+                alert("verifique que los campos estan correctamente llenados");
+            }
+        });
+
+    });
+
+</script>
