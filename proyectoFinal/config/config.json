@@ -1,0 +1,17 @@
+{
+    "development":{
+        "username":"joelCartuche",
+        "password":"123456789",
+        "database":"proyectoFinal",
+        "host":"localhost",
+        "dialect":"mysql"
+    },
+    "staging":{
+        "username":"joelCartuche",
+        "password":"123456789",
+        "database":"proyectoFinal",
+        "host":"localhost",
+        "dialect":"mysql"
+
+    }
+}

@@ -4,19 +4,37 @@
         <div class="card-header">
             <h5 class="card-title ">Características Generales</h5>
         </div>
-
         <div class="card-block">
-            <form>
+            <form method="post" action="/guardarProducto">
                 <div class="form-group">
                     <label for="text_codPrincipalA" class="form-control-label">Código Principal:</label>
                     <input type="text" class="form-control" id="text_codPrincipalA" name="text_codPrincipalA" />
                 </div>
 
                 <div class="form-group">
-                    <label for="txt_codAuxA" class="form-control-label">Código Auxiliar:</label>
+                    <label for="txt_codAuxA" class="form-control-label">Modelo:</label>
                     <input type="text" class="form-control" id="txt_codAuxA" name="txt_codAuxA" />
                 </div>
-
+                <div class="form-group">
+                    <label for="txt_nomProductoA" class="form-control-label">Nombre Producto:</label>
+                    <input type="text" class="form-control" id="txt_nomProductoA" name="txt_nomProductoA" />
+                </div>
+                <div class="form-group">
+                    <label for="txt_valUnitario" class="form-control-label">Valor Unitario:</label>
+                    <input type="text" class="form-control" id="txt_valUnitario" name="txt_valUnitario" placeholder="ej: 89,00" />
+                </div>
+                <div>
+                    <label for="slt_ivaProductoNuevo" class="form-control-label">Iva</label>
+                    <select name="slt_ivaProductoNuevo" id="slt_ivaProductoNuevo">
+                        <option selected disabled>Seleccione</option>
+                        <option value="1" >0%</option>
+                        <option value="0.12">12%</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="check_valUnitario" class="form-control-label">Stock:</label>
+                    <input type="checkbox" class="form-control" id="check_valUnitario" name="check_valUnitario" />
+                </div>
                 <div>
                     <label for="slt_tipoProductoA" class="form-control-label">Tipo Producto:</label>
                     <select name="slt_tipoProductoA" id="slt_tipoProductoA">
@@ -25,34 +43,20 @@
                         <option value="SERVICIO">SERVICIO</option>
                     </select>
                 </div>
-
-                <div class="form-group">
-                    <label for="txt_nomProductoA" class="form-control-label">Nombre Producto:</label>
-                    <input type="text" class="form-control" id="txt_nomProductoA" name="txt_nomProductoA" />
-                </div>
-
                 <div class="form-group">
                     <label for="txt_marProductoA" class="form-control-label">Marca Producto:</label>
                     <input type="text" class="form-control" id="txt_marProductoA" name="txt_marProductoA" />
                 </div>
-
                 <div class="form-group">
                     <label for="txt_modProductoA" class="form-control-label">Modelo Producto:</label>
                     <input type="text" class="form-control" id="txt_modProductoA" name="txt_modProductoA" />
                 </div>
 
-                <div class="form-group">
-                    <label for="txt_valUnitario" class="form-control-label">Valor Unitario:</label>
-                    <input type="text" class="form-control" id="txt_valUnitario" name="txt_valUnitario" placeholder="ej: 89,00" />
+
+                <div class="card-header">
+                    <h5 class="card-title ">Impuestos Aplicables</h5>
                 </div>
-            </form>
 
-            <div class="card-header">
-                <h5 class="card-title ">Impuestos Aplicables</h5>
-            </div>
-
-
-            <form>
                 <div>
                     <label for="slt_IVA" class="form-control-label">IVA:</label>
                     <select name="slt_IVA" id="slt_IVA">
@@ -60,71 +64,18 @@
                         <option value="GRAVA IVA" >GRAVA IVA</option>
                     </select>
                 </div>
+
+                <br>
+                <div class="modal-footer">
+                    <center><button type="submit" class="btn btn-secondary" id="guardarProducto">Guardar</button>
+                        <button type="button" class="btn btn-secondary">Cancelar</button></center>
+                </div>
             </form>
-
-            <br>
-            <div class="modal-footer">
-                <center><button type="submit" class="btn btn-secondary" id="guardarProducto">Guardar</button>
-                    <button type="button" class="btn btn-secondary">Cancelar</button></center>
-            </div>
-
         </div>
     </div>
 </div>
-
 <script src="/js/validacion_nuevoProducto.js"></script>
 <script>
-    $(document).ready(function () {
-        var boton = $('#guardarProducto');
-        var codPrincipal = $('#text_codPrincipalA');
-        validarVacio(codPrincipal, boton);
-        var codSecundario = $('#txt_codAuxA');
-        validarVacio(codSecundario, boton);
-        var tipo = $('#slt_tipoProductoA');
-        validarSelect(tipo, "TODOS", boton);
-        var nombreProducto = $('#txt_nomProductoA');
-        soloLetras(nombreProducto, boton);
-        var valorUnitario = $('#txt_valUnitario');
-        validarSoloDecimal(valorUnitario, boton);
 
-        boton.click(function () {
-            var aux = true;
-            if (codPrincipal.val() == "") {
-                codPrincipal.addClass("red red-border");
-                boton.attr("disabled", "disabled");
-                aux = false;
-            }
-            if (codSecundario.val() == "") {
-                codSecundario.addClass("red red-border");
-                boton.attr("disabled", "disabled");
-                aux = false;
-            }
-            if (tipo.val() == "TODOS") {
-                tipo.addClass("red red-border");
-                boton.attr("disabled", "disabled");
-                aux = false;
-            }
-            if (nombreProducto.val() == "") {
-                nombreProducto.addClass("red red-border");
-                boton.attr("disabled", "disabled");
-                aux = false;
-            }
-            if (valorUnitario.val() == "") {
-                valorUnitario.addClass("red red-border");
-                boton.attr("disabled", "disabled");
-                aux = false;
-            }
-
-            if (aux == true) {
-                alert("envio de datos");
-            } else {
-                alert("campos erroneos");
-            }
-
-
-        });
-
-
-    });
 
 </script>

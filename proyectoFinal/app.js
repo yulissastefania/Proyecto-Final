@@ -10,8 +10,23 @@ var usersRouter = require('./routes/users');
 var nib = require('nib');//instanciamos para manejar nib
 var stylus= require('stylus');//instanciamos
 
+var passport   = require('passport');
+var session    = require('express-session');
+var bodyParser = require('body-parser');
+
 
 var app = express();
+
+//For BodyParser
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// For Passport
+// session secret
+app.use(session({ secret: 'joel',resave: true, saveUninitialized:true}));
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -24,6 +39,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+//modelos
+var models = require('./models');
+models.sequelize.sync().then( () => {
+    console.log('Se ha conectado la bd');
+}).catch(err => {console.log(err, "Hubo un error");}) ;
+
+require('./config/pasaporte/passport.js')(passport, models.empresa,models.usuario);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

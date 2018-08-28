@@ -20,26 +20,27 @@
             <div>
                 <h1 id="h1">Bienvenido</h1>
 
-                <form action="/" method="post">
+                <form  method="post" action="/loginFinal">
 
                     <div class="field-wrap">
                         <label>
                             Email<span class="req">*</span>
                         </label>
-                        <input type="email" required autocomplete="off"/>
+                        <input type="email" id="emailLogin" name="emailLogin" required autocomplete="off"/>
                     </div>
 
                     <div class="field-wrap">
                         <label>
                             Contraseña<span class="req">*</span>
                         </label>
-                        <input type="password" required autocomplete="off"/>
+                        <input type="password" id="passwordLogin"
+                         name="passwordLogin" required autocomplete="off"/>
                     </div>
 
                     <p class="forgot"><a href="#">A olvidado su contraseña?</a></p>
 
                     <div class="button-block">
-                        <center><button class="button">Ingresar</button>
+                        <center><button class="button" type="submit">Ingresar</button>
                             <button type="button" class="button" id="btn_cancelarRE" >Cancelar</button></center>
                     </div>
 
@@ -60,10 +61,6 @@
 
         <script type="text/javascript">
 
-            $('#btn_cancelarRE').click(function () {
-
-                location.href = '/home';
-            });
 
 
         </script>

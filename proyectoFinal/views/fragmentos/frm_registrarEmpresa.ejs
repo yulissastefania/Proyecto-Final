@@ -1,80 +1,108 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro Usuario</title>
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="stylesheets/estiloRegistroEmpresa.css">
+</head>
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Registro Usuario</title>
-        <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
-
-        <link rel="stylesheet" href="stylesheets/estiloRegistroEmpresa.css">
-
-
-    </head>
-
-    <body>
-
-        <div class="form">
-
-            <div>
-                <h1 id="h1">Registro Empresa</h1>
-
-                <form action="/" method="post">
-
-                    <div class="field-wrap">
-                        <label for="txt_RUCEmp">
+<body>
+    <div class="form">
+        <div>
+            <h1 id="h1">Registro Empresa</h1>
+            <form method="post" action="/guardarEmpresa">
+                <div class="field-wrap">
+                    <label for="txt_RUCEmp">
                             RUC<span class="req">*</span>
                         </label>
-                        <input type="text" required autocomplete="off" id="txt_RUCEmp" name="txt_RUCEmp"/>
-                    </div>
+                    <input type="text" required autocomplete="off" id="txt_RUCEmp" name="txt_RUCEmp" />
+                </div>
 
-                    <div class="field-wrap">
-                        <label for="txt_razonSocialEmp">
+                <div class="field-wrap">
+                    <label for="txt_razonSocialEmp">
                             Razón Social<span class="req">*</span>
                         </label>
-                        <input type="text" required autocomplete="off" id="txt_razonSocialEmp" name="txt_razonSocialEmp"/>
-                    </div>
+                    <input type="text" required autocomplete="off" id="txt_razonSocialEmp" name="txt_razonSocialEmp" />
+                </div>
 
-                    <div class="field-wrap">
-                        <label for="txt_direccionMatEmp">
+                <div class="field-wrap">
+                    <label for="txt_direccionMatEmp">
                             Dirección Matriz<span class="req">*</span>
                         </label>
-                        <input type="text" required autocomplete="off" id="txt_direccionMatEmp" name="txt_direccionMatEmp"/>
-                    </div>
+                    <input type="text" required autocomplete="off" id="txt_direccionMatEmp" name="txt_direccionMatEmp" />
+                </div>
 
-                    <div class="field-wrap">
-                        <label for="txt_direccionSucEmp">
+                <div class="field-wrap">
+                    <label for="txt_direccionSucEmp">
                             Dirección Sucursal<span class="req">*</span>
                         </label>
-                        <input type="text" required autocomplete="off" id="txt_direccionSucEmp" name="txt_direccionSucEmp"/>
-                    </div>
+                    <input type="text" required autocomplete="off" id="txt_direccionSucEmp" name="txt_direccionSucEmp" />
+                </div>
 
-                    <div class="field-wrap">
-                        <label for="txt_telefonoEmp">
+                <div class="field-wrap">
+                    <label for="txt_telefonoEmp">
                             Teléfono<span class="req">*</span>
                         </label>
-                        <input type="text" required autocomplete="off" id="txt_telefonoEmp" name="txt_telefonoEmp"/>
-                    </div>
+                    <input type="text" required autocomplete="off" id="txt_telefonoEmp" name="txt_telefonoEmp" />
+                </div>
 
-                    <div class="button-block">
-                        <center><button class="button"/>Registrar</button>
-                    </div>
 
-                </form>
 
-            </div>
+                <div class="field-wrap">
+                    <label for="txt_ambienteEmp">
+                            Ambiente<span class="req">*</span>
+                        </label>
+                    <input type="text" required autocomplete="off" id="txt_ambienteEmp" name="txt_ambienteEmp" />
+                </div>
 
+                <div>
+                    <label for="slt_tipo_emisionEmp" class="form-control-label">Tipo de Emisión:</label>
+                    <select name="slt_tipo_emisionEmp" id="slt_tipo_emisionEmp">
+                        <option selected disabled>Seleccione</option>
+                        <option value="Normal" >Normal</option>
+                    </select>
+                </div>
+
+                <div class="field-wrap">
+                    <label for="txt_clave_accesoEmp">
+                            Clave acceso<span class="req">*</span>
+                        </label>
+                    <input type="text" required autocomplete="off" id="txt_clave_accesoEmp" name="txt_clave_accesoEmp" />
+                </div>
+
+                <div class="field-wrap">
+                    <label for="txt_num_autorizacion">
+                            Numero de Autorización<span class="req">*</span>
+                        </label>
+                    <input type="text" required autocomplete="off" id="txt_num_autorizacion" name="txt_num_autorizacion" />
+                </div>
+
+                <div class="field-wrap">
+                    <label for="txt_num_contribuyente">
+                            Numero de contribuyente<span class="req">*</span>
+                        </label>
+                    <input type="text" required autocomplete="off" id="txt_num_contribuyente" name="txt_num_contribuyente" />
+                </div>
+
+                <div class="field-wrap">
+                    <label for="txt_fecha_autorizacion">
+                            Fecha de Autorización<span class="req">*</span>
+                        </label>
+                    <input type="text" required autocomplete="off" id="txt_fecha_autorizacion" name="txt_fecha_autorizacion" />
+                </div>
+
+
+                <div class="button-block">
+                    <center><button class="button" type="submit">Registrar</button>
+                    </center>
+                </div>
+            </form>
         </div>
-
-        <!-- /form -->
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-
-        <script  src="js/registros.js"></script>
-
-    </body>
-
+    </div>
+    <!-- /form -->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="js/registros.js"></script>
+</body>
 </html>
-
-

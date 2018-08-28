@@ -1,89 +1,87 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Registro Usuario</title>
-        <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
-
-        <link rel="stylesheet" href="/stylesheets/estiloRegistroUsuario.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro Usuario</title>
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
 
-    </head>
+    <link rel="stylesheet" href="/stylesheets/estiloRegistroUsuario.css">
 
-    <body>
 
-        <div class="form">
+</head>
 
-            <div>
-                <h1 id="h1">Registro Usuario</h1>
+<body>
 
-                <form action="/" method="post">
+    <div class="form">
 
-                    <div class="field-wrap">
-                        <label for="txt_nombreUsua">
+        <div>
+            <h1 id="h1">Registro Usuario</h1>
+
+            <form method="POST" action="/registro">
+
+                <div class="field-wrap">
+                    <label for="txt_nombreUsua">
                             Nombre<span class="req">*</span>
                         </label>
-                        <input type="text" required autocomplete="off" id="txt_nombreUsua" name="txt_nombreUsua"/>
-                    </div>
+                    <input type="text" required autocomplete="off" id="txt_nombreUsua" name="txt_nombreUsua" />
+                </div>
 
-                    <div class="field-wrap">
-                        <label for="txt_apellidoUsua">
+                <div class="field-wrap">
+                    <label for="txt_apellidoUsua">
                             Apellido<span class="req">*</span>
                         </label>
-                        <input type="text" required autocomplete="off" id="txt_apellidoUsua" name="txt_apellidoUsua"/>
-                    </div>
+                    <input type="text" required autocomplete="off" id="txt_apellidoUsua" name="txt_apellidoUsua" />
+                </div>
 
-                    <div class="field-wrap">
-                        <label for="txt_emailUsua">
+                <div class="field-wrap">
+                    <label for="txt_emailUsua">
                             Email<span class="req">*</span>
                         </label>
-                        <input type="email" required autocomplete="off" id="txt_emailUsua" name="txt_emailUsua"/>
-                    </div>
+                    <input type="email" required autocomplete="off" id="txt_emailUsua" name="txt_emailUsua" />
+                </div>
 
-                    <div class="field-wrap">
-                        <label for="txt_passwordUsua">
+                <div class="field-wrap">
+                    <label for="txt_passwordUsua">
                             Contraseña<span class="req">*</span>
                         </label>
-                        <input type="password" required autocomplete="off" id="txt_passwordUsua" name="txt_passwordUsua"/>
-                    </div>
+                    <input type="password" required autocomplete="off" id="txt_passwordUsua" name="txt_passwordUsua" />
+                </div>
 
-                    <div class="field-wrap">
-                        <label for="txt_con_PasswordUsua">
+                <div class="field-wrap">
+                    <label for="txt_con_PasswordUsua">
                             Confirmar Contraseña<span class="req">*</span>
                         </label>
-                        <input type="password" required autocomplete="off" id="txt_conPasswordUsua" name="txt_con_PasswordUsua"/>
-                    </div>
+                    <input type="password" required autocomplete="off" id="txt_conPasswordUsua" name="txt_con_PasswordUsua" />
+                </div>
 
-                    <div class="button-block">
-                        <center><button class="button" id="btn_registrarRU">Registrar</button>
+                <div class="button-block">
+                    <center><button type="submit" class="button" id="btn_registrarRU">Registrar</button>
 
-                            <button class="button" id="btn_cancelarRU">Cancelar</button></center>
-                    </div>
+                        <button class="button" id="btn_cancelarRU">Cancelar</button></center>
+                </div>
 
-                </form>
-
-            </div>
+            </form>
 
         </div>
 
-        <!-- /form -->
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    </div>
+
+    <!-- /form -->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
 
-        <script  src="js/registros.js"></script>
-        <script type="text/javascript">
-            $('#btn_registrarRU').click(function(){
-                location.href='/registrarEmpresa';
-            });
-            $('#btn_cancelarRU').click(function(){
-                location.href='/home';
-            });
-        </script>
+    <script src="js/registros.js"></script>
+    <script type="text/javascript">
 
-    </body>
+        $('#btn_cancelarRU').click(function() {
+            location.href = '/home';
+        });
+
+    </script>
+
+</body>
 
 </html>
-
