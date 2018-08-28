@@ -128,26 +128,45 @@
 
                             </table>
                             <div class="modal-wrapper" id="popup">
-                                <div class="popup-contenedor">
-                                    <h2>AGREGAR PRODUCTO</h2>
-                                    <span>codigo principal:</span><input type="text"><br/>
-                                    <span>codigo auxiliar:</span><input type="text"><br/>
-                                    <span>nombre del producto:</span><input type="text"><br/>
-                                    <span>impuesto:</span>
-                                    <select nam="seleccion_Impuesto">
-                                       <option value="" selected disabled>Seleccione</option>
-                                        <option value="renta">renta</option>
-                                        <option value="iva">IVA</option>
-                                        <option value="ice">ICE</option>
-                                        <option value="irbpnr">IRBPNR</option>
-                                    </select>
-                                    <br/>
-                                    <span>tipo producto:</span><select nam="seleccion_tipoProducto">
-                                       <option value="" selected disabled>Seleccione</option>
-                                        <option value="bien">bien</option>
-                                        <option value="servicio">servicio</option>
+                                <div  class="popup-contenedor">
+                                    <div class="card-block">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="text_codPrincipal" class="form-control-label">Código Principal:</label>
+                                                <input type="text" class="form-control" id="text_codPrincipal" name="text_codPrincipal" />
+                                            </div>
 
-                                    </select>
+                                            <div class="form-group">
+                                                <label for="txt_codAux" class="form-control-label">Código Auxiliar:</label>
+                                                <input type="text" class="form-control" id="txt_codAux" name="txt_codAux" />
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="txt_nomProducto" class="form-control-label">Nombre Producto:</label>
+                                                <input type="text" class="form-control" id="txt_nomProducto" name="txt_nomProducto" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="slt_impuesto" class="form-control-label">Impuesto:</label>
+                                                <select name="slt_impuesto" id="slt_impuesto">
+                                                    <option value="Seleccione" selected>Seleccione</option>
+                                                    <option value="IVA">IVA</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="slt_tipoProducto" class="">Tipo Producto:</label>
+                                                <select name="slt_tipoProducto" id="slt_tipoProducto">
+                                                    <option value="TODOS"selected>TODOS</option>
+                                                    <option value="BIEN" >BIEN</option>
+                                                    <option value="SERVICIO">SERVICIO</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary">Buscar</button>
+                                            </div>
+                                        </form>
+                                    </div>
 
                                     <a class="popup-cerrar" href="#">X</a>
                                 </div>
@@ -165,8 +184,8 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#add").click(function() {
+    $(document).ready(function () {
+        $("#add").click(function () {
             var nuevaFila = "<tr>";
             //añadimos las filas y columnas
             nuevaFila += '<td class="service"><input type="number"';
@@ -178,7 +197,7 @@
 
             $("#tabla").append(nuevaFila);
         });
-        $("#del").click(function() {
+        $("#del").click(function () {
 
             var trs = $("#tabla tr").length;
             if (trs > 1) {

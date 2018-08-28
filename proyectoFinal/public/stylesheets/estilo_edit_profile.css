@@ -1,0 +1,44 @@
+@import url(../stylesheets/estiloProfile.css);
+
+#preview {
+    width: 200px;
+    margin-bottom: 10px;
+    position: relative;
+
+}
+
+#preview a {
+    position: absolute;
+    bottom: 15px;
+    right: 5px;
+    left: 5px;
+    display: none;
+    background-color: #fff;
+}
+
+#file-info {
+    width: 200px;
+    height: 100px;
+    resize: none;
+    /*display: block;*/
+}
+
+#file {
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+    z-index: -9999;
+}
+
+#file-save {
+    width: 171px;
+}
+
+#form-editar-user input {
+    margin-left: 0;
+}
+
+#referenciaEdit {
+    width: 100%;
+    resize: none;
+}

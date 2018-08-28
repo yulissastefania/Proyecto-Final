@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>HTML5 Admin Template</title>
+
+        <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"-->
+
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700" rel="stylesheet">
+
+        <!-- Template Styles -->
+        <link rel="stylesheet" href="stylesheets/font-awesome.min.css">
+
+        <!-- CSS Reset -->
+        <link rel="stylesheet" href="stylesheets/normalize.css">
+
+        <!-- Milligram CSS minified -->
+        <link rel="stylesheet" href="stylesheets/milligram.min.css">
+
+        <!-- Main Styles -->
+        <link rel="stylesheet" href="stylesheets/estiloApp.css">
+
+        <!-- Estilos de perfil usuario -->
+        <link rel="stylesheet" href="stylesheets/estilo_edit_profile.css">
+
+        <!-- jquery mains -->
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <!--bootstrap
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script> -->
+
+
+        <!--[if lt IE 9]>
+
+
+
+
+
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+
+
+    </head>
+
+    <body>
+        <div class="navbar">
+            <div class="row">
+                <div class="column column-30 col-site-title"><a href="#" class="site-title float-left">Medialoot</a></div>
+                <div class="column column-40 col-search">
+                    <a href="#" class="search-btn fa fa-search"></a>
+                    <input type="text" name="meidalot" value="" placeholder="Search..." />
+                </div>
+
+                <div class="column column-30">
+                    <ul id="menu">
+                        <li>
+
+                            <input type="checkbox" name="list" id="nivel1-1">
+
+                            <label for="nivel1-1">
+                                <img src="http://via.placeholder.com/50x50" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
+                                <h4>Jonnathan</h4>
+
+                            </label>
+                            <ul class="interior">
+                                <li><input type="checkbox" name="list" id="nivel2-1"><a href="/profile"><i class="fas fa-user"></i> Tu perfil</a></li>
+                                <li><input type="checkbox" name="list" id="nivel2-1"><a href="/app"><i class="fas fa-file-invoice-dollar"></i> Factura</a></li>
+                                <li><input type="checkbox" name="list" id="nivel2-1"><a href="#"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <section id="main-content" class="column column-offset-10">
+                <div class="container" style="padding-top: 60px; background-color: #fff;">
+                    <h1 class="page-header">Editar Perfil</h1>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 col-xs-12 divIzq">
+
+                        </div>
+                        <!-- columna de la izquierda -->
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="text-center">
+                                <div id="preview" class="thumbnail">
+                                    <a href="#" id="file-select" class="btn btn-default">Elegir imágen</a>
+                                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16530fa7a6f%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16530fa7a6f%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2274.4296875%22%20y%3D%22104.5%22%3E200x200%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+                                </div>
+
+                                <textarea class="alert alert-info" id="file-info" disabled>No hay imágen seleccionado</textarea>
+                                <input type="file" name="file" id="file">
+                                <!--a href="#" id="file-save" class="btn btn-primary">Guardar</a-->
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12 divMed">
+
+                        </div>
+                        <!-- columna del formulario -->
+                        <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+                            <div class="alert alert-info alert-dismissable">
+                                <a class="panel-close close" data-dismiss="alert">×</a>
+                                <i class="fa fa-coffee"></i>
+                                Recuerde <strong>GUARDAR</strong> para efectuar los cambios.
+                            </div>
+                            <h3></h3>
+                            <form class="form-horizontal" role="form" id="form-editar-user" method="post" action="">
+                                <div class="form-group">
+                                    <label for="empresaEdit" class="col-lg-3 control-label">Empresa:</label>
+                                    <div class="col-lg-8">
+                                        <input id="empresaEdit" name="empresaEdit" class="form-control" value="" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rucEdit" class="col-lg-3 control-label">RUC:</label>
+                                    <div class="col-lg-8">
+                                        <input id="rucEdit" name="rucEdit" class="form-control" value="" type="text" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="emailEdit" class="col-lg-3 control-label">Email:</label>
+                                    <div class="col-lg-8">
+                                        <input id="emailEdit" name="emailEdit" class="form-control" value="" type="text" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="usernameEdit" class="col-md-3 control-label">Nombre:</label>
+                                    <div class="col-md-8">
+                                        <input id="usernameEdit" name="usernameEdit" class="form-control" value="" type="text" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="apellidoEdit" class="col-md-3 control-label">Apellido:</label>
+                                    <div class="col-md-8">
+                                        <input id="apellidoEdit" name="apellidoEdit" class="form-control" value="" type="text" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ambienteEdit" class="col-md-3 control-label">Ambiente:</label>
+                                    <div class="col-md-8">
+                                        <input id="ambienteEdit" name="ambienteEdit" class="form-control" value="" type="text" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="emisionEdit" class="col-md-3 control-label">Tipo emisión:</label>
+                                    <div class="col-md-8">
+                                        <input id="emisionEdit" name="emisionEdit" class="form-control" value="" type="text" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="razonSocialEdit" class="col-md-3 control-label">Razón Social:</label>
+                                    <div class="col-md-8">
+                                        <input id="razonSocialEdit" name="razonSocialEdit" class="form-control" value="" type="text" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="claveAccesoEdit" class="col-md-3 control-label">Clave Acceso:</label>
+                                    <div class="col-md-8">
+                                        <input id="claveAccesoEdit" name="claveAccesoEdit" class="form-control" value="" type="text" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="direccionMatrizEdit" class="col-md-3 control-label">Dirección Matriz:</label>
+                                    <div class="col-md-8">
+                                        <input id="direccionMatrizEdit" name="direccionMatrizEdit" class="form-control" value="" type="text" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="direccionSucursalEdit" class="col-md-3 control-label">Dirección Sucursal:</label>
+                                    <div class="col-md-8">
+                                        <input id="direccionSucursalEdit" name="direccionSucursalEdit" class="form-control" value="" type="text" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="telfEdit" class="col-lg-3 control-label">Telf:</label>
+                                    <div class="col-lg-8">
+                                        <input id="telfEdit" name="telfEdit" class="form-control" value="" type="text" >
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"></label>
+                                    <div class="col-md-8">
+                                        <input class="btn btn-primary" value="Guardar Cambios" type="submit">
+                                        <span></span>
+                                        <input class="btn btn-default" id="btnCancelarEdit" value="Cancelar" type="reset">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--h3>Prueba de img</h3>
+<div id="preview" class="thumbnail">
+<a href="#" id="file-select" class="btn btn-default">Elegir archivo</a>
+<img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16530fa7a6f%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16530fa7a6f%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2274.4296875%22%20y%3D%22104.5%22%3E200x200%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+</div>
+
+<span class="alert alert-info" id="file-info">No hay archivo</span>
+<input type="file" name="file" id="file">
+<a href="#" id="file-save" class="btn btn-primary">Guardar</a-->
+            </section>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <script src="js/menu.js"></script>
+        <script src="js/chart.min.js"></script>
+        <script src="js/chart-data.js"></script>
+        <script>
+            window.onload = function () {
+                var chart1 = document.getElementById("line-chart").getContext("2d");
+                window.myLine = new Chart(chart1).Line(lineChartData, {
+                    responsive: true,
+                    scaleLineColor: "rgba(0,0,0,.2)",
+                    scaleGridLineColor: "rgba(0,0,0,.05)",
+                    scaleFontColor: "#c5c7cc"
+                });
+                var chart2 = document.getElementById("bar-chart").getContext("2d");
+                window.myBar = new Chart(chart2).Bar(barChartData, {
+                    responsive: true,
+                    scaleLineColor: "rgba(0,0,0,.2)",
+                    scaleGridLineColor: "rgba(0,0,0,.05)",
+                    scaleFontColor: "#c5c7cc"
+                });
+                var chart4 = document.getElementById("pie-chart").getContext("2d");
+                window.myPie = new Chart(chart4).Pie(pieData, {
+                    responsive: true,
+                    segmentShowStroke: false
+                });
+                var chart5 = document.getElementById("radar-chart").getContext("2d");
+                window.myRadarChart = new Chart(chart5).Radar(radarData, {
+                    responsive: true,
+                    scaleLineColor: "rgba(0,0,0,.05)",
+                    angleLineColor: "rgba(0,0,0,.2)"
+                });
+                var chart6 = document.getElementById("polar-area-chart").getContext("2d");
+                window.myPolarAreaChart = new Chart(chart6).PolarArea(polarData, {
+                    responsive: true,
+                    scaleLineColor: "rgba(0,0,0,.2)",
+                    segmentShowStroke: false
+                });
+            };
+
+
+            //SELESSIONAR IMAGEN
+            $('#preview').hover(function(){
+                $(this).find('a').fadeIn();
+            }, function (){
+                $(this).find('a').fadeOut();
+            });
+
+            $('#file-select').on('click', function(e){
+                e.preventDefault();
+                $('#file').click();
+            });
+
+            $('#file').change(function() {
+                var nomfile = (this.files[0].name).toString();
+                var reader = new FileReader();
+                //console.log(nomfile);
+                $('#file-info').text('');
+                $('#file-info').text(nomfile);
+
+                reader.onload = function(e) {
+                    console.log(e);
+                    $('#preview img').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(this.files[0]);
+            });
+
+            //FIN SELECCIONAR IMAGEN
+
+            $('#btnCancelarEdit').click(function(){
+                location.href='/profile';
+            });
+
+        </script>
+
+
+    </body>
+</html>
+

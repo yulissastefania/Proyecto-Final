@@ -1,0 +1,76 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 13/08/2018, 4:47:34
+    Author     : yuli
+*/
+/*estilo modal*/
+#popup {
+    visibility: hidden;
+    opacity: 0;
+    margin-top: -300px;
+}
+#popup:target {
+    visibility:visible;
+    opacity: 1;
+    background-color: rgba(0,0,0,0.8);
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:0;
+    z-index: 999;
+    transition:all 1s;
+}
+#popup label{
+    display: inline-block;
+    width: 21%;
+    text-align: left;
+
+}
+
+#popup input{
+    display: inline-block !important;
+    width: 20vw;
+    margin-right: 1.5vw;
+
+}
+
+#popup select{
+    display: inline-block !important;
+    width: 20vw;
+    margin-right: 1.5vw;
+}
+
+.popup-contenedor {
+    position: relative;
+    margin:7% auto;
+    padding:30px 50px;
+    background-color: #fafafa;
+    color:#333;
+    border-radius: 3px;
+    width:50%;
+}
+a.popup-cerrar {
+    position: absolute;
+    top:3px;
+    right:3px;
+    background-color: #333;
+    padding:7px 10px;
+    font-size: 20px;
+    text-decoration: none;
+    line-height: 1;
+    color:#fff;
+}
+#popup form {
+    margin: 0 auto;
+    width: 90%;
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    text-align: center;
+}
