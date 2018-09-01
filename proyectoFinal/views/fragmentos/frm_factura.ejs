@@ -1,4 +1,3 @@
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <div class="column " id="vista_factura">
     <div class="card">
 
@@ -7,20 +6,20 @@
             <div id="logo">
                 <img src="../images/logo.png">
             </div>
-            <h1>Nombre Comercial (si consta el en RUC)</h1>
+            <h1 id="nombreEmpresa"></h1>
             <div id="company" class="clearfix">
-                <div><span>RUC emisor</span><input type="text" placeholder="RUC Emisor" disabled /></div>
+                <div><span>RUC emisor</span><input type="text" id="rucEmpresaF" name="rucEmpresaF" placeholder="RUC Emisor" disabled /></div>
                 <div>Factura</div>
-                <div><input type="text" placeholder="Numero Factura" disabled /></div>
-                <div><span>AUT. SRI:</span><input type="text" placeholder="auto Sri" disabled /></div>
-                <div><span style="width: 12em;">FECHA DE AUTORIZACIÓN:</span><input type="date" placeholder="dd/mm/aa" disabled /></div>
+                <div><input type="text" placeholder="Numero Factura" id="numeroFactura" name="numeroFactura" disabled /></div>
+                <div><span>AUT. SRI:</span><input type="text" placeholder="auto Sri" id="autoSri" name="autoSri" disabled /></div>
+                <div><span style="width: 12em;">FECHA DE AUTORIZACIÓN:</span><input type="text" placeholder="dd/mm/aa" id="fechaAutoEmpresa" name="fechaAutoEmpresa" disabled /></div>
             </div>
 
 
             <div id="project">
-                <div><span>Razón Social emisor:</span> <input type="text" placeholder="Razon social" disabled /></div>
-                <div><span>Dirección de la matriz:</span> <input type="text" placeholder="Direccion matriz" disabled /></div>
-                <div><span>Dirección Sucursal: </span> <input type="text" placeholder="Direccion sucursal" disabled /></div>
+                <div><span>Razón Social emisor:</span> <input type="text" id="razonSocialEmF" name="razonSocialEmF" placeholder="Razon social" disabled /></div>
+                <div><span>Dirección de la matriz:</span> <input id="direccionMatrizEmF" name="direccionMatrizEmF" type="text" placeholder="Direccion matriz" disabled /></div>
+                <div><span>Dirección Sucursal: </span> <input type="text" id="direccionSuEmF" placeholder="Direccion sucursal" name="direccionSuEmF" disabled /></div>
             </div>
             <div id="datosComprador">
                 <div>
@@ -232,10 +231,46 @@
     </div>
 </div>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
+        var dt = new Date();
+        var month = dt.getMonth() + 1;
+        var day = dt.getDate();
+        var year = dt.getFullYear();
+        if (day < 10) {
+            day= '0' + day;
+        }
+
+        if (month < 10) {
+            month= '0' + month;
+        }
+
+
+
+        $.ajax({
+            type: "GET",
+            url: "/buscarEmpresa",
+            success: function(data) {
+
+
+
+                $('#nombreEmpresa').html(data.razon_social);
+                $('#rucEmpresaF').val(data.ruc);
+                $('#numeroFactura').val();
+                $('#auto Sri').val();
+
+                $('#razonSocialEmF').val(data.razon_social);
+                $('#direccionMatrizEmF').val(data.direc_matriz);
+                $('#direccionSuEmF').val(data.direc_sucursal);
+
+                $('#fechaAutoEmpresa').val(month + '/' + day + '/' + year);
+
+            }
+        });
+
         $("#add").click(function() {
             var nuevaFila = "<tr>";
             var aux = $("#tabla tr").length;
@@ -300,9 +335,7 @@
                         $('#datoNombresComprador').val(data.nombre + " " + data.apellido);
                         $('#datoCedulaRucComprador').val(data.cedula_ruc);
                         $('#datoRazonSocialComprador').val(data.razon_social);
-                        $('#datoFechaEmisionComprador').datepicker({
-                            dateFormat: 'dd/mm/yy',
-                        }).datepicker("setDate", new Date());
+                        $('#datoFechaEmisionComprador').val(month + '/' + day + '/' + year);
 
                         $('#datoGuieEmisionComprador').val();
                     }

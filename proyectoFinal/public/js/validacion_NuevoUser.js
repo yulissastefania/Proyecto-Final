@@ -2,7 +2,6 @@ function soloLetras(text) {
     text.change(function () {
         var regex = /^[a-zA-Z ]+$/;
         var aux = regex.test(text.val());
-        console.log("addfasdfasdfasdfasdfasd")
         if (!aux) {
             text.val("");
             return false;
@@ -48,8 +47,8 @@ function validarSoloNumeros(text) {
 
 }
 
-function validarSoloCedula(text, boton) {
-    var valor = validarSoloNumeros(text, boton);
+function validarSoloCedula(text) {
+    var valor = validarSoloNumeros(text);
     if (valor == true) {
         if (text.val().length == 10) {
             var cad = text.val();
@@ -95,8 +94,8 @@ function validarSoloCedula(text, boton) {
 
 }
 
-function validarSoloRuc(text, boton) {
-    var valor = validarSoloNumeros(text, boton);
+function validarSoloRuc(text) {
+    var valor = validarSoloNumeros(text);
     var aux = text.val();
     if (aux.length == 13) {
         //alert(aux[10] + "°°°" + aux[11] + "°°°°" + aux[12]);
@@ -162,7 +161,7 @@ function validarSoloRuc(text, boton) {
 
 function validarTelefono(text) {
     text.change(function () {
-        var valor = validarSoloNumeros(text, boton);
+        var valor = validarSoloNumeros(text);
         if (valor == true) {
             if (text.val().length == 9) {
                 
@@ -180,7 +179,7 @@ function validarTelefono(text) {
     });
 }
 
-function validarCorreo(text, boton) {
+function validarCorreo(text) {
     var regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     text.change(function () {
         if (regex.test(text.val())) {
@@ -199,9 +198,9 @@ function validarCedulaRuc(text) {
     text.change(function(){
         var aux = text.val();
         if (aux[10] == 0 && aux[11] == 0 && aux[12] == 1 && aux.length == 13) {
-            return validarSoloRuc(text, boton);
+            return validarSoloRuc(text);
         } else if(aux.length == 10) {
-            return validarSoloCedula(text, boton);
+            return validarSoloCedula(text);
         } else{
             text.val("");
             return false;
@@ -209,11 +208,9 @@ function validarCedulaRuc(text) {
     });
 }
 
-function validarDireccion(text,boton){
+function validarDireccion(text){
     text.change(function(){
         if(text.val() != ""){
-           text.removeClass("red red-border");
-            boton.removeAttr("disabled", "disabled");
             return true;
            }
     });

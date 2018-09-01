@@ -8,7 +8,7 @@
             <form>
                 <div class="form-group">
                     <label for="text_codPrincipal" class="form-control-label">Código Principal:</label>
-                    <input type="text" class="form-control" id="text_buscarCodPrincipal" name="text_codPrincipal" />
+                    <input type="text" class="form-control" id="text_codPrincipal" name="text_codPrincipal" />
                 </div>
 
                 <div class="modal-footer">
@@ -116,18 +116,18 @@
 
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+<script src="/js/validacion_nuevoProducto.js"></script>
 
 <script>
     $(document).ready(function() {
+        validarNum($('#text_codPrincipal'));
+
         $('#actualizarProducto').hide();
         $('#btn_buscar').click(function() {
-
-
-            alert($('#text_buscarCodPrincipal').val() + "###");
             $.ajax({
                 type: "POST",
                 url: "/buscarProducto",
-                data: "text_codPrincipal=" + $('#text_buscarCodPrincipal').val(),
+                data: "text_codPrincipal=" + $('#text_codPrincipal').val(),
                 success: function(data) {
                     var nuevaFila = "";
                     nuevaFila += "<tr>";
@@ -138,7 +138,7 @@
                     nuevaFila += "<td>" + data.nombre + "</td>";
                     nuevaFila += "<td>" + data.marca + "</td>";
                     nuevaFila += "<td>" + data.modelo + "</td>";
-                    nuevaFila += "<td>" + data.precio + "</td>";
+                    nuevaFila += "<td>" + data.precio_unitario + "</td>";
 
                     nuevaFila += "</tr>";
                     //añadimos la nueva fila a la tabla

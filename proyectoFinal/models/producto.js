@@ -25,7 +25,7 @@ module.exports = function (sequelize, Sequelize) {
             type: Sequelize.DOUBLE(5,2)
         },
         IVA: {
-            type: Sequelize.DOUBLE(3,2)
+            type: Sequelize.DOUBLE(5,2)
         },
         precio_venta: {
             type: Sequelize.DOUBLE(5, 2)

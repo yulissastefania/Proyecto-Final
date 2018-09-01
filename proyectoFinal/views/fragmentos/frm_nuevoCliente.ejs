@@ -4,37 +4,45 @@
             <h4 class="card-title ">Cliente Nuevo</h4>
         </div>
         <div class="card-block">
-            <form >
+            <form>
                 <div class="form-group">
                     <label for="cedulaRucCliente">Cedula o Ruc </label>
                     <input type="text" placeholder="Ingrese numero de cedula" id="cedulaRucCliente" name="cedulaRucCliente">
+                    <div class="errores" id="mensajeCedulaRucCliente">Ingrese cedula o ruc correctos</div>
                 </div>
                 <div class="form-group">
                     <label for="razonSocialCliente">razon Social</label>
                     <input type="text" class="form-control" placeholder="ingrese razon social" id="razonSocialCliente" name="razonSocialCliente" maxlength="9" min="9">
+                    <div class="errores" id="mensajeRazonSocialCliente">Ingrese razon social</div>
+
                 </div>
                 <div class="form-group">
                     <label for="nombreCliente">Nombre</label>
                     <input type="text" class="form-control" placeholder="Ingrese nombre" id="nombreCliente" name="nombreCliente">
+                    <div class="errores" id="mensajeNombreCliente">Ingrese nombre del cliente</div>
                 </div>
 
                 <div class="form-group">
                     <label for="apellidoCliente">Apellido</label>
                     <input type="text" class="form-control" placeholder="Ingrese apellido" id="apellidoCliente" name="apellidoCliente">
+                    <div class="errores" id="mensajeApellidoCliente">Ingrese apellido del cliente</div>
 
                 </div>
                 <div class="form-group">
                     <label for="emailCliente">email</label>
                     <input type="text" class="form-control" placeholder="ingrese email" id="emailCliente" name="emailCliente">
+                    <div class="errores" id="mensajeEmailCliente">Ingrese email del cliente</div>
                 </div>
                 <div class="form-group">
 
                     <label for="direccionCliente">Dirección</label>
                     <input type="text" class="form-control" placeholder="ingrese direccion" id="direccionCliente" name="direccionCliente">
+                    <div class="errores" id="mensajeDireccionCliente">Ingrese dirección del cliente</div>
                 </div>
                 <div class="form-group">
                     <label for="telefonoCliente">Teléfono</label>
                     <input type="tel" class="form-control" placeholder="ingrese nuemero de telefono" id="telefonoCliente" name="telefonoCliente" maxlength="9">
+                    <div class="errores" id="mensajeTelefonoCliente">Ingrese teléfono del cliente</div>
                 </div>
 
                 <br>
@@ -48,95 +56,105 @@
 </div>
 
 
+<script src="/js/jquery.min.js"></script>
 
-<script src="/js/validacion_NuevoUser.js"></script>
+
+
 <script>
     $(document).ready(function() {
-        
-        
-        $("#registrarCliente").click(function() {
-            
+
+        function registrar() {
+
             $.ajax({
                 type: "POST",
                 url: "/guardarCliente",
-                data:"cedulaRuc="+$('#cedulaRucCliente').val()+"&razonSocial="+ $('#razonSocialCliente').val()+"&nombre="+$('#nombreCliente').val()+"&apellido="+$('#apellidoCliente').val()+"&email="+$('#emailCliente').val()+"&direccion="+$('#direccionCliente').val()+"&telefono="+$('#telefonoCliente').val(),
+                data: "cedulaRuc=" + $('#cedulaRucCliente').val() + "&razonSocial=" + $('#razonSocialCliente').val() + "&nombre=" + $('#nombreCliente').val() + "&apellido=" + $('#apellidoCliente').val() + "&email=" + $('#emailCliente').val() + "&direccion=" + $('#direccionCliente').val() + "&telefono=" + $('#telefonoCliente').val(),
                 success: function(data) {
                     console.log(data.data);
-                    if(data.data != null){
-                       alert("Cliente ingresado con éxito");
-                       }else{
-                           alert("La cedula ya se encuentra registrada");
-                       }
-                    
+                    if (data.data != null) {
+                        alert("Cliente ingresado con éxito");
+                        $('#nombreCliente').val("");
+                        $('#razonSocialCliente').val("");
+                        $('#apellidoCliente').val("");
+                        $('#telefonoCliente').val("");
+                        $('#emailCliente').val("");
+                        $('#cedulaRucCliente').val("");
+                        $('#direccionCliente').val("");
+
+                    } else {
+                        alert("La cedula ya se encuentra registrada");
+                    }
+
                 }
             });
-        });
-        
-        var boton = $('#enviar_nuevoUser');
-        $('#verificarClaveNuevo').hide();
-        $('#lb_verifi').hide();
-        var aux= soloLetras($('#nombreCliente'), boton);
-        
-        soloLetras($('#apellidoNuevo'), boton);
-        validarClaves($('#claveNuevo'), $('#verificarClaveNuevo'), boton);
-        validarTelefono($('#telefonoNuevo'), boton);
-        validarCorreo($('#emailNuevo'), boton);
-        validarCedulaRuc($('#cedulaRucNuevo'), boton);
-
-        validarDireccion($('#direccionNuevo'), boton);
-
-        $('#enviar_nuevoUser').click(function() {
-            var aux = true;
-            if ($('#direccionNuevo').val() == "") {
-                $('#direccionNuevo').addClass("red red-border");
-                boton.attr("disabled", "disabled");
-                aux = false;
-            }
-            if ($('#telefonoNuevo').val() == "") {
-                $('#telefonoNuevo').addClass("red red-border");
-                boton.attr("disabled", "disabled");
-                aux = false;
-            }
-            if ($('#nombreNuevo').val() == "") {
-                $('#nombreNuevo').addClass("red red-border");
-                boton.attr("disabled", "disabled");
-                aux = false;
-            }
-            if ($('#apellidoNuevo').val() == "") {
-                $('#apellidoNuevo').addClass("red red-border");
-                boton.attr("disabled", "disabled");
-                aux = false;
-            }
-            if ($('#claveNuevo').val() == "") {
-                $('#claveNuevo').addClass("red red-border");
-                boton.attr("disabled", "disabled");
-                aux = false;
-            }
-            if ($('#cedulaRucNuevo').val() == "") {
-                $('#cedulaRucNuevo').addClass("red red-border");
-                boton.attr("disabled", "disabled");
-                aux = false;
-            }
-
-            if ($('#emailNuevo').val() == "") {
-                $('#emailNuevo').addClass("red red-border");
-                boton.attr("disabled", "disabled");
-                aux = false;
-            }
-            if ($('#emailNuevo').val() == "") {
-                $('#emailNuevo').addClass("red red-border");
-                boton.attr("disabled", "disabled");
-                aux = false;
-            }
+        };
 
 
 
-            if (aux == true) {
-                alert("envio de datos");
+        soloLetras($('#nombreCliente'));
+        soloLetras($('#razonSocialCliente'));
+        soloLetras($('#apellidoCliente'));
+
+        validarTelefono($('#telefonoCliente'));
+        validarCorreo($('#emailCliente'));
+        validarCedulaRuc($('#cedulaRucCliente'));
+
+        validarDireccion($('#direccionCliente'));
+        $("#registrarCliente").click(function() {
+            if ($('#cedulaRucCliente').val() == "") {
+                $('#mensajeCedulaRucCliente').fadeIn();
+                return false;
             } else {
-                alert("verifique que los campos estan correctamente llenados");
+                $('#mensajeCedulaRucCliente').fadeOut();
+                if ($('#razonSocialCliente').val() == "") {
+                    $('#mensajeRazonSocialCliente').fadeIn();
+                    return false;
+                } else {
+                    $('#mensajeRazonSocialCliente').fadeOut();
+                    if ($('#nombreCliente').val() == "") {
+                        $('#mensajeNombreCliente').fadeIn();
+                        return false;
+                    } else {
+                        $('#mensajeNombreCliente').fadeOut();
+                        if ($('#apellidoCliente').val() == "") {
+                            $('#mensajeApellidoCliente').fadeIn();
+                            return false;
+                        } else {
+                            $('#mensajeApellidoCliente').fadeOut();
+
+                            if ($('#emailCliente').val() == "") {
+                                $('#mensajeEmailCliente').fadeIn();
+                                return false;
+                            } else {
+                                $('#mensajeEmailCliente').fadeOut();
+                                if ($('#emailCliente').val() == "") {
+                                    $('#mensajeEmailCliente').fadeIn();
+                                    return false;
+                                } else {
+                                    $('#mensajeEmailCliente').fadeOut();
+
+                                    if ($('#direccionCliente').val() == "") {
+                                        $('#mensajeDireccionCliente').fadeIn();
+                                        return false;
+                                    } else {
+                                        $('#mensajeDireccionCliente').fadeOut();
+                                        if ($('#telefonoCliente').val() == "") {
+                                            $('#mensajeTelefonoCliente').fadeIn();
+                                            return false;
+                                        } else {
+                                            $('#mensajeTelefonoCliente').fadeOut();
+                                            return registrar();
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
             }
         });
+
 
     });
 

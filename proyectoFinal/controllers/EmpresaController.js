@@ -6,45 +6,75 @@ class EmpresaController {
     buscarExistenciaEmpresa(req, res, next) {
         var Empresa = models.empresa;
         var external_id = req.user.id;
-        
-        console.log("345$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
         console.log(external_id);
-        
+
         Empresa.findOne({
-            where:{
-                id_usuario:external_id
+            where: {
+                id_usuario: external_id
             }
-        }).then(function(empresa){
+        }).then(function (empresa) {
             console.log(empresa)
-            if(empresa){
-               res.redirect('/app');
-               }else{
-                   res.redirect('/registrarEmpresa');
-               }
+            if (empresa) {
+                res.redirect('/app');
+            } else {
+                res.redirect('/registrarEmpresa');
+            }
+        });
+    }
+
+    buscarEmpresa(req, res, next) {
+        var Empresa = models.empresa;
+        var external_id = req.user.id;
+        console.log(external_id);
+
+        Empresa.findOne({
+            where: {
+                id_usuario: external_id
+            }
+        }).then(function (empresa) {
+            console.log(empresa)
+            if (empresa) {
+                res.send({
+                    ruc: empresa.ruc,
+                    razon_social: empresa.razon_social,
+                    num_contribuyente: empresa.num_contribuyente,
+                    ambiente: empresa.ambiente,
+                    obligado_contabilidad: empresa.obligado_contabilidad,
+                    direc_matriz: empresa.direc_matriz,
+                    direc_sucursal: empresa.direc_sucursal,
+                    telefono: empresa.telefono,
+                    id_usuario: empresa.id_usuario,
+                    external_id: empresa.external_id
+                });
+            } else {
+                res.send({
+                    data: null
+                });
+            }
         });
     }
 
     guardar(req, res, next) {
         var Usuario = models.usuario;
         var id = req.user.id;
-        console.log( "%$$$$$$$$$$$$$$$$$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*************8");
+        console.log("%$$$$$$$$$$$$$$$$$$$$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*************8");
         console.log(req.user.ambiente);
-        
+
         Usuario.findOne({
             where: {
-                usuario_id:id
+                usuario_id: id
             }
         }).then(function (usuario) {
             if (usuario) {
                 var data = {
                     ruc: req.body.txt_RUCEmp,
                     razon_social: req.body.txt_razonSocialEmp,
-                    num_contribuyente:req.body.txt_num_contribuyente,
-                    ambiente :req.body.txt_ambienteEmp,
-                    obligado_contabilidad:req.body.txt_obligadoContabilidad,
-                    direc_matriz:req.body.txt_direccionMatEmp,
-                     direc_sucursal:req.body.txt_direccionSucEmp,
-                    telefono:req.body.txt_telefonoEmp,
+                    num_contribuyente: req.body.txt_num_contribuyente,
+                    ambiente: req.body.txt_ambienteEmp,
+                    obligado_contabilidad: req.body.txt_obligadoContabilidad,
+                    direc_matriz: req.body.txt_direccionMatEmp,
+                    direc_sucursal: req.body.txt_direccionSucEmp,
+                    telefono: req.body.txt_telefonoEmp,
                     id_usuario: id,
                     external_id: uuidv4()
                 };

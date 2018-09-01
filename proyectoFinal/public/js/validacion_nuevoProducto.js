@@ -1,54 +1,64 @@
-function validarVacio(text, boton) {
+
+function validarNum(text) {
     text.change(function () {
-        if (text.val() != "") {
-            text.removeClass("red red-border");
-            boton.removeAttr("disabled", "disabled");
-            return true;
-        }
+        validarSoloNumeros(text);
     });
 }
 
-function validarSelect(text, textvalidar, boton) {
-    text.change(function () {
-        if (text.val() != textvalidar) {
-            text.removeClass("red red-border");
-            boton.removeAttr("disabled", "disabled");
-            return true;
-        }
-    });
+function validarSoloNumeros(text) {
+    var regex = /^[0-9]+$/;
+    var aux = regex.test(text.val());
+    if (!aux) {
+
+        text.val("");
+        return false;
+    } else {
+
+        return true;
+    }
+
 }
 
-function soloLetras(text, boton) {
+function soloLetras(text) {
     text.change(function () {
         var regex = /^[a-zA-Z ]+$/;
         var aux = regex.test(text.val());
         if (!aux) {
-            text.addClass("red red-border");
-            boton.attr("disabled", "disabled");
+
             text.val("");
             return false;
         } else {
-            text.removeClass("red red-border");
-            boton.removeAttr("disabled", "disabled");
+
             return true;
         }
     });
 
 }
 
-function validarSoloDecimal(text, boton) {
+function validarLetrasNumeros(text) {
     text.change(function () {
-        var regex = /^[0-9]+([,-.]+[0-9]{0,2})$/;
+        var regex = /^[0-9a-zA-Z ]+$/;
         var aux = regex.test(text.val());
-        alert(aux);
         if (!aux) {
-            text.addClass("red red-border");
-            boton.attr("disabled", "disabled");
+
             text.val("");
             return false;
         } else {
-            text.removeClass("red red-border");
-            boton.removeAttr("disabled", "disabled");
+            return true;
+        }
+    });
+
+}
+function validarSoloDecimal(text) {
+    text.change(function () {
+        var regex = /^[0-9]+([,-.]+[0-9]{0,2})$/;
+        var aux = regex.test(text.val());
+        if (!aux) {
+
+            text.val("");
+            return false;
+        } else {
+
             return true;
         }
     });

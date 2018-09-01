@@ -86,6 +86,8 @@ router.get('/registrarEmpresa', function (req, res, next) {
 router.post('/guardarEmpresa',empresaController.guardar);
 
 router.get('/buscarExistenciaEmpresa',empresaController.buscarExistenciaEmpresa);
+
+router.get('/buscarEmpresa',empresaController.buscarEmpresa);
 /*guardar producto*/
 
 router.post('/guardarProducto',productoController.guardarProducto);

@@ -21,7 +21,7 @@ class ProductoController {
                 cod_principal: req.body.codPrincipal
             }
         }).then(function (producto) {
-            console.log("jkaldsfjlasjdfkljasdñlkfjasñldkfjañslkdjfñlaskjdflñkasjdf");
+
             if (producto) {
                 Producto.update({
                     modelo: req.body.modeloActual,
@@ -29,7 +29,6 @@ class ProductoController {
                     precio_unitario: valorUnitario,
                     iva: iva,
                     precio_venta: precioVenta,
-                    stock: req.body.stock,
                     marca: req.body.marca,
                     codigo_principal: req.body.codPrincipal
                 }, {
@@ -93,20 +92,26 @@ class ProductoController {
                 }
             }).then(function (producto) {
                 if (!producto) {
-                    var valorUnitario = parseFloat(req.body.txt_valUnitario);
-                    var iva = parseFloat(req.body.slt_ivaProductoNuevo);
-                    var precioVenta = valorUnitario * iva;
+                    var valorUnitario = parseFloat(req.body.txt_valUnitario).toFixed(2);
 
-                    precioVenta = valorUnitario + precioVenta;
+                    var iva = 0.12 ;
+                    var precioIvaFinal =valorUnitario* iva;
+                    var precioVenta =((Number(valorUnitario).toFixed(2)*1) + (Number(precioIvaFinal).toFixed(2)*1));
 
-                    console.log(precioVenta)
+
+
+
+console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$__________________________________________________");
+                    console.log(valorUnitario);
+                    console.log(iva);
+                    console.log(precioIvaFinal);
+                    console.log(precioVenta);
                     var data = {
                         modelo: req.body.txt_modProductoA,
                         nombre: req.body.txt_nomProductoA,
                         precio_unitario: valorUnitario,
-                        iva: iva,
+                        IVA: precioVenta,
                         precio_venta: precioVenta,
-                        stock: req.body.check_valUnitario,
                         marca: req.body.txt_marProductoA,
                         cod_principal: req.body.text_codPrincipalA,
                         external_id: uuidv4(),
