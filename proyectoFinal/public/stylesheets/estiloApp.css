@@ -1,8 +1,11 @@
+@import url(estilo_registroCliente.css);
+
 @import url(estiloFactura.css);
 @import url(estiloIngresoProducto.css);
 @import url(estiloBuscarProducto.css);
 @import url(estiloMenuDesplegable.css);
 @import url(estiloModalAP.css);
+
 body {
     background: #f9f9f9;
     height: 100%;

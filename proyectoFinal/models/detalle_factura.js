@@ -1,4 +1,4 @@
-module.exports = function (sequelize, Sequelize) {
+module.exports = function (sequelize, Sequelize) {    
     var Detalle_factura = sequelize.define('detalle_factura', {
         detalle_factura_id: {
             autoIncrement: true,
@@ -7,18 +7,28 @@ module.exports = function (sequelize, Sequelize) {
         },
         cantidad: {
             type: Sequelize.INTEGER,
-            notEmpty: true
         },
         precio_unitario: {
-            type: Sequelize.DOUBLE(5,2)
+            type: Sequelize.DOUBLE(5, 2)
         },
-
-        valor_total: {
-            type: Sequelize.DOUBLE(5,2)
+        precio_total: {
+            type: Sequelize.DOUBLE(5, 2)
         },
         external_id: {
             type: Sequelize.UUID
         }
-    }); /* el telefono es multivalorado revisar*/
+    });
+    
+     Detalle_factura.associate = function (models) {
+        models.detalle_factura.hasMany(models.producto, {
+            foreignKey: 'id_detalle_factura'
+        });
+         models.detalle_factura.hasMany(models.factura, {
+            foreignKey: 'id_detalle_factura'
+        });
+    };
+
+
+
     return Detalle_factura;
 };

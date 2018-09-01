@@ -28,3 +28,54 @@
     font-weight: bolder;
 
 }
+
+
+
+/*modal para la busqueda de productos*/
+
+#popupBuscar {
+    visibility: hidden;
+    opacity: 0;
+    margin-top: -300px;
+}
+#popupBuscar:target {
+    visibility:visible;
+    opacity: 1;
+    background-color: rgba(0,0,0,0.8);
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:0;
+    z-index: 999;
+    transition:all 1s;
+}
+#popupBuscar label{
+    display: inline-block;
+    width: 21%;
+    text-align: left;
+
+}
+
+#popupBuscar input{
+    display: inline-block !important;
+    width: 20vw;
+    margin-right: 1.5vw;
+
+}
+
+#popupBuscar select{
+    display: inline-block !important;
+    width: 20vw;
+    margin-right: 1.5vw;
+}
+#popupBuscar form {
+    margin: 0 auto;
+    width: 90%;
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    text-align: center;
+}
+

@@ -18,6 +18,8 @@
 
         <!-- Main Styles -->
         <link rel="stylesheet" href="stylesheets/estiloApp.css">
+        
+
 
         <!-- jquery mains -->
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -46,10 +48,8 @@
     <body>
         <div class="navbar">
             <div class="row">
-                <div class="column column-30 col-site-title"><a href="#" class="site-title float-left">Medialoot</a></div>
-                <div class="column column-40 col-search"><a href="#" class="search-btn fa fa-search"></a>
-                    <input type="text" name="meidalot" value="" placeholder="Search..." />
-                </div>
+                <div class="column column-30 col-site-title"><a href="#" class="site-title float-left">Facturación Electrónica</a></div>
+
                 <div class="column column-30">
                     <div class="user-section"><a href="/profile">
                             <img src="http://via.placeholder.com/50x50" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
@@ -70,7 +70,7 @@
                     <nav id="menu">
                         <ul class="menu">
 
-                            <li><a href="#"><em class="fa fa-home"></em> Home</a></li>
+                           
                             <li><a href="#factura" id="mostrar_factura" ><em class="fa fa-file"></em> Factura <i class="icon-down-open"></i></a></li>
 
                             <li class="activado"><a id="mostrar_producto"><em class="fa fa fa-clone"></em>Productos<i class="icono derecha fa fa-chevron-down"></i></a>
@@ -90,8 +90,11 @@
                 </header>
             </div>
             <section id="main-content" class="column column-offset-20">
-
-
+               <div id= "inicio">
+                  <img src="https://www.comunycarse.com/wp-content/uploads/2012/07/factura-electronica.jpg">
+                   
+               </div>
+               
                 <!--Charts-->
                 <div  class="row grid-responsive" id="factura">
                     <%- include(factura)%>
@@ -105,7 +108,7 @@
                     <%- include(buscarProductos)%>
                 </div>
                 <!--Forms-->
-                <div  class="row grid-responsive" id="cliente">
+                <div  class="row grid-responsive" id="nuevoCliente">
                     <%- include(nuevoCliente)%>
                 </div>
 
@@ -123,41 +126,7 @@
         <script src="js/menu.js"></script>
         <script src="js/chart.min.js"></script>
         <script src="js/chart-data.js"></script>
-        <script>
-            window.onload = function () {
-                var chart1 = document.getElementById("line-chart").getContext("2d");
-                window.myLine = new Chart(chart1).Line(lineChartData, {
-                    responsive: true,
-                    scaleLineColor: "rgba(0,0,0,.2)",
-                    scaleGridLineColor: "rgba(0,0,0,.05)",
-                    scaleFontColor: "#c5c7cc"
-                });
-                var chart2 = document.getElementById("bar-chart").getContext("2d");
-                window.myBar = new Chart(chart2).Bar(barChartData, {
-                    responsive: true,
-                    scaleLineColor: "rgba(0,0,0,.2)",
-                    scaleGridLineColor: "rgba(0,0,0,.05)",
-                    scaleFontColor: "#c5c7cc"
-                });
-                var chart4 = document.getElementById("pie-chart").getContext("2d");
-                window.myPie = new Chart(chart4).Pie(pieData, {
-                    responsive: true,
-                    segmentShowStroke: false
-                });
-                var chart5 = document.getElementById("radar-chart").getContext("2d");
-                window.myRadarChart = new Chart(chart5).Radar(radarData, {
-                    responsive: true,
-                    scaleLineColor: "rgba(0,0,0,.05)",
-                    angleLineColor: "rgba(0,0,0,.2)"
-                });
-                var chart6 = document.getElementById("polar-area-chart").getContext("2d");
-                window.myPolarAreaChart = new Chart(chart6).PolarArea(polarData, {
-                    responsive: true,
-                    scaleLineColor: "rgba(0,0,0,.2)",
-                    segmentShowStroke: false
-                });
-            };
-        </script>
+
         <script>
             $(document).ready(function () {
                 $('#factura').hide();
@@ -167,6 +136,7 @@
                 $('#grid').hide();
                 $('#ingresarProductos').hide();
                 $('#buscarProductos').hide();
+                $('#nuevoCliente').hide();
 
                 $('#mostrar_factura').on('click', function () {
                     $('#factura').show();
@@ -174,21 +144,19 @@
                     $('#buscarProductos').hide();
                     $('#productos').hide();
                     $('#cliente').hide();
+                    $('#inicio').hide();
+                    $('#nuevoCliente').hide();
 
                 });
-                $('#mostrar_producto').on('click', function () {
-                    $('#productos').show();
-                    $('#ingresarProductos').hide();
-                    $('#buscarProductos').hide();
-                    $('#factura').hide();
-                    $('#cliente').hide();
-                });
+
                 $('#mostrar_usuario').on('click', function () {
-                    $('#cliente').show();
+                    $('#nuevoCliente').show();
                     $('#ingresarProductos').hide();
                     $('#buscarProductos').hide();
                     $('#productos').hide();
                     $('#factura').hide();
+                    $('#inicio').hide();
+
                 });
                 $('#mostrar_igrProducto').on('click', function () {
                     $('#ingresarProductos').show();
@@ -196,6 +164,8 @@
                     $('#productos').hide();
                     $('#factura').hide();
                     $('#cliente').hide();
+                    $('#inicio').hide();
+                    $('#nuevoCliente').hide();
                 });
                 $('#mostrar_bscProducto').on('click', function () {
                     $('#buscarProductos').show();
@@ -203,8 +173,9 @@
                     $('#productos').hide();
                     $('#factura').hide();
                     $('#cliente').hide();
+                    $('#inicio').hide();
+                    $('#nuevoCliente').hide();
                 });
-
 
 
             });

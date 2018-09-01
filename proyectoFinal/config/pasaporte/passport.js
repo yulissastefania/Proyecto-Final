@@ -93,9 +93,10 @@ module.exports = function (passport, empresa, usuario) {
         },
 
         function (req,email, password, done) {
+        
             var Usuario = usuario;
             var Empresa = empresa
-            console.log(Usuario);
+            
             var isValidPassword = function (userpass, password) {
                 return bCrypt.compareSync(password, userpass);
             }
@@ -104,6 +105,7 @@ module.exports = function (passport, empresa, usuario) {
                     email: email
                 }
             }).then(function (usuario) {
+                
                 if (!usuario) {
                     console.log("correo no existe");
                     return done(null, false, {
@@ -116,18 +118,8 @@ module.exports = function (passport, empresa, usuario) {
                         message: 'Clave incorrecta.'
                     });
                 }
-
-                if (usuario) {
-                    Empresa.findOne({
-                        external_id: usuario.usuario_id
-                    }).then(function (empresa) {
-                        if (empresa) {
-                            console.log('EMPRESA YA REGISTRADA');
-
-                        }
-                    });
-                };
-
+                console.log("###############################################################################////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+                console.log(usuario.get());
                 var userinfo = usuario.get();
                 return done(null, userinfo);
 

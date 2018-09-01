@@ -1,56 +1,82 @@
-<div class="column " id="vista_factura">
+<div class="container">
     <div class="card">
-
-        <div class="card-title">
-            <h2 style="center">USUARIO NUEVO</h2>
+        <div class="card-header">
+            <h4 class="card-title ">Cliente Nuevo</h4>
         </div>
         <div class="card-block">
-            <form>
-
-                <div>
-                    <label for="nombreNuevo">Nombre</label>
-                    <input type="text" placeholder="Ingrese nombre" id="nombreNuevo" name="nombreNuevo">
-
+            <form >
+                <div class="form-group">
+                    <label for="cedulaRucCliente">Cedula o Ruc </label>
+                    <input type="text" placeholder="Ingrese numero de cedula" id="cedulaRucCliente" name="cedulaRucCliente">
+                </div>
+                <div class="form-group">
+                    <label for="razonSocialCliente">razon Social</label>
+                    <input type="text" class="form-control" placeholder="ingrese razon social" id="razonSocialCliente" name="razonSocialCliente" maxlength="9" min="9">
+                </div>
+                <div class="form-group">
+                    <label for="nombreCliente">Nombre</label>
+                    <input type="text" class="form-control" placeholder="Ingrese nombre" id="nombreCliente" name="nombreCliente">
                 </div>
 
-                <label for="apellidoNuevo">Apellido</label>
-                <input type="text" placeholder="Ingrese apellido" id="apellidoNuevo" name="apellidoNuevo">
+                <div class="form-group">
+                    <label for="apellidoCliente">Apellido</label>
+                    <input type="text" class="form-control" placeholder="Ingrese apellido" id="apellidoCliente" name="apellidoCliente">
 
-                <label for="cedulaRucNuevo">Cedula o Ruc </label>
-                <input type="text" placeholder="Ingrese numero de cedula" id="cedulaRucNuevo" name="cedulaRucNuevo" maxlength="13">
+                </div>
+                <div class="form-group">
+                    <label for="emailCliente">email</label>
+                    <input type="text" class="form-control" placeholder="ingrese email" id="emailCliente" name="emailCliente">
+                </div>
+                <div class="form-group">
 
-                <label for="emailNuevo">email</label>
-                <input type="text" placeholder="ingrese email" id="emailNuevo" name="emailNuevo">
+                    <label for="direccionCliente">Dirección</label>
+                    <input type="text" class="form-control" placeholder="ingrese direccion" id="direccionCliente" name="direccionCliente">
+                </div>
+                <div class="form-group">
+                    <label for="telefonoCliente">Teléfono</label>
+                    <input type="tel" class="form-control" placeholder="ingrese nuemero de telefono" id="telefonoCliente" name="telefonoCliente" maxlength="9">
+                </div>
 
-                <label for="razonSocialNuevo">razon Social</label>
-                <input type="text" placeholder="ingrese razon social " id="razonSocialNuevo" name="razonSocialNuevo" maxlength="9" min="9">
-
-                <label for="direccionNuevo">Dirección</label>
-                <input type="text" placeholder="ingrese direccion" id="direccionNuevo" name="direccionNuevo">
-
-                <label for="telefonoNuevo">Teléfono</label>
-                <input type="tel" placeholder="ingrese nuemero de telefono" id="telefonoNuevo" name="telefonoNuevo" maxlength="9">
-
-
-                <div>
-                    <button class="button-primary" type="reset" value="Cancelar">Borrar todo</button>
-
-                    <button id="enviar_nuevoUser" class="button-primary" value="Enviar">Enviar</button>
+                <br>
+                <div class="modal-footer">
+                    <center><button type="button" class="btn btn-secondary" id="registrarCliente">Registrar</button>
+                        <button type="button" class="btn btn-secondary">Cancelar</button></center>
                 </div>
             </form>
         </div>
     </div>
-
 </div>
+
 
 
 <script src="/js/validacion_NuevoUser.js"></script>
 <script>
     $(document).ready(function() {
+        
+        
+        $("#registrarCliente").click(function() {
+            
+            $.ajax({
+                type: "POST",
+                url: "/guardarCliente",
+                data:"cedulaRuc="+$('#cedulaRucCliente').val()+"&razonSocial="+ $('#razonSocialCliente').val()+"&nombre="+$('#nombreCliente').val()+"&apellido="+$('#apellidoCliente').val()+"&email="+$('#emailCliente').val()+"&direccion="+$('#direccionCliente').val()+"&telefono="+$('#telefonoCliente').val(),
+                success: function(data) {
+                    console.log(data.data);
+                    if(data.data != null){
+                       alert("Cliente ingresado con éxito");
+                       }else{
+                           alert("La cedula ya se encuentra registrada");
+                       }
+                    
+                }
+            });
+        });
+        
         var boton = $('#enviar_nuevoUser');
         $('#verificarClaveNuevo').hide();
         $('#lb_verifi').hide();
-        soloLetras($('#nombreNuevo'), boton);
+        var aux= soloLetras($('#nombreCliente'), boton);
+        
         soloLetras($('#apellidoNuevo'), boton);
         validarClaves($('#claveNuevo'), $('#verificarClaveNuevo'), boton);
         validarTelefono($('#telefonoNuevo'), boton);

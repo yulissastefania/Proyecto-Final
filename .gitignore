@@ -1,0 +1,11 @@
+/proyectoFinal/config/pasaporte/passport.js
+/proyectoFinal/controllers/EmpresaController.js
+/proyectoFinal/controllers/ClienteController.js
+/proyectoFinal/controllers/ProductoController.js
+/proyectoFinal/models/cliente.js
+/proyectoFinal/models/detalle_factura.js
+/proyectoFinal/models/empresa.js
+/proyectoFinal/models/factura.js
+/proyectoFinal/models/producto.js
+/proyectoFinal/models/usuario.js
+/proyectoFinal/node_modules/array-flatten/package.json

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Registro Usuario</title>
     <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="stylesheets/estiloRegistroEmpresa.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.validate.min.js"></script>
 </head>
 
 <body>
@@ -15,94 +18,142 @@
             <form method="post" action="/guardarEmpresa">
                 <div class="field-wrap">
                     <label for="txt_RUCEmp">
-                            RUC<span class="req">*</span>
-                        </label>
-                    <input type="text" required autocomplete="off" id="txt_RUCEmp" name="txt_RUCEmp" />
+                        RUC<span class="req">*</span>
+                    </label>
+                    <input type="text" autocomplete="off" id="txt_RUCEmp" name="txt_RUCEmp" />
+                    <div id="mensajeRucE" class="error">El ruc es erroneo</div>
                 </div>
+
 
                 <div class="field-wrap">
                     <label for="txt_razonSocialEmp">
-                            Razón Social<span class="req">*</span>
-                        </label>
-                    <input type="text" required autocomplete="off" id="txt_razonSocialEmp" name="txt_razonSocialEmp" />
-                </div>
-
-                <div class="field-wrap">
-                    <label for="txt_direccionMatEmp">
-                            Dirección Matriz<span class="req">*</span>
-                        </label>
-                    <input type="text" required autocomplete="off" id="txt_direccionMatEmp" name="txt_direccionMatEmp" />
-                </div>
-
-                <div class="field-wrap">
-                    <label for="txt_direccionSucEmp">
-                            Dirección Sucursal<span class="req">*</span>
-                        </label>
-                    <input type="text" required autocomplete="off" id="txt_direccionSucEmp" name="txt_direccionSucEmp" />
-                </div>
-
-                <div class="field-wrap">
-                    <label for="txt_telefonoEmp">
-                            Teléfono<span class="req">*</span>
-                        </label>
-                    <input type="text" required autocomplete="off" id="txt_telefonoEmp" name="txt_telefonoEmp" />
-                </div>
-
-
-
-                <div class="field-wrap">
-                    <label for="txt_ambienteEmp">
-                            Ambiente<span class="req">*</span>
-                        </label>
-                    <input type="text" required autocomplete="off" id="txt_ambienteEmp" name="txt_ambienteEmp" />
-                </div>
-
-                <div>
-                    <label for="slt_tipo_emisionEmp" class="form-control-label">Tipo de Emisión:</label>
-                    <select name="slt_tipo_emisionEmp" id="slt_tipo_emisionEmp">
-                        <option selected disabled>Seleccione</option>
-                        <option value="Normal" >Normal</option>
-                    </select>
-                </div>
-
-                <div class="field-wrap">
-                    <label for="txt_clave_accesoEmp">
-                            Clave acceso<span class="req">*</span>
-                        </label>
-                    <input type="text" required autocomplete="off" id="txt_clave_accesoEmp" name="txt_clave_accesoEmp" />
-                </div>
-
-                <div class="field-wrap">
-                    <label for="txt_num_autorizacion">
-                            Numero de Autorización<span class="req">*</span>
-                        </label>
-                    <input type="text" required autocomplete="off" id="txt_num_autorizacion" name="txt_num_autorizacion" />
+                        Razón Social<span class="req">*</span>
+                    </label>
+                    <input type="text" autocomplete="off" id="txt_razonSocialEmp" name="txt_razonSocialEmp" />
+                    <div id="mensajeRazonE" class="error">Ingrese razon social</div>
                 </div>
 
                 <div class="field-wrap">
                     <label for="txt_num_contribuyente">
-                            Numero de contribuyente<span class="req">*</span>
-                        </label>
-                    <input type="text" required autocomplete="off" id="txt_num_contribuyente" name="txt_num_contribuyente" />
+                        Numero de contribuyente<span class="req">*</span>
+                    </label>
+                    <input type="text" autocomplete="off" id="txt_num_contribuyente" name="txt_num_contribuyente" />
+                    <div id="mensajeNumContriE" class="error">Ingrese numero de contribuyente</div>
                 </div>
 
                 <div class="field-wrap">
-                    <label for="txt_fecha_autorizacion">
-                            Fecha de Autorización<span class="req">*</span>
-                        </label>
-                    <input type="text" required autocomplete="off" id="txt_fecha_autorizacion" name="txt_fecha_autorizacion" />
+                    <label for="txt_ambienteEmp">
+                        Ambiente<span class="req">*</span>
+                    </label>
+                    <input type="text" id="txt_ambienteEmp" name="txt_ambienteEmp" value="Produccion" disabled />
+
                 </div>
 
+                <div class="field-wrap">
+                    <label for="txt_obligadoContabilidad">
+                        Obligado a llevar Contabilidad<span class="req">*</span>
+                    </label>
+                    <select name="slt_IVA" id="txt_obligadoContabilidad">
+                        <option selected value="">Seleccione</option>
+                        <option value="false">Si</option>
+                        <option value="true">No</option>
+                    </select>
+                    <div id="mensajeIvaEmp" class="error">Seleccione una opción</div>
+                </div>
+                <div class="field-wrap">
+                    <label for="txt_direccionMatEmp">
+                        Dirección Matriz<span class="req">*</span>
+                    </label>
+                    <input type="text" autocomplete="off" id="txt_direccionMatEmp" name="txt_direccionMatEmp" />
+                    <div id="mensajeDirecMatriz" class="error">Ingrese dirección de la matriz</div>
+                </div>
+
+                <div class="field-wrap">
+                    <label for="txt_direccionSucEmp">
+                        Dirección Sucursal<span class="req">*</span>
+                    </label>
+                    <input type="text" autocomplete="off" id="txt_direccionSucEmp" name="txt_direccionSucEmp" />
+                    <div id="mensajeDirecSucE" class="error">Ingrese Direccion De la sucursal</div>
+                </div>
+
+                <div class="field-wrap">
+                    <label for="txt_telefonoEmp">
+                        Teléfono<span class="req">*</span>
+                    </label>
+                    <input type="text" autocomplete="off" id="txt_telefonoEmp" name="txt_telefonoEmp" />
+                    <div id="mensajeTelefonoE" class="error">ingrese telefono</div>
+                </div>
 
                 <div class="button-block">
-                    <center><button class="button" type="submit">Registrar</button>
+                    <center><button id="botonRegistrarEmpresa" class="button" type="submit">Registrar</button>
                     </center>
                 </div>
             </form>
         </div>
     </div>
     <!-- /form -->
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
     <script src="js/registros.js"></script>
+    
+    <script src="/js/validacion_NuevoUser.js"></script>
+    
+    <script>
+    $(document).ready(function() {
+        validarCedulaRuc($('#txt_RUCEmp'));
+        soloLetras($('#txt_razonSocialEmp'));
+        validarNum($('#txt_num_contribuyente'));
+        validarTelefono($('#txt_telefonoEmp'));
+        $('#botonRegistrarEmpresa').click(function() {
+            alert("#########");
+            if ($('#txt_RUCEmp').val() == "") {
+                $('#mensajeRucE').fadeIn();
+                return false;
+            } else {
+                $('#mensajeRucE').fadeOut();
+                if ($('#txt_razonSocialEmp').val() == "") {
+                    $('#mensajeRazonE').fadeIn();
+                    return false;
+                } else {
+                    $('#mensajeRazonE').fadeOut();
+                    if ($('#txt_num_contribuyente').val() == "") {
+                        $('#mensajeNumContriE').fadeIn();
+                        return false;
+                    } else {
+                        $('#mensajeNumContriE').fadeOut();
+
+                        if ($('#txt_obligadoContabilidad').val() == "") {
+                            $('#mensajeIvaEmp').fadeIn();
+                            return false;
+                        } else {
+                            $('#mensajeIvaEmp').fadeOut();
+                            if ($('#txt_direccionMatEmp').val() == "") {
+                                $('#mensajeDirecMatriz').fadeIn();
+                                return false;
+                            } else {
+                                $('#mensajeDirecMatriz').fadeOut();
+                                if ($('#txt_direccionSucEmp').val() == "") {
+                                    $('#mensajeDirecSucE').fadeIn();
+                                    return false;
+                                } else {
+                                    $('#mensajeDirecSucE').fadeOut();
+                                    if ($('#txt_telefonoEmp').val() == "") {
+                                        $('#mensajeTelefonoE').fadeIn();
+                                        return false;
+                                    } else {
+                                        $('#mensajeTelefonoE').fadeOut();
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+
+</script>
 </body>
+
+
 </html>

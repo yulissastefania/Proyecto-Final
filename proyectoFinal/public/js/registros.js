@@ -41,3 +41,17 @@ $('.tab a').on('click', function (e) {
   $(target).fadeIn(600);
 
 });
+
+function soloLetras(text) {
+    text.change(function () {
+        var regex = /^[a-zA-Z ]+$/;
+        var aux = regex.test(text.val());
+        if (!aux) {
+            return false;
+        } else {
+            return true;
+        }
+    });
+
+}
+

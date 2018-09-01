@@ -10,7 +10,9 @@
 
     <link rel="stylesheet" href="/stylesheets/estiloRegistroUsuario.css">
 
+    <script src="/js/jquery.min.js"></script>
 
+    <script src="/js/jquery.validate.min.js"></script>
 </head>
 
 <body>
@@ -20,41 +22,46 @@
         <div>
             <h1 id="h1">Registro Usuario</h1>
 
-            <form method="POST" action="/registro">
+            <form id="formRegistroUsuario" method="POST" action="/registro">
 
                 <div class="field-wrap">
                     <label for="txt_nombreUsua">
-                            Nombre<span class="req">*</span>
-                        </label>
-                    <input type="text" required autocomplete="off" id="txt_nombreUsua" name="txt_nombreUsua" />
+                        Nombre<span class="req">*</span>
+                    </label>
+                    <input type="text" autocomplete="off" id="txt_nombreUsua" name="txt_nombreUsua" />
+                    <div id="mensajeNombre" class="errores">Ingrese el nombre</div>
                 </div>
 
                 <div class="field-wrap">
                     <label for="txt_apellidoUsua">
-                            Apellido<span class="req">*</span>
-                        </label>
-                    <input type="text" required autocomplete="off" id="txt_apellidoUsua" name="txt_apellidoUsua" />
+                        Apellido<span class="req">*</span>
+                    </label>
+                    <input type="text" autocomplete="off" id="txt_apellidoUsua" name="txt_apellidoUsua" />
+                    <div id="mensajeApellido" class="errores">Ingrese apellido</div>
                 </div>
 
                 <div class="field-wrap">
                     <label for="txt_emailUsua">
-                            Email<span class="req">*</span>
-                        </label>
-                    <input type="email" required autocomplete="off" id="txt_emailUsua" name="txt_emailUsua" />
+                        Email<span class="req">*</span>
+                    </label>
+                    <input type="email" autocomplete="off" id="txt_emailUsua" name="txt_emailUsua" />
+                    <div id="mensajeEmail" class="errores">Ingrese email</div>
                 </div>
 
                 <div class="field-wrap">
                     <label for="txt_passwordUsua">
-                            Contraseña<span class="req">*</span>
-                        </label>
-                    <input type="password" required autocomplete="off" id="txt_passwordUsua" name="txt_passwordUsua" />
+                        Contraseña<span class="req">*</span>
+                    </label>
+                    <input type="password" autocomplete="off" id="txt_passwordUsua" name="txt_passwordUsua" />
+                    <div id="mensajeClavePri" class="errores">Clave erronea</div>
                 </div>
 
                 <div class="field-wrap">
                     <label for="txt_con_PasswordUsua">
-                            Confirmar Contraseña<span class="req">*</span>
-                        </label>
-                    <input type="password" required autocomplete="off" id="txt_conPasswordUsua" name="txt_con_PasswordUsua" />
+                        Confirmar Contraseña<span class="req">*</span>
+                    </label>
+                    <input type="password" autocomplete="off" id="txt_PasswordVerifiUsua" name="txt_PasswordVerifiUsua" />
+                    <div id="mensajeClaveVerifi" class="errores">Clave erronea</div>
                 </div>
 
                 <div class="button-block">
@@ -74,10 +81,42 @@
 
 
     <script src="js/registros.js"></script>
-    <script type="text/javascript">
 
-        $('#btn_cancelarRU').click(function() {
-            location.href = '/home';
+    <script src="/js/validacion_NuevoUser.js"></script>
+
+
+
+    <script>
+        $(document).ready(function() {
+            soloLetras($('#txt_nombreUsua'));
+            soloLetras($('#txt_apellidoUsua'));
+            validarCorreo($('#txt_emailUsua'));
+            validarClaves($('#txt_passwordUsua'), $('#txt_PasswordVerifiUsua'));
+            $('#btn_registrarRU').click(function() {
+                if ($('#txt_nombreUsua').val() == "") {
+                    $('#mensajeNombre').fadeIn();
+                    return false;
+                } else {
+                    $('#mensajeNombre').fadeOut();
+                    if ($('#txt_apellidoUsua').val() == "") {
+                        $('#mensajeApellido').fadeIn();
+                        return false;
+                    } else {
+                        $('#mensajeApellido').fadeOut();
+                        if ($('#txt_emailUsua').val() == "") {
+                            $('#mensajeEmail').fadeIn();
+                            return false;
+                        } else {
+                            $('#mensajeEmail').fadeOut();
+                            if ($('#txt_PasswordVerifiUsua').val() == "") {
+                                $('#mensajeClavePri').fadeIn();
+                                $('#mensajeClaveVerifi').fadeIn();
+                                return false;
+                            }
+                        }
+                    }
+                }
+            });
         });
 
     </script>

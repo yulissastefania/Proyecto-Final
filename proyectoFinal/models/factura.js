@@ -6,43 +6,41 @@ module.exports = function (sequelize, Sequelize) {
             primaryKey: true,
             type: Sequelize.INTEGER
         },
+        
         numero_factura: {
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING(18)
         },
 
         numero_autoriazacion: {
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING(60)
         },
         fecha_emision: {
+            type: Sequelize.DATEONLY
+        },
+        fecha_hora_autorizacion: {
             type: Sequelize.DATE
-        },
-        fecha_vencimiento: {
-            type: Sequelize.DATE
-        },
-        contribuyente_especial: {
-            type: Sequelize.STRING(4)
-        },
-        obligado_contabilidad: {
-            type: Sequelize.DOUBLE(6, 2)
         },
         subtotal: {
             type: Sequelize.DOUBLE(5, 2)
         },
-        iva_total: {
-            type: Sequelize.STRING(5, 2)
+        IVA: {
+            type: Sequelize.DOUBLE(5, 2)
         },
-        iva_total: {
-            type: Sequelize.STRING(5, 2)
+        IVA_total: {
+            type: Sequelize.DOUBLE(5, 2)
         },
+        valor_total: {
+            type: Sequelize.DOUBLE(5, 2)
+        },        
+        tipo_emision: {
+            type: Sequelize.STRING(15)
+        },        
+
         external_id: {
             type: Sequelize.UUID
         }
     });
-   Factura.associate = function (models) {
-        models.factura.hasOne(models.detalle_factura, {
-            foreignKey: 'id_factura'
-        });
-    };
+   
 
 
     return Factura;

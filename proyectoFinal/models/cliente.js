@@ -5,30 +5,29 @@ module.exports = function (sequelize, Sequelize) {
             primaryKey: true,
             type: Sequelize.INTEGER
         },
-        ruc: {
-            type: Sequelize.STRING(13)
+        RUC: {
+            type: Sequelize.STRING(13),
+            notEmpty: true
         },
 
-        cedula: {
-            type: Sequelize.STRING(10)
+        cedula_ruc: {
+            type: Sequelize.STRING(10),
+            notEmpty: true
         },
+        
         razon_social: {
-            type: Sequelize.STRING(60)
+            type: Sequelize.STRING(75)
         },
+        
         nombre: {
-            type: Sequelize.STRING(60)
+            type: Sequelize.STRING(75)
         },
+        
         apellido: {
-            type: Sequelize.STRING(60)
-        },
-        direccion: {
-            type: Sequelize.STRING(60)
-        },
-        telefono: {
-            type: Sequelize.STRING(10)
+            type: Sequelize.STRING(75)
         },
         email: {
-            type: Sequelize.STRING(60),
+            type: Sequelize.STRING(75),
             validate: {
                 isEmail: {
                     args: true,
@@ -36,6 +35,13 @@ module.exports = function (sequelize, Sequelize) {
                 }
             }
         },
+        direccion: {
+            type: Sequelize.STRING(100)
+        },
+        telefono: {
+            type: Sequelize.STRING(10)
+        },
+        
         external_id: {
             type: Sequelize.UUID
         }

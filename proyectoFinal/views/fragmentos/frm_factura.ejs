@@ -1,3 +1,4 @@
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <div class="column " id="vista_factura">
     <div class="card">
 
@@ -8,23 +9,35 @@
             </div>
             <h1>Nombre Comercial (si consta el en RUC)</h1>
             <div id="company" class="clearfix">
-                <div><span>RUC emisor</span><input type="text" placeholder="RUC Emisor" disabled/></div>
+                <div><span>RUC emisor</span><input type="text" placeholder="RUC Emisor" disabled /></div>
                 <div>Factura</div>
-                <div><input type="text" placeholder="Numero Factura" disabled/></div>
-                <div><span>AUT. SRI:</span><input type="text" placeholder="auto Sri" disabled/></div>
-                <div><span style="width: 12em;">FECHA DE AUTORIZACIÓN:</span><input type="date" placeholder="dd/mm/aa" disabled/></div>
+                <div><input type="text" placeholder="Numero Factura" disabled /></div>
+                <div><span>AUT. SRI:</span><input type="text" placeholder="auto Sri" disabled /></div>
+                <div><span style="width: 12em;">FECHA DE AUTORIZACIÓN:</span><input type="date" placeholder="dd/mm/aa" disabled /></div>
             </div>
+
+
             <div id="project">
-                <div><span>Razón Social emisor:</span> <input type="text" placeholder="Razon social" disabled/></div>
-                <div><span>Dirección de la matriz:</span> <input type="text" placeholder="Direccion matriz" disabled/></div>
-                <div><span>Dirección Sucursal: </span> <input type="text" placeholder="Direccion sucursal" disabled/></div>
+                <div><span>Razón Social emisor:</span> <input type="text" placeholder="Razon social" disabled /></div>
+                <div><span>Dirección de la matriz:</span> <input type="text" placeholder="Direccion matriz" disabled /></div>
+                <div><span>Dirección Sucursal: </span> <input type="text" placeholder="Direccion sucursal" disabled /></div>
             </div>
             <div id="datosComprador">
-                <div><span>Sr (es):</span> <input type="text" placeholder="Ingrese  Nombre" require/><span class="spanDere">R.U.C / C.I.</span> <input type="text" placeholder="Ingrese  RUC" require/></div>
-                <div><span>FECHA EMISIÓN:</span>
-                    <input type="text" placeholder="Ingrese  Fecha de Emision" require/>
+                <div>
+
+                    <span>Nombres</span> <input type="text" id="datoNombresComprador" name="datoNombresComprador" require disabled />
+
+                    <span class="spanDere">R.U.C / C.I.</span> <input type="text" id="datoCedulaRucComprador" name="datoCedulaRucComprador" require disabled />
+                </div>
+                <div>
+                    <span>Razón social</span> <input type="text" id="datoRazonSocialComprador" require disabled />
+
+                </div>
+                <div>
+                    <span>FECHA EMISIÓN:</span>
+                    <input type="text" placeholder="Ingrese  Fecha de Emision" id="datoFechaEmisionComprador" name="datoFechaEmisionComprador" require disabled />
                     <span class="spanDere">GUÍA DE REMISIÓN: </span>
-                    <input type="text" placeholder="Ingrese  Número de Guia de Emision" require/>
+                    <input type="text" placeholder="Ingrese  Número de Guia de Emision" id="datoGuieEmisionComprador" name="datoGuieEmisionComprador" require disabled />
                 </div>
             </div>
 
@@ -34,6 +47,8 @@
                 <div class="column ">
                     <div class="card">
                         <div class="card-block">
+                            <a href="#popupNuevoCliente" class="popup-link"><button>Agregar Cliente</button></a>
+
                             <table id="tabla">
                                 <thead>
                                     <tr>
@@ -44,12 +59,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="service"><input type="number" placeholder="N°" class="cantidad" /></td>
-                                        <td class="desc"><a href="#popup" class="popup-link"><button>Agregar Producto</button></a></td>
-                                        <td class="unit">$<input type="text" disabled class="unidades"></td>
-                                        <td class="total">$<input type="text" disabled class="unidades"></td>
-                                    </tr>
+
 
                                 </tbody>
                             </table>
@@ -68,103 +78,144 @@
                                     <td class="datoTotal">VÁLIDO PARA SU EMISIÓN HASTA:</td>
                                     <td><input class="datoTotal" type="date" placeholder="dd/mm/aa" disabled> </td>
                                     <td class="datoTotal">SUB TOTAL 12% IVA</td>
-                                    <td><input type="number" class="cantidad" id="subTotalIva" disabled/></td>
+                                    <td><input type="number" class="cantidad" id="subTotalIva" disabled /></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2" style="text-align: center;">FORMA DE PAGO</td>
 
                                     <td class="datoTotal">SUB TOTAL 0% IVA</td>
-                                    <td><input type="number" class="cantidad" id="subTotalNoIva" disabled/></td>
+                                    <td><input type="number" class="cantidad" id="subTotalNoIva" disabled /></td>
                                 </tr>
                                 <tr>
                                     <td class="datoTotal">FECTIVO</td>
                                     <td><input type="number" class="cantidad" /></td>
                                     <td class="datoTotal">SUB TOTAL EXCENTO IVA</td>
-                                    <td><input type="number" class="cantidad" id="subTotalExcentoIva" disabled/></td>
+                                    <td><input type="number" class="cantidad" id="subTotalExcentoIva" disabled /></td>
                                 </tr>
                                 <tr>
                                     <td class="datoTotal">DINERO ELECTÓNICO</td>
                                     <td><input type="number" class="cantidad" /></td>
                                     <td class="datoTotal">SUB TOTAL NO OBJETO IVA</td>
-                                    <td><input type="number" class="cantidad" id="subTotalNoObjetoIva" disabled/></td>
+                                    <td><input type="number" class="cantidad" id="subTotalNoObjetoIva" disabled /></td>
                                 </tr>
                                 <tr>
                                     <td class="datoTotal">TARJETA DE CRÉDITO / DÉBITO</td>
                                     <td><input type="number" class="cantidad" /></td>
                                     <td class="datoTotal">DESCUENTO</td>
-                                    <td><input type="number" class="cantidad" id="descuento" disabled/></td>
+                                    <td><input type="number" class="cantidad" id="descuento" disabled /></td>
                                 </tr>
                                 <tr>
                                     <td class="datoTotal">OTROS</td>
                                     <td><input type="number" class="cantidad" /></td>
                                     <td class="datoTotal">SUB TOTAL</td>
-                                    <td><input type="number" class="cantidad" id="subTotal" disabled/></td>
+                                    <td><input type="number" class="cantidad" id="subTotal" disabled /></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td></td>
                                     <td class="datoTotal">ICE</td>
-                                    <td><input type="number" class="cantidad" id="ice" disabled/></td>
+                                    <td><input type="number" class="cantidad" id="ice" disabled /></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td></td>
                                     <td class="datoTotal">IVA12%</td>
-                                    <td><input type="number" class="cantidad" id="iva" disabled/></td>
+                                    <td><input type="number" class="cantidad" id="iva" disabled /></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td></td>
                                     <td class="datoTotal">VALOR TOTAL</td>
-                                    <td><input type="number" class="cantidad" id="valorTotal" disabled/></td>
+                                    <td><input type="number" class="cantidad" id="valorTotal" disabled /></td>
 
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td></td>
-                                    <td ></td>
+                                    <td></td>
                                     <td></td>
                                 </tr>
 
                             </table>
                             <div class="modal-wrapper" id="popup">
-                                <div  class="popup-contenedor">
+                                <div class="popup-contenedor">
+                                    <div class="card-block">
+                                        <form>
+                                            <div class="card-block">
+
+                                                <div class="form-group">
+                                                    <label for="text_codPrincipal" class="form-control-label">Código Principal:</label>
+                                                    <input type="text" class="form-control" id="text_buscarCodPrincipal" name="text_codPrincipal" />
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" id="buscarProductoFactura" class="btn btn-secondary">Buscar</button>
+                                                </div>
+
+                                            </div>
+
+
+
+                                            <form>
+                                                <div>
+                                                    <table id="tablaBuscarProductoFactura">
+                                                        <thead>
+                                                            <tr>
+                                                                <td>Código Producto</td>
+                                                                <td>Nombre</td>
+                                                                <td>Marca</td>
+                                                                <td>Modelo</td>
+                                                                <td>Precio</td>
+
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+
+                                                    <button type="button" id="agregarProductoFactura" class="btn btn-secondary">Agregar</button>
+
+
+
+
+                                                </div>
+                                            </form>
+
+                                        </form>
+                                    </div>
+
+                                    <a class="popup-cerrar" href="#">X</a>
+                                </div>
+                            </div>
+
+                            <div class="modal-wrapper" id="popupNuevoCliente">
+                                <div class="popup-contenedor">
                                     <div class="card-block">
                                         <form>
                                             <div class="form-group">
-                                                <label for="text_codPrincipal" class="form-control-label">Código Principal:</label>
-                                                <input type="text" class="form-control" id="text_codPrincipal" name="text_codPrincipal" />
+                                                <label for="cedulaRucBuscar">Cédula o Ruc</label>
+                                                <input type="text" class="form-control" placeholder="ingrese email" id="cedulaRucBuscar" name="cedulaRucBuscar">
                                             </div>
-
-                                            <div class="form-group">
-                                                <label for="txt_codAux" class="form-control-label">Código Auxiliar:</label>
-                                                <input type="text" class="form-control" id="txt_codAux" name="txt_codAux" />
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label for="txt_nomProducto" class="form-control-label">Nombre Producto:</label>
-                                                <input type="text" class="form-control" id="txt_nomProducto" name="txt_nomProducto" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="slt_impuesto" class="form-control-label">Impuesto:</label>
-                                                <select name="slt_impuesto" id="slt_impuesto">
-                                                    <option value="Seleccione" selected>Seleccione</option>
-                                                    <option value="IVA">IVA</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="slt_tipoProducto" class="">Tipo Producto:</label>
-                                                <select name="slt_tipoProducto" id="slt_tipoProducto">
-                                                    <option value="TODOS"selected>TODOS</option>
-                                                    <option value="BIEN" >BIEN</option>
-                                                    <option value="SERVICIO">SERVICIO</option>
-                                                </select>
-                                            </div>
-
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary">Buscar</button>
+                                                <button type="button" id="buscarCliente" class="btn btn-secondary">Buscar</button>
                                             </div>
+
+                                            <table id="tablaBuscarCliente">
+                                                <thead>
+                                                    <tr>
+                                                        <td>Cedula o Ruc<td>
+                                                        <td>razon Social<td>
+                                                        <td>Nombre<td>
+                                                        <td>Apellido<td>
+                                                        <td>email<td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                            <button type="button" id="agregarCliente" class="btn btn-secondary ">Agregar</button>
+
                                         </form>
                                     </div>
 
@@ -184,20 +235,23 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $("#add").click(function () {
+    $(document).ready(function() {
+        $("#add").click(function() {
             var nuevaFila = "<tr>";
+            var aux = $("#tabla tr").length;
+            console.log(aux);
             //añadimos las filas y columnas
-            nuevaFila += '<td class="service"><input type="number"';
-            nuevaFila += ' placeholder="N°" class="cantidad"/></td>';
-            nuevaFila += '<td class="desc"><a href="#popup" class="popup-link"><button>Agregar Producto</button></a></td>';
-            nuevaFila += '<td class="unit">$<input type="text" disabled class="unidades"></td>';
-            nuevaFila += '<td class="total">$<input type="text" disabled class="unidades"></td>';
+            nuevaFila += '<td class="service"><input type="number" id="cantidadProductoFactura' + aux + '"';
+            nuevaFila += ' placeholder="N°" class="cantidad" value="1"/></td>';
+            nuevaFila += '<td class="desc" id="botonAgragegarProducto' + aux + '"><a href="#popup" class="popup-link"><button>Agregar Producto</button></a></td>';
+            nuevaFila += '<td class="unit">$<input type="text" id="productoPrecioUnitarioFactura' + aux + '"disabled class="unidades"></td>';
+            nuevaFila += '<td class="total">$<input type="text" id="productoPrecioFactura' + aux + '" disabled class="unidades"></td>';
             nuevaFila += "</tr>";
 
             $("#tabla").append(nuevaFila);
         });
-        $("#del").click(function () {
+
+        $("#del").click(function() {
 
             var trs = $("#tabla tr").length;
             if (trs > 1) {
@@ -205,6 +259,122 @@
                 $("#tabla tr:last").remove();
             }
         });
+        $('#buscarCliente').click(function() {
+            $.ajax({
+                type: "POST",
+                url: "/buscarNuevoCliente",
+                data: "cedulaRuc=" + $('#cedulaRucBuscar').val(),
+                success: function(data) {
+                    console.log(data);
+                    if (data.cedula_ruc != "") {
+                        var nuevaFila = "";
+                        nuevaFila += "<tr>";
+                        // añadimos las columnas
+                        nuevaFila += "<td>" + data.cedula_ruc + "</td>";
+                        //nuevaFila += "<td>" + value.Actors + "</td>";
+                        nuevaFila += "<td>" + data.razon_social + "</td>";
+                        nuevaFila += "<td>" + data.nombre + "</td>";
+                        nuevaFila += "<td>" + data.apellido + "</td>";
+                        nuevaFila += "<td>" + data.email + "</td>";
+
+                        nuevaFila += "</tr>";
+                        //añadimos la nueva fila a la tabla
+                        $("#tablaBuscarCliente tbody").html(nuevaFila);
+                    } else {
+                        alert("Cliente No encontrado");
+                    }
+
+                }
+            });
+        });
+        $('#agregarCliente').click(function() {
+
+            $.ajax({
+                type: "POST",
+                url: "/buscarNuevoCliente",
+                data: "cedulaRuc=" + $('#cedulaRucBuscar').val(),
+                success: function(data) {
+                    if (data.cedula_ruc != "") {
+
+
+                        $('#datoNombresComprador').val(data.nombre + " " + data.apellido);
+                        $('#datoCedulaRucComprador').val(data.cedula_ruc);
+                        $('#datoRazonSocialComprador').val(data.razon_social);
+                        $('#datoFechaEmisionComprador').datepicker({
+                            dateFormat: 'dd/mm/yy',
+                        }).datepicker("setDate", new Date());
+
+                        $('#datoGuieEmisionComprador').val();
+                    }
+
+                }
+            });
+            location.href = '#';
+        });
+        $('#buscarProductoFactura').click(function() {
+
+            $.ajax({
+                type: "POST",
+                url: "/buscarProducto",
+                data: "text_codPrincipal=" + $('#text_buscarCodPrincipal').val(),
+                success: function(data) {
+                    var nuevaFila = "";
+                    nuevaFila += "<tr>";
+                    // añadimos las columnas
+                    nuevaFila += "<td>" + data.codigo_principal + "</td>";
+                    //nuevaFila += "<td>" + value.Actors + "</td>";
+
+                    nuevaFila += "<td>" + data.nombre + "</td>";
+                    nuevaFila += "<td>" + data.marca + "</td>";
+                    nuevaFila += "<td>" + data.modelo + "</td>";
+                    nuevaFila += "<td>" + data.precio + "</td>";
+
+                    nuevaFila += "</tr>";
+                    //añadimos la nueva fila a la tabla
+                    $("#tablaBuscarProductoFactura tbody").html(nuevaFila);
+
+                }
+            });
+
+        });
+        $('#agregarProductoFactura').click(function() {
+            var aux = $("#tabla tr").length;
+            for (var i = 1; i < aux; i++) {
+
+                precioUF = "productoPrecioUnitarioFactura" + i;
+                console.log("#############################3");
+                console.log(i);
+                console.log(document.getElementById(precioUF).value);
+                if (document.getElementById(precioUF).value == "") {
+                    aux = i;
+                }
+            }
+            $.ajax({
+                type: "POST",
+                url: "/buscarProducto",
+                data: "text_codPrincipal=" + $('#text_buscarCodPrincipal').val(),
+                success: function(data) {
+                    var precioUF = "productoPrecioUnitarioFactura" + aux;
+                    var botonAP = "botonAgragegarProducto" + aux;
+                    var reemplazoBoton = "<input type='text' id='descripcionProductoFactura" + aux + "' value=" + data.nombre + " disabled/>"
+                    document.getElementById(botonAP).innerHTML = reemplazoBoton;
+
+
+                    document.getElementById(precioUF).value = data.precio_unitario;
+
+                    var precioTotalPF = "productoPrecioFactura" + aux;
+                    document.getElementById(precioTotalPF).value = data.precio_Venta;
+
+                }
+            });
+            location.href = '#';
+        });
+
+
+
+
+
+
     });
 
 </script>

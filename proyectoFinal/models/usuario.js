@@ -7,23 +7,29 @@ module.exports = function (sequelize, Sequelize) {
         },
 
         nombre: {
-            type: Sequelize.STRING(60)
+            type: Sequelize.STRING(75),
+            notEmpty: true
         },
         apellido: {
-            type: Sequelize.STRING(60)
+            type: Sequelize.STRING(75),
+            notEmpty: true
         },
-        clave: {
-            type: Sequelize.STRING(60)
-        },
+        
         email: {
-            type: Sequelize.STRING(60),
+            type: Sequelize.STRING(75),
             validate: {
                 isEmail: {
                     args: true,
                     msg: 'No es un correo electronico valido'
                 }
             },
+            notEmpty: true
         },
+        clave: {
+            type: Sequelize.STRING(75),
+            notEmpty: true
+        },
+        
 
         external_id: {
             type: Sequelize.UUID

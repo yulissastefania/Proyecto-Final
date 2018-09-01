@@ -8,37 +8,11 @@
             <form>
                 <div class="form-group">
                     <label for="text_codPrincipal" class="form-control-label">Código Principal:</label>
-                    <input type="text" class="form-control" id="text_codPrincipal" name="text_codPrincipal" />
-                </div>
-
-                <div class="form-group">
-                    <label for="txt_codAux" class="form-control-label">Código Auxiliar:</label>
-                    <input type="text" class="form-control" id="txt_codAux" name="txt_codAux" />
-                </div>
-
-
-                <div class="form-group">
-                    <label for="txt_nomProducto" class="form-control-label">Nombre Producto:</label>
-                    <input type="text" class="form-control" id="txt_nomProducto" name="txt_nomProducto" />
-                </div>
-                <div>
-                    <label for="slt_impuesto" class="form-control-label">Impuesto:</label>
-                    <select name="slt_impuesto" id="slt_impuesto">
-                        <option value="Seleccione" selected>Seleccione</option>
-                        <option value="IVA">IVA</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="slt_tipoProducto" class="form-control-label">Tipo Producto:</label>
-                    <select name="slt_tipoProducto" id="slt_tipoProducto">
-                        <option value="TODOS"selected>TODOS</option>
-                        <option value="BIEN" >BIEN</option>
-                        <option value="SERVICIO">SERVICIO</option>
-                    </select>
+                    <input type="text" class="form-control" id="text_buscarCodPrincipal" name="text_codPrincipal" />
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary">Buscar</button>
+                    <button type="button" id="btn_buscar" class="btn btn-secondary">Buscar</button>
                 </div>
             </form>
         </div>
@@ -47,42 +21,161 @@
         <div class="card-header">
             <h5 class="card-title ">Lista de Productos</h5>
         </div>
-
         <form>
             <div>
-                <table>
+                <table id="tablaBuscar">
                     <thead>
                         <tr>
                             <td>Código Producto</td>
-                            <td>Código Auxiliar</td>
-                            <td>Descripción</td>
-                            <td>Actualizar</td>
-                            <td>Eliminar</td>
+                            <td>Nombre</td>
+                            <td>Marca</td>
+                            <td>Modelo</td>
+                            <td>Precio</td>
+
+
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                        </tr>
-
                     </tbody>
                 </table>
+
+                <button id="busquedaActualizar_bus" type="button">ACTUALIZAR</button>
+                <button id="busquedaEliminar_bus" type="button">ELIMINAR</button>
+
+
+
             </div>
         </form>
+
+
+        <div id="actualizarProducto">
+           <br/>
+           <br/>
+            <form>
+                <div class="form-group">
+                    <label for="text_codPrincipalA" class="form-control-label">Código Principal:</label>
+                    <input type="text" class="form-control" id="text_codPrincipalA" name="text_codPrincipalA" />
+                </div>
+
+                <div class="form-group">
+                    <label for="txt_nomProductoA" class="form-control-label">Nombre Producto:</label>
+                    <input type="text" class="form-control" id="txt_nomProductoA" name="txt_nomProductoA" />
+                </div>
+
+                <div class="form-group">
+                    <label for="txt_marProductoA" class="form-control-label">Marca Producto:</label>
+                    <input type="text" class="form-control" id="txt_marProductoA" name="txt_marProductoA" />
+                </div>
+
+                <div class="form-group">
+                    <label for="txt_modProductoA" class="form-control-label">Modelo Producto:</label>
+                    <input type="text" class="form-control" id="txt_modProductoA" name="txt_modProductoA" />
+                </div>
+
+                <div class="form-group">
+                    <label for="txt_valUnitario" class="form-control-label">Valor Unitario:</label>
+                    <input type="text" class="form-control" id="txt_valUnitario" name="txt_valUnitario" placeholder="ej: 89,00" />
+                </div>
+
+
+
+
+
+                <div>
+                    <label for="slt_tipoProductoA" class="form-control-label">Tipo Producto:</label>
+                    <select name="slt_tipoProductoA" id="slt_tipoProductoA">
+                        <option value="TODOS" selected>TODOS</option>
+                        <option value="BIEN">BIEN</option>
+                        <option value="SERVICIO">SERVICIO</option>
+                    </select>
+                </div>
+
+
+
+                <div class="card-header">
+                    <h5 class="card-title ">Impuestos Aplicables</h5>
+                </div>
+
+                <div>
+                    <label for="slt_IVA" class="form-control-label">IVA:</label>
+                    <select name="slt_IVA" id="slt_IVA" required>
+                        <option value="Seleccione" selected>Seleccione</option>
+                        <option value="GRAVA IVA">GRAVA IVA</option>
+                    </select>
+                </div>
+
+                <br>
+                <div class="modal-footer">
+                    <center><button type="submit" class="btn btn-secondary" id="guardarProducto">Guardar</button>
+                        <button type="button" class="btn btn-secondary">Cancelar</button></center>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
+
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+
 <script>
     $(document).ready(function() {
+        $('#actualizarProducto').hide();
+        $('#btn_buscar').click(function() {
 
-        $("#txt_nomProducto").change(function() {
-            var regex = /^[a-zA-Z ]+$/;
-            var aux = regex.test($("#txt_nomProducto").val());
-            if (!aux) {
-                $("#txt_nomProducto").val("");
-            }
+
+            alert($('#text_buscarCodPrincipal').val() + "###");
+            $.ajax({
+                type: "POST",
+                url: "/buscarProducto",
+                data: "text_codPrincipal=" + $('#text_buscarCodPrincipal').val(),
+                success: function(data) {
+                    var nuevaFila = "";
+                    nuevaFila += "<tr>";
+                    // añadimos las columnas
+                    nuevaFila += "<td>" + data.codigo_principal + "</td>";
+                    //nuevaFila += "<td>" + value.Actors + "</td>";
+
+                    nuevaFila += "<td>" + data.nombre + "</td>";
+                    nuevaFila += "<td>" + data.marca + "</td>";
+                    nuevaFila += "<td>" + data.modelo + "</td>";
+                    nuevaFila += "<td>" + data.precio + "</td>";
+
+                    nuevaFila += "</tr>";
+                    //añadimos la nueva fila a la tabla
+                    $("#tablaBuscar tbody").html(nuevaFila);
+
+                    $("#codPrincipalActual").val(data.codigo_principal);
+                    $("#modeloActual").val(data.modelo);
+                    $("#nomMarcaAcual").val(data.marca);
+                    $("#nomProductoActual").val(data.nombre);
+                    $("#precioActual").val(data.precio);
+                }
+            });
+        });
+        $('#busquedaActualizar_bus').click(function() {
+            $('#actualizarProducto').show();
         });
 
 
+        $("#stockActual").click(function() {
+            if ($("#stockActual").val() == "true") {
+                $("#stockActual").val("false");
+            } else {
+                $("#stockActual").val("true");
+            }
+        });
+
+        $("#actualizarProduct").click(function() {
+
+            $.ajax({
+                type: "POST",
+                url: "/actualizar",
+                data: "codPrincipal=" + $("#codPrincipalActual").val() + "&modeloActual=" + $("#modeloActual").val() + "&marca=" + $("#nomMarcaAcual").val() + "&nomProduct=" + $("#nomProductoActual").val() + "&precio=" + $("#precioActual").val() + "&stock=" + $("#stockActual").val() + "&iva=" + $("#ivaActual").val(),
+                success: function(data) {
+                    alert("datos actualizados con exito");
+                }
+            });
+        });
     });
 
 </script>

@@ -12,6 +12,9 @@ var empresaController= new empresa();
 var producto = require('../controllers/ProductoController');
 var productoController= new producto();
 
+/*controlador cliente*/
+var cliente = require('../controllers/ClienteController');
+var clienteController= new cliente();
 
 var passport = require('passport');
 
@@ -81,9 +84,19 @@ router.get('/registrarEmpresa', function (req, res, next) {
 /*guardar empresas*/
 
 router.post('/guardarEmpresa',empresaController.guardar);
+
 router.get('/buscarExistenciaEmpresa',empresaController.buscarExistenciaEmpresa);
 /*guardar producto*/
 
 router.post('/guardarProducto',productoController.guardarProducto);
+router.post('/buscarProducto',productoController.buscarProducto);
+router.post('/actualizar',productoController.actualizar);
+
+
+/*registrar cliente*/
+router.post('/guardarCliente',clienteController.guardarCliente);
+
+/*buscar cliente*/
+router.post('/buscarNuevoCliente',clienteController.buscarCliente);
 
 module.exports = router;

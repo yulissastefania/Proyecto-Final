@@ -7,51 +7,34 @@ module.exports = function (sequelize, Sequelize) {
             primaryKey: true,
             type: Sequelize.INTEGER
         },
-        modelo: {
+        cod_principal: {
             type: Sequelize.STRING(60)
         },
-
         nombre: {
             type: Sequelize.STRING(60)
-        },
-        precio_unitario: {
-            type: Sequelize.STRING(60)
-        },
-        iva: {
-            type: Sequelize.STRING(4)
-        },
-        precio_venta: {
-            type: Sequelize.DOUBLE(6, 2)
-        },
-        stock: {
-            type: Sequelize.BOOLEAN
         },
         marca: {
             type: Sequelize.STRING(60)
         },
-        nombre: {
+
+        modelo: {
             type: Sequelize.STRING(60)
         },
-        codigo_principal: {
-            type: Sequelize.STRING(60)
+
+        precio_unitario: {
+            type: Sequelize.DOUBLE(5,2)
         },
+        IVA: {
+            type: Sequelize.DOUBLE(3,2)
+        },
+        precio_venta: {
+            type: Sequelize.DOUBLE(5, 2)
+        },
+
         external_id: {
             type: Sequelize.UUID
         }
 
-    });
-
-    Producto.associate = function (models) {
-        models.producto.hasMany(models.detalle_factura, {
-            foreignKey: 'id_producto'
-        });
-    };
-
-
-
-    Producto.belongsTo(Empresa, {
-        foreignKey: 'id_empresa',
-        constraints: false
     });
     return Producto;
 };
