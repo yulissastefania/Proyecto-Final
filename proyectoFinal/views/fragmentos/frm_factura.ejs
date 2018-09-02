@@ -1,3 +1,18 @@
+<script>
+    function agregarValorTotal(num){
+
+         var precio = "productoPrecioFactura"+num;
+
+        var precioUF = "productoPrecioUnitarioFactura" + num;
+        var cantidad = "cantidadProductoFactura" + num;
+        precioUf = parseFloat(document.getElementById(precioUF).value).toFixed(2);
+        cantidad=parseFloat( document.getElementById(cantidad).value).toFixed(2);
+
+        document.getElementById(precio).value = parseFloat(precioUf*cantidad).toFixed(2);
+
+        }
+</script>
+
 <div class="column " id="vista_factura">
     <div class="card">
 
@@ -28,15 +43,12 @@
 
                     <span class="spanDere">R.U.C / C.I.</span> <input type="text" id="datoCedulaRucComprador" name="datoCedulaRucComprador" require disabled />
                 </div>
+
                 <div>
                     <span>Razón social</span> <input type="text" id="datoRazonSocialComprador" require disabled />
-
-                </div>
-                <div>
                     <span>FECHA EMISIÓN:</span>
                     <input type="text" placeholder="Ingrese  Fecha de Emision" id="datoFechaEmisionComprador" name="datoFechaEmisionComprador" require disabled />
-                    <span class="spanDere">GUÍA DE REMISIÓN: </span>
-                    <input type="text" placeholder="Ingrese  Número de Guia de Emision" id="datoGuieEmisionComprador" name="datoGuieEmisionComprador" require disabled />
+
                 </div>
             </div>
 
@@ -52,6 +64,7 @@
                                 <thead>
                                     <tr>
                                         <th class="service">CANTIDAD</th>
+                                        <th>CODIGO</th>
                                         <th class="desc">DESCRIPCION</th>
                                         <th>PRECIO UNITARIO</th>
                                         <th>TOTAL</th>
@@ -62,8 +75,11 @@
 
                                 </tbody>
                             </table>
-                            <button id="add" style="width: 40em;">añadir</button>
-                            <button id="del" style="width: 40em;">eliminar</button>
+                            <button id="add" style="width: 40em;">Añadir</button>
+                            <button id="del" style="width: 40em;">Eliminar</button>
+                            <center>
+                                <button id="finalizaIngreso" style="width: 40em;">Finalizar ingreso de productos</button>
+                            </center>
                         </div>
                     </div>
                 </div>
@@ -74,8 +90,8 @@
                         <div class="card-block">
                             <table id="totales">
                                 <tr>
-                                    <td class="datoTotal">VÁLIDO PARA SU EMISIÓN HASTA:</td>
-                                    <td><input class="datoTotal" type="date" placeholder="dd/mm/aa" disabled> </td>
+                                    <td> </td>
+                                    <td> </td>
                                     <td class="datoTotal">SUB TOTAL 12% IVA</td>
                                     <td><input type="number" class="cantidad" id="subTotalIva" disabled /></td>
                                 </tr>
@@ -86,7 +102,7 @@
                                     <td><input type="number" class="cantidad" id="subTotalNoIva" disabled /></td>
                                 </tr>
                                 <tr>
-                                    <td class="datoTotal">FECTIVO</td>
+                                    <td class="datoTotal">EFECTIVO</td>
                                     <td><input type="number" class="cantidad" /></td>
                                     <td class="datoTotal">SUB TOTAL EXCENTO IVA</td>
                                     <td><input type="number" class="cantidad" id="subTotalExcentoIva" disabled /></td>
@@ -152,9 +168,6 @@
                                                 </div>
 
                                             </div>
-
-
-
                                             <form>
                                                 <div>
                                                     <table id="tablaBuscarProductoFactura">
@@ -165,8 +178,6 @@
                                                                 <td>Marca</td>
                                                                 <td>Modelo</td>
                                                                 <td>Precio</td>
-
-
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -200,7 +211,7 @@
                                                 <button type="button" id="buscarCliente" class="btn btn-secondary">Buscar</button>
                                             </div>
 
-                                            <table id="tablaBuscarCliente">
+                                            <table id="tablaBuscarClienteFactura">
                                                 <thead>
                                                     <tr>
                                                         <td>Cedula o Ruc<td>
@@ -211,6 +222,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+
                                                 </tbody>
                                             </table>
                                             <button type="button" id="agregarCliente" class="btn btn-secondary ">Agregar</button>
@@ -241,13 +253,12 @@
         var day = dt.getDate();
         var year = dt.getFullYear();
         if (day < 10) {
-            day= '0' + day;
+            day = '0' + day;
         }
 
         if (month < 10) {
-            month= '0' + month;
+            month = '0' + month;
         }
-
 
 
         $.ajax({
@@ -276,10 +287,14 @@
             var aux = $("#tabla tr").length;
             console.log(aux);
             //añadimos las filas y columnas
-            nuevaFila += '<td class="service"><input type="number" id="cantidadProductoFactura' + aux + '"';
-            nuevaFila += ' placeholder="N°" class="cantidad" value="1"/></td>';
+            nuevaFila += '<td class="service"><input type="number" id="cantidadProductoFactura' + aux + '" placeholder="N°" class="cantidad" ></td>';
+
+            nuevaFila += '<td class="desc" ><input type="number" id="codigoProductoFactura' + aux + '"  class="cantidad" disabled/></td>';
+
             nuevaFila += '<td class="desc" id="botonAgragegarProducto' + aux + '"><a href="#popup" class="popup-link"><button>Agregar Producto</button></a></td>';
-            nuevaFila += '<td class="unit">$<input type="text" id="productoPrecioUnitarioFactura' + aux + '"disabled class="unidades"></td>';
+
+            nuevaFila += '<td class="unit">$<input type="text" id="productoPrecioUnitarioFactura' + aux + '" disabled class="unidades"></td>';
+
             nuevaFila += '<td class="total">$<input type="text" id="productoPrecioFactura' + aux + '" disabled class="unidades"></td>';
             nuevaFila += "</tr>";
 
@@ -305,16 +320,16 @@
                         var nuevaFila = "";
                         nuevaFila += "<tr>";
                         // añadimos las columnas
-                        nuevaFila += "<td>" + data.cedula_ruc + "</td>";
+                        nuevaFila += "<td colspan='2'>" + data.cedula_ruc + "</td>";
                         //nuevaFila += "<td>" + value.Actors + "</td>";
-                        nuevaFila += "<td>" + data.razon_social + "</td>";
-                        nuevaFila += "<td>" + data.nombre + "</td>";
-                        nuevaFila += "<td>" + data.apellido + "</td>";
-                        nuevaFila += "<td>" + data.email + "</td>";
+                        nuevaFila += "<td colspan='2'>" + data.razon_social + "</td>";
+                        nuevaFila += "<td colspan='2'>" + data.nombre + " " + data.apellido + "</td>";
+                        nuevaFila += "<td colspan='2'>" + data.apellido + "</td>";
+                        nuevaFila += "<td colspan='2'>" + data.email + "</td>";
 
                         nuevaFila += "</tr>";
                         //añadimos la nueva fila a la tabla
-                        $("#tablaBuscarCliente tbody").html(nuevaFila);
+                        $("#tablaBuscarClienteFactura tbody").html(nuevaFila);
                     } else {
                         alert("Cliente No encontrado");
                     }
@@ -330,7 +345,6 @@
                 data: "cedulaRuc=" + $('#cedulaRucBuscar').val(),
                 success: function(data) {
                     if (data.cedula_ruc != "") {
-
 
                         $('#datoNombresComprador').val(data.nombre + " " + data.apellido);
                         $('#datoCedulaRucComprador').val(data.cedula_ruc);
@@ -370,14 +384,11 @@
             });
 
         });
+
         $('#agregarProductoFactura').click(function() {
             var aux = $("#tabla tr").length;
             for (var i = 1; i < aux; i++) {
-
-                precioUF = "productoPrecioUnitarioFactura" + i;
-                console.log("#############################3");
-                console.log(i);
-                console.log(document.getElementById(precioUF).value);
+                var precioUF = "productoPrecioUnitarioFactura" + i;
                 if (document.getElementById(precioUF).value == "") {
                     aux = i;
                 }
@@ -389,11 +400,17 @@
                 success: function(data) {
                     var precioUF = "productoPrecioUnitarioFactura" + aux;
                     var botonAP = "botonAgragegarProducto" + aux;
-                    var reemplazoBoton = "<input type='text' id='descripcionProductoFactura" + aux + "' value=" + data.nombre + " disabled/>"
+                    var codigo = "codigoProductoFactura" + aux;
+                    var cantidad = "cantidadProductoFactura" + aux;
+
+                    var reemplazoBoton = "<input type='text' id='descripcionProductoFactura" + aux + "' value=" + data.nombre + " disabled/>";
                     document.getElementById(botonAP).innerHTML = reemplazoBoton;
 
+                    var objCantidad = document.getElementById(cantidad).setAttribute("onchange", "agregarValorTotal(" + aux + ")");
 
                     document.getElementById(precioUF).value = data.precio_unitario;
+
+                    document.getElementById(codigo).value = data.codigo_principal;
 
                     var precioTotalPF = "productoPrecioFactura" + aux;
                     document.getElementById(precioTotalPF).value = data.precio_Venta;
@@ -402,6 +419,29 @@
             });
             location.href = '#';
         });
+
+        $('#finalizaIngreso').click(function() {
+            var aux = $("#tabla tr").length;
+            var precioFinal=0;
+            for (var i = 1; i < aux; i++) {
+                var precioUF = "productoPrecioUnitarioFactura" + i;
+                var precio = "productoPrecioFactura" + i;
+
+                if (document.getElementById(precio).value != "") {
+                    precio = parseFloat(document.getElementById(precio).value).toFixed(2);
+                    precioFinal = ((Number(precio).toFixed(2)*1) + (Number(precioFinal).toFixed(2)*1));
+                         alert("###################"+precioFinal);
+
+
+
+                }
+            }
+            $('#subTotalNoIva').val(precioFinal);
+
+
+        });
+
+
 
 
 

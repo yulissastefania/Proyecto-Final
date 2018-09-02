@@ -61,7 +61,6 @@ class ProductoController {
                     precio_unitario: producto.precio_unitario,
                     iva: producto.iva,
                     precio_venta: producto.precio_venta,
-                    stock: producto.stock,
                     marca: producto.marca,
                     codigo_principal: producto.cod_principal
                 });
