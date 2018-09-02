@@ -6,12 +6,12 @@ module.exports = function (sequelize, Sequelize) {
             primaryKey: true,
             type: Sequelize.INTEGER
         },
-        
+
         numero_factura: {
             type: Sequelize.STRING(18)
         },
 
-        numero_autoriazacion: {
+        numero_autorizacion: {
             type: Sequelize.STRING(60)
         },
         fecha_emision: {
@@ -31,17 +31,21 @@ module.exports = function (sequelize, Sequelize) {
         },
         valor_total: {
             type: Sequelize.DOUBLE(5, 2)
-        },        
+        },
         tipo_emision: {
             type: Sequelize.STRING(15)
-        },        
+        },
 
         external_id: {
             type: Sequelize.UUID
         }
     });
-   
-
-
+    Factura.associate = function (models) {
+        models.factura.hasMany(models.detalle_factura, {
+            foreignKey: 'id_factura'
+        });
+    };
     return Factura;
 };
+
+

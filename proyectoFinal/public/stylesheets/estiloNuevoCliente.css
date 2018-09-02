@@ -1,0 +1,21 @@
+
+#nuevoCliente form {
+    margin: 0 auto;
+    width: 70%;
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    text-align: center;
+}
+
+#nuevoCliente label {
+    display: inline-block;
+    width: 21%;
+    text-align: left;
+}
+
+#nuevoCliente input{
+
+    width: 71%;
+
+}

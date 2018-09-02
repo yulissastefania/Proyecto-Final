@@ -36,5 +36,14 @@ module.exports = function (sequelize, Sequelize) {
         }
 
     });
+     Producto.associate = function (models) {
+
+         models.producto.hasMany(models.detalle_factura, {
+            foreignKey: 'id_producto'
+        });
+
+    };
+
+
     return Producto;
 };

@@ -1,4 +1,4 @@
-module.exports = function (sequelize, Sequelize) {    
+module.exports = function (sequelize, Sequelize) {
     var Detalle_factura = sequelize.define('detalle_factura', {
         detalle_factura_id: {
             autoIncrement: true,
@@ -18,16 +18,13 @@ module.exports = function (sequelize, Sequelize) {
             type: Sequelize.UUID
         }
     });
-    
-     Detalle_factura.associate = function (models) {
-        models.detalle_factura.hasMany(models.producto, {
-            foreignKey: 'id_detalle_factura'
-        });
-         models.detalle_factura.hasMany(models.factura, {
-            foreignKey: 'id_detalle_factura'
-        });
-    };
 
+    var aux = require('../models/factura');
+    var Factura = new aux(sequelize, Sequelize);
+    Detalle_factura.belongsTo(Factura, {
+        foreignKey: 'id_factura',
+        constraints: false
+    });
 
 
     return Detalle_factura;

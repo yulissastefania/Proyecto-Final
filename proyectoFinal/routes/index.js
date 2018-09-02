@@ -16,6 +16,10 @@ var productoController= new producto();
 var cliente = require('../controllers/ClienteController');
 var clienteController= new cliente();
 
+/*controlador factura*/
+var factura = require('../controllers/FacturaController');
+var facturaController= new factura();
+
 var passport = require('passport');
 
 /* GET home page. */
@@ -100,5 +104,11 @@ router.post('/guardarCliente',clienteController.guardarCliente);
 
 /*buscar cliente*/
 router.post('/buscarNuevoCliente',clienteController.buscarCliente);
+
+/*buscar ultimo numero factura*/
+router.get('/buscarUltimoNumeroFactura',facturaController.datosFactura);
+
+router.post('/guardarFactura',facturaController.guardarFactura);
+
 
 module.exports = router;

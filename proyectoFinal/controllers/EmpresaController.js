@@ -25,6 +25,7 @@ class EmpresaController {
     buscarEmpresa(req, res, next) {
         var Empresa = models.empresa;
         var external_id = req.user.id;
+        console.log("####################################################");
         console.log(external_id);
 
         Empresa.findOne({

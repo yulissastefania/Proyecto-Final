@@ -1,18 +1,3 @@
-<script>
-    function agregarValorTotal(num){
-
-         var precio = "productoPrecioFactura"+num;
-
-        var precioUF = "productoPrecioUnitarioFactura" + num;
-        var cantidad = "cantidadProductoFactura" + num;
-        precioUf = parseFloat(document.getElementById(precioUF).value).toFixed(2);
-        cantidad=parseFloat( document.getElementById(cantidad).value).toFixed(2);
-
-        document.getElementById(precio).value = parseFloat(precioUf*cantidad).toFixed(2);
-
-        }
-</script>
-
 <div class="column " id="vista_factura">
     <div class="card">
 
@@ -93,7 +78,7 @@
                                     <td> </td>
                                     <td> </td>
                                     <td class="datoTotal">SUB TOTAL 12% IVA</td>
-                                    <td><input type="number" class="cantidad" id="subTotalIva" disabled /></td>
+                                    <td><input type="number" class="cantidad" id="subTotalIva" placeholder="" disabled /></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2" style="text-align: center;">FORMA DE PAGO</td>
@@ -116,18 +101,12 @@
                                 <tr>
                                     <td class="datoTotal">TARJETA DE CRÉDITO / DÉBITO</td>
                                     <td><input type="number" class="cantidad" /></td>
-                                    <td class="datoTotal">DESCUENTO</td>
-                                    <td><input type="number" class="cantidad" id="descuento" disabled /></td>
-                                </tr>
-                                <tr>
-                                    <td class="datoTotal">OTROS</td>
-                                    <td><input type="number" class="cantidad" /></td>
                                     <td class="datoTotal">SUB TOTAL</td>
                                     <td><input type="number" class="cantidad" id="subTotal" disabled /></td>
                                 </tr>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
+                                    <td class="datoTotal">OTROS</td>
+                                    <td><input type="number" class="cantidad" /></td>
                                     <td class="datoTotal">ICE</td>
                                     <td><input type="number" class="cantidad" id="ice" disabled /></td>
                                 </tr>
@@ -142,6 +121,12 @@
                                     <td></td>
                                     <td class="datoTotal">VALOR TOTAL</td>
                                     <td><input type="number" class="cantidad" id="valorTotal" disabled /></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
 
                                 </tr>
                                 <tr>
@@ -152,6 +137,8 @@
                                 </tr>
 
                             </table>
+                            <button id="guardarFactura" style="width: 40em;">Guardar</button>
+                            <a href="#" onclick="HTMLtoPDF()">Download PDF</a>
                             <div class="modal-wrapper" id="popup">
                                 <div class="popup-contenedor">
                                     <div class="card-block">
@@ -185,9 +172,6 @@
                                                     </table>
 
                                                     <button type="button" id="agregarProductoFactura" class="btn btn-secondary">Agregar</button>
-
-
-
 
                                                 </div>
                                             </form>
@@ -246,6 +230,23 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+
+<!-- these js files are used for making PDF -->
+<script src="/js/jspdf.js"></script>
+<script src="/js/jquery-2.1.3.js"></script>
+<script src="/js/pdfFromHTML.js"></script>
+<script>
+    /*funcion para generar el valor total en la tabla en la factura*/
+    function agregarValorTotal(num) {
+        var precio = "productoPrecioFactura" + num;
+        var precioUF = "productoPrecioUnitarioFactura" + num;
+        var cantidad = "cantidadProductoFactura" + num;
+        precioUf = parseFloat(document.getElementById(precioUF).value).toFixed(2);
+        cantidad = parseFloat(document.getElementById(cantidad).value).toFixed(2);
+        document.getElementById(precio).value = parseFloat(precioUf * cantidad).toFixed(2);
+    }
+
+</script>
 <script type="text/javascript">
     $(document).ready(function() {
         var dt = new Date();
@@ -265,19 +266,26 @@
             type: "GET",
             url: "/buscarEmpresa",
             success: function(data) {
-
-
-
                 $('#nombreEmpresa').html(data.razon_social);
                 $('#rucEmpresaF').val(data.ruc);
                 $('#numeroFactura').val();
-                $('#auto Sri').val();
+                $('#autoSri').val();
 
                 $('#razonSocialEmF').val(data.razon_social);
                 $('#direccionMatrizEmF').val(data.direc_matriz);
                 $('#direccionSuEmF').val(data.direc_sucursal);
 
-                $('#fechaAutoEmpresa').val(month + '/' + day + '/' + year);
+                $('#fechaAutoEmpresa').val(month + '-' + day + '-' + year);
+
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "/buscarUltimoNumeroFactura",
+            success: function(data) {
+                $('#numeroFactura').val(data.numero_factura);
+                $('#autoSri').val(data.numero_autorizacion);
 
             }
         });
@@ -422,31 +430,84 @@
 
         $('#finalizaIngreso').click(function() {
             var aux = $("#tabla tr").length;
-            var precioFinal=0;
+            var precioFinal = 0;
             for (var i = 1; i < aux; i++) {
                 var precioUF = "productoPrecioUnitarioFactura" + i;
                 var precio = "productoPrecioFactura" + i;
 
                 if (document.getElementById(precio).value != "") {
                     precio = parseFloat(document.getElementById(precio).value).toFixed(2);
-                    precioFinal = ((Number(precio).toFixed(2)*1) + (Number(precioFinal).toFixed(2)*1));
-                         alert("###################"+precioFinal);
+                    precioFinal = ((Number(precio).toFixed(2) * 1) + (Number(precioFinal).toFixed(2) * 1));
 
+                }
+            }
+            $('#ice').val(0.00);
+            $('#subTotalExcentoIva').val(0.00);
+            $('#subTotalNoObjetoIva').val(0.00);
+
+            $('#subTotalNoIva').val(precioFinal);
+            $('#subTotalIva').val(Number(precioFinal * 0.12).toFixed(2));
+
+            $('#iva').val(Number((precioFinal * 0.12) * 0.12).toFixed(2));
+
+            $('#subTotal').val(Number((Number($('#subTotalNoIva').val()).toFixed(2) * 1) + (Number($('#subTotalIva').val()).toFixed(2) * 1)).toFixed(2));
+
+            var valorTotal = Number((Number($('#subTotalNoIva').val()).toFixed(2) * 1) + (Number($('#subTotalIva').val()).toFixed(2) * 1) + (Number($('#iva').val()).toFixed(2) * 1)).toFixed(2);
+            $('#valorTotal').val(valorTotal);
+
+        });
+
+        $('#guardarFactura').click(function() {
+
+            var aux = "numero_factura=" + $('#numeroFactura').val() + "&";
+            aux += "numero_autorizacion=" + $('#autoSri').val() + "&";
+            aux += "fecha_emision=" + $('#fechaAutoEmpresa').val() + "&";
+            aux += "fecha_hora_autorizacion=''" + "&";
+            aux += "subtotal=" + $('#subTotal').val() + "&";
+            aux += "IVA=" + $('#subTotalIva').val() + "&";
+            aux += "IVA_total=" + $('#iva').val() + "&";
+            aux += "valor_total=" + $('#valorTotal').val() + "&";
+            aux += "tipo_emision=provision" + "&";
+            aux += "id_cliente=" + $("#datoCedulaRucComprador").val();
+
+            var auxTabla = $("#tabla tr").length;
+            var detalle = [];
+            for (var i = 1; i < auxTabla; i++) {
+                alert($('#numeroFactura').val())
+                var precioUF = "productoPrecioUnitarioFactura" + i;
+                var precio = "productoPrecioFactura" + i;
+                var cantidad = "cantidadProductoFactura" + i;
+                var codigo = "codigoProductoFactura" + i;
+                if (document.getElementById(precio).value != "") {
+                    var auxDetalle = [
+                        document.getElementById(precioUF).value,
+                        document.getElementById(precio).value,
+                        document.getElementById(cantidad).value,
+                        document.getElementById(codigo).value
+                    ];
+                    detalle.push(auxDetalle);
+                    /*
+                    detalle += "&precioUF" +i+"="+ document.getElementById(precioUF).value + "&";
+                    detalle += "precio" +i+"=" +document.getElementById(precio).value + "&";
+                    detalle += "cantidad" +i+"=" +document.getElementById(cantidad).value;*/
 
 
                 }
             }
-            $('#subTotalNoIva').val(precioFinal);
+            $.ajax({
+                type: "POST",
+                url: "/guardarFactura",
+                data: aux + "&detalle=" + detalle,
+                success: function(data) {
+                    if (data == true) {
+                        alert("LA FACTURA HA SIDO GUARDAD EN LA BASE")
+                    } else {
+                        alert("A OCURRIDO UN ERROR")
+                    }
 
-
+                }
+            });
         });
-
-
-
-
-
-
-
 
     });
 

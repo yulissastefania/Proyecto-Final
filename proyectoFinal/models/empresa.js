@@ -44,9 +44,9 @@ module.exports = function (sequelize, Sequelize) {
         models.empresa.hasMany(models.producto, {
             foreignKey: 'id_empresa'
         });
-
-
     };
+
+
     Empresa.belongsTo(Usuario, {foreignKey: 'id_usuario',constraints: false});
     return Empresa;
 };
