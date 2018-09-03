@@ -1,14 +1,14 @@
 {
     "development":{
-        "username":"joelCartuche",
-        "password":"123456789",
+        "username":"root",
+        "password":"12345",
         "database":"proyectoFinal",
         "host":"localhost",
         "dialect":"mysql"
     },
     "staging":{
-        "username":"joelCartuche",
-        "password":"123456789",
+        "username":"root",
+        "password":"12345",
         "database":"proyectoFinal",
         "host":"localhost",
         "dialect":"mysql"
