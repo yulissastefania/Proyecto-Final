@@ -71,8 +71,8 @@ class EmpresaController {
                     ruc: req.body.txt_RUCEmp,
                     razon_social: req.body.txt_razonSocialEmp,
                     num_contribuyente: req.body.txt_num_contribuyente,
-                    ambiente: req.body.txt_ambienteEmp,
-                    obligado_contabilidad: req.body.txt_obligadoContabilidad,
+                    ambiente: normal,
+                    obligado_contabilidad: true,
                     direc_matriz: req.body.txt_direccionMatEmp,
                     direc_sucursal: req.body.txt_direccionSucEmp,
                     telefono: req.body.txt_telefonoEmp,
@@ -93,6 +93,33 @@ class EmpresaController {
             }
         });
     }
+
+    actualizarEmpresa(req, res, next) {
+        var Empresa = models.empresa;
+
+        Empresa.update({
+            ruc: req.body.ruc,
+            razon_social: req.body.razon,
+            direc_matriz: req.body.direccionM,
+            direc_sucursal: req.body.direccionS,
+            telefono: req.body.telef
+        }, {
+            where: {
+                id_usuario: req.user.id
+            }
+        }).then(function (empresa) {
+            if (empresa) {
+                res.send({
+                    data: empresa
+                });
+            }
+            if (!empresa) {
+                res.send({
+                    data: null
+                });
+            }
+        });
+    };
 
     isLoggedIn(req, res, next) {
         if (!req.isAuthenticated())

@@ -4,6 +4,29 @@ const uuidv4 = require('uuid/v4');
 
 class ProductoController {
 
+    eliminarProducto(req, res, next) {
+        var Producto = models.producto;
+        console.log("######################################################################33");
+        console.log(req.body.codPrincipal);
+        Producto.destroy({
+            where:{
+                cod_principal: req.body.codPrincipal
+            }
+        }).then(function (producto) {
+            if(producto){
+               res.send({
+                   data:producto
+               });
+               }
+               if(!producto){
+                res.send({
+                    data:null
+                })
+            }
+
+        });
+    };
+
     actualizar(req, res, next) {
         console.log("#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
         var Producto = models.producto;
@@ -97,10 +120,6 @@ class ProductoController {
                     var precioIvaFinal =valorUnitario* iva;
                     var precioVenta =((Number(valorUnitario).toFixed(2)*1) + (Number(precioIvaFinal).toFixed(2)*1));
 
-
-
-
-console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$__________________________________________________");
                     console.log(valorUnitario);
                     console.log(iva);
                     console.log(precioIvaFinal);

@@ -8,7 +8,7 @@
             <form>
                 <div class="form-group">
                     <label for="text_codPrincipal" class="form-control-label">Código Principal:</label>
-                    <input type="text" class="form-control" id="text_codPrincipal" name="text_codPrincipal"  placeholder="Ingrese Código Principal del Producto a Buscar"/>
+                    <input type="text" class="form-control" id="text_codPrincipal" name="text_codPrincipal" placeholder="Ingrese Código Principal del Producto a Buscar" />
                 </div>
 
                 <div class="modal-footer">
@@ -49,8 +49,8 @@
 
 
         <div id="actualizarProducto">
-           <br/>
-           <br/>
+            <br />
+            <br />
             <form>
                 <div class="form-group">
                     <label for="text_codPrincipalA" class="form-control-label">Código Principal:</label>
@@ -176,6 +176,21 @@
                 }
             });
         });
+
+        $("#busquedaEliminar_bus").click(function() {
+
+            $.ajax({
+                type: "POST",
+                url: "/eliminacionProducto",
+                data: "codPrincipal=" + $("#text_codPrincipal").val(),
+                success: function(data) {
+                    if(data.data != null){
+                       alert("datos eliminados correctamente");
+                       }
+                }
+            });
+        });
+
     });
 
 </script>

@@ -1,14 +1,14 @@
 {
     "development":{
-        "username":"yulissa",
-        "password":"12345",
+        "username":"joelCartuche",
+        "password":"123456789",
         "database":"proyectoFinal",
         "host":"localhost",
         "dialect":"mysql"
     },
     "staging":{
-        "username":"yulissa",
-        "password":"12345",
+        "username":"joelCartuche",
+        "password":"123456789",
         "database":"proyectoFinal",
         "host":"localhost",
         "dialect":"mysql"

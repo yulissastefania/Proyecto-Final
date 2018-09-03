@@ -24,7 +24,8 @@ module.exports = function (passport, empresa, usuario) {
             if (usuario) {
                 var userinfo = {
                     id: usuario.usuario_id,
-                    external_id: usuario.external_id
+                    external_id: usuario.external_id,
+                    name:usuario.nombre
 
                 };
                 done(null, userinfo);

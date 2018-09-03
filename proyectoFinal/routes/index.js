@@ -20,6 +20,10 @@ var clienteController= new cliente();
 var factura = require('../controllers/FacturaController');
 var facturaController= new factura();
 
+/*controlador usuario*/
+var usuario = require('../controllers/UsuarioController');
+var usuarioController= new usuario();
+
 var passport = require('passport');
 
 /* GET home page. */
@@ -45,10 +49,12 @@ router.post('/loginFinal', passport.authenticate('local-signin', {
 /*get app*/
 router.get('/app', function (req, res, next) {
     res.render('templates/app', {
+        nombre:req.user.name ,
         factura: '../fragmentos/frm_factura',
         ingresarProductos: '../fragmentos/frm_ingresoProductos',
         buscarProductos: '../fragmentos/frm_buscarProductos',
         nuevoCliente: '../fragmentos/frm_nuevoCliente'
+
     });
 });
 
@@ -58,12 +64,16 @@ router.get('/home', authController.home);
 
 //Perfil de usuario
 router.get('/profile', function (req, res, next) {
-    res.render('profile');
+    res.render('profile',{
+        nombre:req.user.name
+    });
 });
 
 //Editar Usuario
 router.get('/editar', function (req, res, next) {
-    res.render('edit_profile');
+    res.render('edit_profile',{
+        nombre:req.user.name
+    });
 });
 
 /* registrar Usuario*/
@@ -109,6 +119,15 @@ router.post('/buscarNuevoCliente',clienteController.buscarCliente);
 router.get('/buscarUltimoNumeroFactura',facturaController.datosFactura);
 
 router.post('/guardarFactura',facturaController.guardarFactura);
+
+
+router.get('/buscarUsuario',usuarioController.buscarUsuario);
+router.post('/updateUsuarioEdicion',usuarioController.actualizarUsuario);
+
+
+router.post('/updateEmpresaEdicion',empresaController.actualizarEmpresa);
+
+router.post('/eliminacionProducto',productoController.eliminarProducto);
 
 
 module.exports = router;
