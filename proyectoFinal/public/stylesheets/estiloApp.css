@@ -1,10 +1,10 @@
-@import url(estilo_registroCliente.css);
 
 @import url(estiloFactura.css);
 @import url(estiloIngresoProducto.css);
 @import url(estiloBuscarProducto.css);
 @import url(estiloMenuDesplegable.css);
 @import url(estiloModalAP.css);
+@import url(estilo_registroCliente.css);
 
 body {
     background: #f9f9f9;
@@ -633,6 +633,11 @@ select:focus {
 #ingresarProductos input, #ingresarProductos select{
     width: 75%;
 
+}
+
+#nuevoCliente input{
+
+    width: 75%;
 
 }
 
@@ -650,8 +655,12 @@ select:focus {
         margin-left: 15%;
 
     }
+    
+    #nuevoCliente input{
 
+        margin-left: 15%;
 
+    }
 
     .row,
     .row.grid-responsive {

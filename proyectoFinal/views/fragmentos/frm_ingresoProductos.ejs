@@ -1,5 +1,5 @@
 <div class="container">
-    <h4 class="card-title ">Detalle del Producto/Servicio </h4>
+    <h4 class="card-title ">Detalle del Producto </h4>
     <div class="card">
         <div class="card-header">
             <h5 class="card-title ">Características Generales</h5>
@@ -8,32 +8,32 @@
             <form method="post" action="/guardarProducto">
                 <div class="form-group">
                     <label for="text_codPrincipalA" class="form-control-label">Código Principal:</label>
-                    <input type="text" class="form-control" id="text_codPrincipalA" name="text_codPrincipalA" />
-                    <div class="errores" id="mensajeCodPrincipalA">Ingrese código principal(solo números) </div>
+                    <input type="text" class="form-control" id="text_codPrincipalA" name="text_codPrincipalA" placeholder="Ingrese Código Principal del Producto"/>
+                    <div class="errores" id="mensajeCodPrincipalA">Ingrese Código Principal del Producto. (Solo Números) </div>
                 </div>
 
                 <div class="form-group">
                     <label for="txt_nomProductoA" class="form-control-label">Nombre Producto:</label>
-                    <input type="text" class="form-control" id="txt_nomProductoA" name="txt_nomProductoA" />
-                    <div class="errores" id="mensajeNomProductoA">Ingrese nombre del Producto (solo letras)</div>
+                    <input type="text" class="form-control" id="txt_nomProductoA" name="txt_nomProductoA" placeholder="Ingrese Nombre del Producto"/>
+                    <div class="errores" id="mensajeNomProductoA">Ingrese Nombre del Producto. (Solo Letras)</div>
                 </div>
 
                 <div class="form-group">
                     <label for="txt_marProductoA" class="form-control-label">Marca Producto:</label>
-                    <input type="text" class="form-control" id="txt_marProductoA" name="txt_marProductoA" />
-                    <div class="errores" id="mensajeMarProductoA">Ingrese marca del Producto </div>
+                    <input type="text" class="form-control" id="txt_marProductoA" name="txt_marProductoA" placeholder="Ingrese Marca del Producto"/>
+                    <div class="errores" id="mensajeMarProductoA">Ingrese Marca del Producto </div>
                 </div>
 
                 <div class="form-group">
                     <label for="txt_modProductoA" class="form-control-label">Modelo Producto:</label>
-                    <input type="text" class="form-control" id="txt_modProductoA" name="txt_modProductoA" />
-                    <div class="errores" id="mensajeModProductoA">Ingrese modelo del Producto</div>
+                    <input type="text" class="form-control" id="txt_modProductoA" name="txt_modProductoA" placeholder="Ingrese Modelo del Producto"/>
+                    <div class="errores" id="mensajeModProductoA">Ingrese Modelo del Producto</div>
                 </div>
 
                 <div class="form-group">
                     <label for="txt_valUnitario" class="form-control-label">Valor Unitario:</label>
-                    <input type="text" class="form-control" id="txt_valUnitario" name="txt_valUnitario" placeholder="ej: 89.00" />
-                    <div class="errores" id="mensajeValUnitario">Ingrese valor unitario</div>
+                    <input type="text" class="form-control" id="txt_valUnitario" name="txt_valUnitario" placeholder="Ingrese el Precio del Producto. Ej: 89.00" />
+                    <div class="errores" id="mensajeValUnitario">Ingrese Valor Unitario</div>
                 </div>
                 
                 <div>
@@ -42,7 +42,7 @@
                         <option value="" selected>Seleccione</option>
                         <option value="GRAVA IVA">GRAVA IVA</option>
                     </select>
-                    <div class="errores" id="mensajeslt_IVA">Ingrese valor unitario</div>
+                    <div class="errores" id="mensajeslt_IVA">Seleccione una Opción Válida</div>
                 </div>
 
                 <br>

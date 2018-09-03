@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>HTML5 Admin Template</title>
+        <title>Facturación Electrónica</title>
 
         <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"-->
 
@@ -52,10 +52,10 @@
     <body>
         <div class="navbar">
             <div class="row">
-                <div class="column column-30 col-site-title"><a href="#" class="site-title float-left">Medialoot</a></div>
+                <div class="column column-30 col-site-title"><a href="#" class="site-title float-left">Facturación Electrónica</a></div>
                 <div class="column column-40 col-search">
-                    <a href="#" class="search-btn fa fa-search"></a>
-                    <input type="text" name="meidalot" value="" placeholder="Search..." />
+                    <a href="#" class="search-btn "></a>
+
                 </div>
 
                 <div class="column column-30">
@@ -82,10 +82,10 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="style row">
             <section id="main-content" class="column column-offset-10">
                 <div class="container" style="padding-top: 60px; background-color: #fff;">
-                    <h1 class="page-header">Editar Perfil</h1>
+                    <h2 class="page-header">Editar Perfil</h2>
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-xs-12 divIzq">
 
@@ -116,85 +116,51 @@
                             <h3></h3>
                             <form class="form-horizontal" role="form" id="form-editar-user" method="post" action="">
                                 <div class="form-group">
-                                    <label for="empresaEdit" class="col-lg-3 control-label">Empresa:</label>
-                                    <div class="col-lg-8">
-                                        <input id="empresaEdit" name="empresaEdit" class="form-control" value="" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="rucEdit" class="col-lg-3 control-label">RUC:</label>
-                                    <div class="col-lg-8">
-                                        <input id="rucEdit" name="rucEdit" class="form-control" value="" type="text" >
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="emailEdit" class="col-lg-3 control-label">Email:</label>
-                                    <div class="col-lg-8">
-                                        <input id="emailEdit" name="emailEdit" class="form-control" value="" type="text" >
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
                                     <label for="usernameEdit" class="col-md-3 control-label">Nombre:</label>
                                     <div class="col-md-8">
-                                        <input id="usernameEdit" name="usernameEdit" class="form-control" value="" type="text" >
+                                        <input id="usernameEdit" name="usernameEdit" placeholder="Ingrese el Nuevo Nombre del Usuario" class="form-control" value="" type="text" >
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="apellidoEdit" class="col-md-3 control-label">Apellido:</label>
                                     <div class="col-md-8">
-                                        <input id="apellidoEdit" name="apellidoEdit" class="form-control" value="" type="text" >
+                                        <input id="apellidoEdit" name="apellidoEdit" placeholder="Ingrese el Nuevo Apellido del Usuario" class="form-control" value="" type="text" >
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="ambienteEdit" class="col-md-3 control-label">Ambiente:</label>
-                                    <div class="col-md-8">
-                                        <input id="ambienteEdit" name="ambienteEdit" class="form-control" value="" type="text" >
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="emisionEdit" class="col-md-3 control-label">Tipo emisión:</label>
-                                    <div class="col-md-8">
-                                        <input id="emisionEdit" name="emisionEdit" class="form-control" value="" type="text" >
+                                    <label for="rucEdit" class="col-lg-3 control-label">RUC:</label>
+                                    <div class="col-lg-8">
+                                        <input id="rucEdit" name="rucEdit" placeholder="Ingrese el Nuevo RUC del Usuario"  class="form-control" value="" type="text" >
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="razonSocialEdit" class="col-md-3 control-label">Razón Social:</label>
                                     <div class="col-md-8">
-                                        <input id="razonSocialEdit" name="razonSocialEdit" class="form-control" value="" type="text" >
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="claveAccesoEdit" class="col-md-3 control-label">Clave Acceso:</label>
-                                    <div class="col-md-8">
-                                        <input id="claveAccesoEdit" name="claveAccesoEdit" class="form-control" value="" type="text" >
+                                        <input id="razonSocialEdit" name="razonSocialEdit" placeholder="Ingrese la Nueva Razón Social del Usuario" class="form-control" value="" type="text" >
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="direccionMatrizEdit" class="col-md-3 control-label">Dirección Matriz:</label>
                                     <div class="col-md-8">
-                                        <input id="direccionMatrizEdit" name="direccionMatrizEdit" class="form-control" value="" type="text" >
+                                        <input id="direccionMatrizEdit" name="direccionMatrizEdit" placeholder="Ingrese la Nueva Dirección Matriz del Usuario" class="form-control" value="" type="text" >
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="direccionSucursalEdit" class="col-md-3 control-label">Dirección Sucursal:</label>
                                     <div class="col-md-8">
-                                        <input id="direccionSucursalEdit" name="direccionSucursalEdit" class="form-control" value="" type="text" >
+                                        <input id="direccionSucursalEdit" name="direccionSucursalEdit" placeholder="Ingrese la Nueva Dirección Sucursal del Usuario" class="form-control" value="" type="text" >
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="telfEdit" class="col-lg-3 control-label">Telf:</label>
+                                    <label for="telfEdit" class="col-lg-3 control-label">Telefóno:</label>
                                     <div class="col-lg-8">
-                                        <input id="telfEdit" name="telfEdit" class="form-control" value="" type="text" >
+                                        <input id="telfEdit" name="telfEdit" placeholder="Ingrese el Nuevo Número de Teléfono del Usuario"  class="form-control" value="" type="text" >
                                     </div>
                                 </div>
 
@@ -202,9 +168,9 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"></label>
                                     <div class="col-md-8">
-                                        <input class="btn btn-primary" value="Guardar Cambios" type="submit">
-                                        <span></span>
-                                        <input class="btn btn-default" id="btnCancelarEdit" value="Cancelar" type="reset">
+                                        <center><input class="btn btn-primary" value="Guardar Cambios" type="submit">
+
+                                            <input class="btn btn-default" id="btnCancelarEdit" value="Cancelar" type="reset"></center>
                                     </div>
                                 </div>
                             </form>
@@ -224,15 +190,6 @@
 <a href="#" id="file-save" class="btn btn-primary">Guardar</a-->
             </section>
         </div>
-
-
-
-
-
-
-
-
-
 
         <script src="js/menu.js"></script>
         <script src="js/chart.min.js"></script>
@@ -274,25 +231,25 @@
 
 
             //SELESSIONAR IMAGEN
-            $('#preview').hover(function(){
+            $('#preview').hover(function () {
                 $(this).find('a').fadeIn();
-            }, function (){
+            }, function () {
                 $(this).find('a').fadeOut();
             });
 
-            $('#file-select').on('click', function(e){
+            $('#file-select').on('click', function (e) {
                 e.preventDefault();
                 $('#file').click();
             });
 
-            $('#file').change(function() {
+            $('#file').change(function () {
                 var nomfile = (this.files[0].name).toString();
                 var reader = new FileReader();
                 //console.log(nomfile);
                 $('#file-info').text('');
                 $('#file-info').text(nomfile);
 
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     console.log(e);
                     $('#preview img').attr('src', e.target.result);
                 }
@@ -302,12 +259,11 @@
 
             //FIN SELECCIONAR IMAGEN
 
-            $('#btnCancelarEdit').click(function(){
-                location.href='/profile';
+            $('#btnCancelarEdit').click(function () {
+                location.href = '/profile';
             });
 
         </script>
-
 
     </body>
 </html>

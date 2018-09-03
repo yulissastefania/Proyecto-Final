@@ -34,7 +34,10 @@
     display:block;
 }
 
-
+.style{
+    padding-right:12%;
+    padding-left: 5%;
+}
 
 .imgUser {
     border-radius: 50%;
@@ -75,7 +78,15 @@
 }
 
 input {
-    margin-left: 100px;
+    margin-left: 15%;
+
+}
+
+h3, h3 {
+    color: #35cebe;
+    font-size: 1.5em;
+    font-style:inherit;
+    
 }
 
 .labelDireccion {
@@ -108,7 +119,7 @@ input {
     }
 
     .divMed {
-        width: 40;
+        width: 40px;
 
     }
 
