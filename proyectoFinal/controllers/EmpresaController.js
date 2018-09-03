@@ -71,7 +71,7 @@ class EmpresaController {
                     ruc: req.body.txt_RUCEmp,
                     razon_social: req.body.txt_razonSocialEmp,
                     num_contribuyente: req.body.txt_num_contribuyente,
-                    ambiente: normal,
+                    ambiente: 'normal',
                     obligado_contabilidad: true,
                     direc_matriz: req.body.txt_direccionMatEmp,
                     direc_sucursal: req.body.txt_direccionSucEmp,
