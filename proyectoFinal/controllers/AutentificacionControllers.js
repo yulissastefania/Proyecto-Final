@@ -12,6 +12,11 @@ class AutentificacionControllers {
     home(req,res){
         res.render('templates/index');
     }
+    logout(req, res) {
+        req.session.destroy(function (err) {
+            res.redirect('/home');
+        });
+    }
 
 }
 module.exports = AutentificacionControllers;

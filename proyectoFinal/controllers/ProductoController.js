@@ -30,11 +30,12 @@ class ProductoController {
     actualizar(req, res, next) {
         console.log("#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
         var Producto = models.producto;
-        var valorUnitario = parseFloat(req.body.precio);
-        var iva = parseFloat(req.body.iva);
-        var precioVenta = valorUnitario * iva;
+        var valorUnitario = parseFloat(req.body.precio).toFixed(2);
+        var iva = 0.12;
+        var precioIvaFinal = valorUnitario * iva;
+        var precioVenta = ((Number(valorUnitario).toFixed(2) * 1) + (Number(precioIvaFinal).toFixed(2) * 1));
 
-        console.log(req.body.iva);
+
         console.log(precioVenta);
         console.log(req.body.codPrincipal)
         console.log(req.body.precio);
@@ -58,6 +59,17 @@ class ProductoController {
                     where: {
                         producto_id: producto.producto_id
                     }
+                }).then(function(producto){
+                    if(producto){
+                       res.send({
+                           data:producto
+                           });
+                       }
+                    if(!producto){
+                       res.send({
+                           data:null
+                       });
+                       }
                 });
             }
 

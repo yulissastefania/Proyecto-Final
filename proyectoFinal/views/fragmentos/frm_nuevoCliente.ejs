@@ -48,7 +48,7 @@
                 <br>
                 <div class="modal-footer">
                     <center><button type="button" class="btn btn-secondary" id="registrarCliente">Registrar</button>
-                        <button type="button" class="btn btn-secondary">Cancelar</button></center>
+                        <button type="button" id="cancelarCliente" class="btn btn-secondary">Cancelar</button></center>
                 </div>
             </form>
         </div>
@@ -100,6 +100,17 @@
         validarCedulaRuc($('#cedulaRucCliente'));
 
         validarDireccion($('#direccionCliente'));
+
+        $("#cancelarCliente").click(function(){
+             $('#nombreCliente').val("");
+                        $('#razonSocialCliente').val("");
+                        $('#apellidoCliente').val("");
+                        $('#telefonoCliente').val("");
+                        $('#emailCliente').val("");
+                        $('#cedulaRucCliente').val("");
+                        $('#direccionCliente').val("");
+        });
+
         $("#registrarCliente").click(function() {
             if ($('#cedulaRucCliente').val() == "") {
                 $('#mensajeCedulaRucCliente').fadeIn();

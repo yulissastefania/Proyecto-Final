@@ -38,6 +38,8 @@ router.post('/registro', passport.authenticate('local-singup', {
     failureRedirect: '/home'
 }));
 
+router.get('/salir', authController.logout);
+
 /* get login*/
 router.get('/loginFinal1', authController.signin);
 
@@ -106,6 +108,7 @@ router.get('/buscarEmpresa',empresaController.buscarEmpresa);
 
 router.post('/guardarProducto',productoController.guardarProducto);
 router.post('/buscarProducto',productoController.buscarProducto);
+
 router.post('/actualizar',productoController.actualizar);
 
 

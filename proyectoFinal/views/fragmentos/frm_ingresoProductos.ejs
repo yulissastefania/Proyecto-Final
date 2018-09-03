@@ -48,7 +48,7 @@
                 <br>
                 <div class="modal-footer">
                     <center><button class="btn btn-secondary" type="button" id="guardarProducto">Guardar</button>
-                        <button type="button" class="btn btn-secondary">Cancelar</button></center>
+                        <button type="button" id="cancelarIngresoProduc" class="btn btn-secondary">Cancelar</button></center>
                 </div>
             </form>
         </div>
@@ -64,6 +64,14 @@
         soloLetras($('#txt_marProductoA'));
         validarLetrasNumeros($('#txt_modProductoA'));
         validarSoloDecimal($('#txt_valUnitario'));
+
+        $("#cancelarIngresoProduc").click(function(){
+            $('#text_codPrincipalA').val("")
+                                                $('#txt_nomProductoA').val("")
+                                                $('#txt_modProductoA').val("")
+                                                $('#txt_marProductoA').val("")
+                                                $('#txt_valUnitario').val("")
+        });
 
         $("#guardarProducto").click(function() {
 
@@ -112,7 +120,8 @@
                                                 $('#txt_modProductoA').val("")
                                                 $('#txt_marProductoA').val("")
                                                 $('#txt_valUnitario').val("")
-                                            } else {
+                                            }
+                                            if(data.data==null){
                                                 alert("ERROR AL GUARDAR");
                                             }
 
