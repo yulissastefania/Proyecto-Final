@@ -9,13 +9,13 @@
             <h1 id="nombreEmpresa"></h1>
 
             <div>
-                <div >
+                <div>
                     <div id="company" class="clearfix">
                         <div><span style="width: 5em;">RUC Emisor: </span><input type="text" id="rucEmpresaF" name="rucEmpresaF" placeholder="RUC Emisor" disabled /></div>
                         <div><span style="width: 5em;">No. Factura: </span><input type="text" placeholder="Número Factura" id="numeroFactura" name="numeroFactura" disabled /></div>
                         <div><span style="width: 3em;">AUT. SRI:</span><input type="text" placeholder="Aut. Sri" id="autoSri" name="autoSri" disabled /></div>
                         <div><span style="width: 8em;">Fecha Autorización:</span><input type="text" placeholder="dd/mm/aa" id="fechaAutoEmpresa" name="fechaAutoEmpresa" disabled /></div>
-                        <div><span style="width: 6em;">Fecha Emisión:</span><input type="text"  id="datoFechaEmisionComprador" placeholder=" Fecha de Emisión" name="datoFechaEmisionComprador" require disabled /></div>
+                        <div><span style="width: 6em;">Fecha Emisión:</span><input type="text" id="datoFechaEmisionComprador" placeholder=" Fecha de Emisión" name="datoFechaEmisionComprador" require disabled /></div>
                     </div>
 
                     <div id="project">
@@ -29,8 +29,8 @@
                 <div>
                     <div id="project">
                         <div><span>Nombres:</span><input type="text" id="datoNombresComprador" name="datoNombresComprador" placeholder="Nombres" require disabled /></div>
-                        <div><span>Razón social:</span> <input type="text" id="datoRazonSocialComprador" placeholder="Razón Social"  require disabled /></div>
-                       
+                        <div><span>Razón social:</span> <input type="text" id="datoRazonSocialComprador" placeholder="Razón Social" require disabled /></div>
+
                         <div><span>R.U.C / C.I.</span> <input type="text" id="datoCedulaRucComprador" placeholder="R.U.C / C.I" name="datoCedulaRucComprador" require disabled /></div>
                     </div>
 
@@ -44,7 +44,7 @@
                 <div class="column ">
                     <div class="card">
                         <div class="card-block">
-                            <center><a href="#popupNuevoCliente" class="popup-link"><button>Agregar Cliente</button></a></center>
+                            <center><a href="#popupNuevoCliente" class="popup-link"><button id="ag">Agregar Cliente</button></a></center>
 
                             <table id="tabla">
                                 <thead>
@@ -62,9 +62,9 @@
                                 </tbody>
                             </table>
                             <center>
-                            <button id="add" class="popup-link">Añadir</button>
-                            <button id="del" class="popup-link">Eliminar</button>
-                            
+                                <button id="add" class="popup-link">Añadir</button>
+                                <button id="del" class="popup-link">Eliminar</button>
+
                                 <button id="finalizaIngreso" class="popup-link">Finalizar Ingreso de productos</button>
                             </center>
                         </div>
@@ -140,7 +140,7 @@
 
                             </table>
                             <center><button id="guardarFactura" class="popup-link">Guardar</button>
-                            <a href="#" onclick="HTMLtoPDF()"><button class="popup-link">Download PDF</button></a></center>
+                                <button id="imprimir">Download PDF</button></center>
                             <div class="modal-wrapper" id="popup">
                                 <div class="popup-contenedor">
                                     <div class="card-block">
@@ -238,19 +238,19 @@
 <script src="/js/jquery-2.1.3.js"></script>
 <script src="/js/pdfFromHTML.js"></script>
 <script>
-                                /*funcion para generar el valor total en la tabla en la factura*/
-                                function agregarValorTotal(num) {
-                                    var precio = "productoPrecioFactura" + num;
-                                    var precioUF = "productoPrecioUnitarioFactura" + num;
-                                    var cantidad = "cantidadProductoFactura" + num;
-                                    precioUf = parseFloat(document.getElementById(precioUF).value).toFixed(2);
-                                    cantidad = parseFloat(document.getElementById(cantidad).value).toFixed(2);
-                                    document.getElementById(precio).value = parseFloat(precioUf * cantidad).toFixed(2);
-                                }
+    /*funcion para generar el valor total en la tabla en la factura*/
+    function agregarValorTotal(num) {
+        var precio = "productoPrecioFactura" + num;
+        var precioUF = "productoPrecioUnitarioFactura" + num;
+        var cantidad = "cantidadProductoFactura" + num;
+        precioUf = parseFloat(document.getElementById(precioUF).value).toFixed(2);
+        cantidad = parseFloat(document.getElementById(cantidad).value).toFixed(2);
+        document.getElementById(precio).value = parseFloat(precioUf * cantidad).toFixed(2);
+    }
 
 </script>
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         var dt = new Date();
         var month = dt.getMonth() + 1;
         var day = dt.getDate();
@@ -267,7 +267,7 @@
         $.ajax({
             type: "GET",
             url: "/buscarEmpresa",
-            success: function (data) {
+            success: function(data) {
                 $('#nombreEmpresa').html(data.razon_social);
                 $('#rucEmpresaF').val(data.ruc);
                 $('#numeroFactura').val();
@@ -285,14 +285,14 @@
         $.ajax({
             type: "GET",
             url: "/buscarUltimoNumeroFactura",
-            success: function (data) {
+            success: function(data) {
                 $('#numeroFactura').val(data.numero_factura);
                 $('#autoSri').val(data.numero_autorizacion);
 
             }
         });
 
-        $("#add").click(function () {
+        $("#add").click(function() {
             var nuevaFila = "<tr>";
             var aux = $("#tabla tr").length;
             console.log(aux);
@@ -311,7 +311,7 @@
             $("#tabla").append(nuevaFila);
         });
 
-        $("#del").click(function () {
+        $("#del").click(function() {
 
             var trs = $("#tabla tr").length;
             if (trs > 1) {
@@ -319,12 +319,12 @@
                 $("#tabla tr:last").remove();
             }
         });
-        $('#buscarCliente').click(function () {
+        $('#buscarCliente').click(function() {
             $.ajax({
                 type: "POST",
                 url: "/buscarNuevoCliente",
                 data: "cedulaRuc=" + $('#cedulaRucBuscar').val(),
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
                     if (data.cedula_ruc != "") {
                         var nuevaFila = "";
@@ -347,13 +347,13 @@
                 }
             });
         });
-        $('#agregarCliente').click(function () {
+        $('#agregarCliente').click(function() {
 
             $.ajax({
                 type: "POST",
                 url: "/buscarNuevoCliente",
                 data: "cedulaRuc=" + $('#cedulaRucBuscar').val(),
-                success: function (data) {
+                success: function(data) {
                     if (data.cedula_ruc != "") {
 
                         $('#datoNombresComprador').val(data.nombre + " " + data.apellido);
@@ -368,13 +368,13 @@
             });
             location.href = '#';
         });
-        $('#buscarProductoFactura').click(function () {
+        $('#buscarProductoFactura').click(function() {
 
             $.ajax({
                 type: "POST",
                 url: "/buscarProducto",
                 data: "text_codPrincipal=" + $('#text_buscarCodPrincipal').val(),
-                success: function (data) {
+                success: function(data) {
                     var nuevaFila = "";
                     nuevaFila += "<tr>";
                     // añadimos las columnas
@@ -395,7 +395,7 @@
 
         });
 
-        $('#agregarProductoFactura').click(function () {
+        $('#agregarProductoFactura').click(function() {
             var aux = $("#tabla tr").length;
             for (var i = 1; i < aux; i++) {
                 var precioUF = "productoPrecioUnitarioFactura" + i;
@@ -407,7 +407,7 @@
                 type: "POST",
                 url: "/buscarProducto",
                 data: "text_codPrincipal=" + $('#text_buscarCodPrincipal').val(),
-                success: function (data) {
+                success: function(data) {
                     var precioUF = "productoPrecioUnitarioFactura" + aux;
                     var botonAP = "botonAgragegarProducto" + aux;
                     var codigo = "codigoProductoFactura" + aux;
@@ -430,7 +430,7 @@
             location.href = '#';
         });
 
-        $('#finalizaIngreso').click(function () {
+        $('#finalizaIngreso').click(function() {
             var aux = $("#tabla tr").length;
             var precioFinal = 0;
             for (var i = 1; i < aux; i++) {
@@ -459,7 +459,7 @@
 
         });
 
-        $('#guardarFactura').click(function () {
+        $('#guardarFactura').click(function() {
 
             var aux = "numero_factura=" + $('#numeroFactura').val() + "&";
             aux += "numero_autorizacion=" + $('#autoSri').val() + "&";
@@ -500,7 +500,7 @@
                 type: "POST",
                 url: "/guardarFactura",
                 data: aux + "&detalle=" + detalle,
-                success: function (data) {
+                success: function(data) {
                     if (data == true) {
                         alert("LA FACTURA HA SIDO GUARDAD EN LA BASE")
                     } else {
@@ -510,6 +510,32 @@
                 }
             });
         });
+
+        $('#imprimir').click(function() {
+            $('#navbar').hide();
+            $('#sidebar').hide();
+            $('#ag').hide();
+            $('#add').hide();
+            $('#del').hide();
+            $('#finalizaIngreso').hide();
+            $('#guardarFactura').hide();
+            $('#imprimir').hide();
+
+            if (window.print) {
+                window.print();
+            }
+
+            $('#navbar').show()
+            $('#sidebar').show()
+            $('#ag').show();
+            $('#add').show();
+            $('#del').show();
+            $('#finalizaIngreso').show();
+            $('#guardarFactura').show();
+            $('#imprimir').show();
+        });
+
+
 
     });
 

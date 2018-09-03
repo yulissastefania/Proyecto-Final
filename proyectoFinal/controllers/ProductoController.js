@@ -9,18 +9,18 @@ class ProductoController {
         console.log("######################################################################33");
         console.log(req.body.codPrincipal);
         Producto.destroy({
-            where:{
+            where: {
                 cod_principal: req.body.codPrincipal
             }
         }).then(function (producto) {
-            if(producto){
-               res.send({
-                   data:producto
-               });
-               }
-               if(!producto){
+            if (producto) {
                 res.send({
-                    data:null
+                    data: producto
+                });
+            }
+            if (!producto) {
+                res.send({
+                    data: null
                 })
             }
 
@@ -40,7 +40,7 @@ class ProductoController {
         console.log(req.body.precio);
 
         Producto.findOne({
-            where:{
+            where: {
                 cod_principal: req.body.codPrincipal
             }
         }).then(function (producto) {
@@ -116,9 +116,9 @@ class ProductoController {
                 if (!producto) {
                     var valorUnitario = parseFloat(req.body.txt_valUnitario).toFixed(2);
 
-                    var iva = 0.12 ;
-                    var precioIvaFinal =valorUnitario* iva;
-                    var precioVenta =((Number(valorUnitario).toFixed(2)*1) + (Number(precioIvaFinal).toFixed(2)*1));
+                    var iva = 0.12;
+                    var precioIvaFinal = valorUnitario * iva;
+                    var precioVenta = ((Number(valorUnitario).toFixed(2) * 1) + (Number(precioIvaFinal).toFixed(2) * 1));
 
                     console.log(valorUnitario);
                     console.log(iva);
@@ -140,8 +140,14 @@ class ProductoController {
                             console.log("222222222222222222222");
                             console.log("productoCreadoConExito");
                             console.log("222222222222222222222");
+                            res.send({
+                                data: newProducto
+                            });
 
                         } else {
+                            res.send({
+                                data: null
+                            });
                             console.log("errorrrrrrrrrrrrrrrrrrrrrrrrrr");
                         };
                     });

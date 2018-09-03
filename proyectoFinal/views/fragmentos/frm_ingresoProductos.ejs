@@ -5,28 +5,28 @@
             <h5 class="card-title ">Características Generales</h5>
         </div>
         <div class="card-block">
-            <form method="post" action="/guardarProducto">
+            <form>
                 <div class="form-group">
                     <label for="text_codPrincipalA" class="form-control-label">Código Principal:</label>
-                    <input type="text" class="form-control" id="text_codPrincipalA" name="text_codPrincipalA" placeholder="Ingrese Código Principal del Producto"/>
+                    <input type="text" class="form-control" id="text_codPrincipalA" name="text_codPrincipalA" placeholder="Ingrese Código Principal del Producto" />
                     <div class="errores" id="mensajeCodPrincipalA">Ingrese Código Principal del Producto. (Solo Números) </div>
                 </div>
 
                 <div class="form-group">
                     <label for="txt_nomProductoA" class="form-control-label">Nombre Producto:</label>
-                    <input type="text" class="form-control" id="txt_nomProductoA" name="txt_nomProductoA" placeholder="Ingrese Nombre del Producto"/>
+                    <input type="text" class="form-control" id="txt_nomProductoA" name="txt_nomProductoA" placeholder="Ingrese Nombre del Producto" />
                     <div class="errores" id="mensajeNomProductoA">Ingrese Nombre del Producto. (Solo Letras)</div>
                 </div>
 
                 <div class="form-group">
                     <label for="txt_marProductoA" class="form-control-label">Marca Producto:</label>
-                    <input type="text" class="form-control" id="txt_marProductoA" name="txt_marProductoA" placeholder="Ingrese Marca del Producto"/>
+                    <input type="text" class="form-control" id="txt_marProductoA" name="txt_marProductoA" placeholder="Ingrese Marca del Producto" />
                     <div class="errores" id="mensajeMarProductoA">Ingrese Marca del Producto </div>
                 </div>
 
                 <div class="form-group">
                     <label for="txt_modProductoA" class="form-control-label">Modelo Producto:</label>
-                    <input type="text" class="form-control" id="txt_modProductoA" name="txt_modProductoA" placeholder="Ingrese Modelo del Producto"/>
+                    <input type="text" class="form-control" id="txt_modProductoA" name="txt_modProductoA" placeholder="Ingrese Modelo del Producto" />
                     <div class="errores" id="mensajeModProductoA">Ingrese Modelo del Producto</div>
                 </div>
 
@@ -35,10 +35,10 @@
                     <input type="text" class="form-control" id="txt_valUnitario" name="txt_valUnitario" placeholder="Ingrese el Precio del Producto. Ej: 89.00" />
                     <div class="errores" id="mensajeValUnitario">Ingrese Valor Unitario</div>
                 </div>
-                
+
                 <div>
                     <label for="slt_IVA" class="form-control-label">IVA:</label>
-                    <select name="slt_IVA" id="slt_IVA" >
+                    <select name="slt_IVA" id="slt_IVA">
                         <option value="" selected>Seleccione</option>
                         <option value="GRAVA IVA">GRAVA IVA</option>
                     </select>
@@ -47,7 +47,7 @@
 
                 <br>
                 <div class="modal-footer">
-                    <center><button type="submit" class="btn btn-secondary" id="guardarProducto">Guardar</button>
+                    <center><button class="btn btn-secondary" type="button" id="guardarProducto">Guardar</button>
                         <button type="button" class="btn btn-secondary">Cancelar</button></center>
                 </div>
             </form>
@@ -57,7 +57,7 @@
 <script src="/js/validacion_nuevoProducto.js"></script>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
 
         validarNum($('#text_codPrincipalA'));
         soloLetras($('#txt_nomProductoA'));
@@ -100,6 +100,24 @@
                                     return false;
                                 } else {
                                     $('#mensajeslt_IVA').fadeOut();
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "/guardarProducto",
+                                        data: "text_codPrincipalA=" + $('#text_codPrincipalA').val() + "&txt_modProductoA=" + $('#txt_nomProductoA').val() + "&txt_nomProductoA=" + $('#txt_modProductoA').val() + "&txt_marProductoA=" + $('#txt_marProductoA').val() + "&txt_valUnitario=" + $('#txt_valUnitario').val(),
+                                        success: function(data) {
+                                            if (data.data != null) {
+                                                alert("GUARDADO");
+                                                $('#text_codPrincipalA').val("")
+                                                $('#txt_nomProductoA').val("")
+                                                $('#txt_modProductoA').val("")
+                                                $('#txt_marProductoA').val("")
+                                                $('#txt_valUnitario').val("")
+                                            } else {
+                                                alert("ERROR AL GUARDAR");
+                                            }
+
+                                        }
+                                    });
 
 
                                 }
@@ -111,6 +129,5 @@
             }
         });
     });
-
 
 </script>

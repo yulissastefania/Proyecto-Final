@@ -53,28 +53,29 @@
             <br />
             <form>
                 <div class="form-group">
-                    <label for="text_codPrincipalA" class="form-control-label">Código Principal:</label>
-                    <input type="text" class="form-control" id="text_codPrincipalA" name="text_codPrincipalA" />
+                    <label for="codPrincipalActual" class="form-control-label">Código Principal:</label>
+                    <input type="text" class="form-control" id="codPrincipalActual" name="codPrincipalActual" />
+                </div>
+
+
+                <div class="form-group">
+                    <label for="nomProductoActual" class="form-control-label">Nombre Producto:</label>
+                    <input type="text" class="form-control" id="nomProductoActual" name="nomProductoActual" />
                 </div>
 
                 <div class="form-group">
-                    <label for="txt_nomProductoA" class="form-control-label">Nombre Producto:</label>
-                    <input type="text" class="form-control" id="txt_nomProductoA" name="txt_nomProductoA" />
+                    <label for="nomMarcaAcual" class="form-control-label">Marca Producto:</label>
+                    <input type="text" class="form-control" id="nomMarcaAcual" name="nomMarcaAcual" />
                 </div>
 
                 <div class="form-group">
-                    <label for="txt_marProductoA" class="form-control-label">Marca Producto:</label>
-                    <input type="text" class="form-control" id="txt_marProductoA" name="txt_marProductoA" />
+                    <label for="modeloActual" class="form-control-label">Modelo Producto:</label>
+                    <input type="text" class="form-control" id="modeloActual" name="modeloActual" />
                 </div>
 
                 <div class="form-group">
-                    <label for="txt_modProductoA" class="form-control-label">Modelo Producto:</label>
-                    <input type="text" class="form-control" id="txt_modProductoA" name="txt_modProductoA" />
-                </div>
-
-                <div class="form-group">
-                    <label for="txt_valUnitario" class="form-control-label">Valor Unitario:</label>
-                    <input type="text" class="form-control" id="txt_valUnitario" name="txt_valUnitario" placeholder="ej: 89,00" />
+                    <label for="precioActual" class="form-control-label">Valor Unitario:</label>
+                    <input type="text" class="form-control" id="precioActual" name="txt_valUnitario" placeholder="ej: 89,00" />
                 </div>
 
 
@@ -148,7 +149,7 @@
                     $("#modeloActual").val(data.modelo);
                     $("#nomMarcaAcual").val(data.marca);
                     $("#nomProductoActual").val(data.nombre);
-                    $("#precioActual").val(data.precio);
+                    $("#precioActual").val(data.precio_unitario);
                 }
             });
         });
@@ -186,6 +187,8 @@
                 success: function(data) {
                     if(data.data != null){
                        alert("datos eliminados correctamente");
+                        $("#tablaBuscar tbody").html("");
+                        $('#text_codPrincipal').val("")
                        }
                 }
             });
