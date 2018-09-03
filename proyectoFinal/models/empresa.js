@@ -28,7 +28,7 @@ module.exports = function (sequelize, Sequelize) {
             type: Sequelize.STRING(100)
         },
         direc_sucursal: {
-            type: Sequelize.STRING(10)
+            type: Sequelize.STRING(100)
         },
         telefono: {
             type: Sequelize.STRING(10)

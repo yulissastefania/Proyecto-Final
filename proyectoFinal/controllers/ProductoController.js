@@ -140,7 +140,7 @@ class ProductoController {
                         modelo: req.body.txt_modProductoA,
                         nombre: req.body.txt_nomProductoA,
                         precio_unitario: valorUnitario,
-                        IVA: precioVenta,
+                        IVA: precioIvaFinal,
                         precio_venta: precioVenta,
                         marca: req.body.txt_marProductoA,
                         cod_principal: req.body.text_codPrincipalA,

@@ -168,7 +168,7 @@
                     $("#modeloActual").val(data.modelo);
                     $("#nomMarcaAcual").val(data.marca);
                     $("#nomProductoActual").val(data.nombre);
-                    $("#precioActual").val(data.pasdfasdfasdfasdfasdfasdfasdfrecio_unitario);
+                    $("#precioActual").val(data.precio_unitario);
                 }
             });
         });
@@ -186,8 +186,8 @@
         });
 
         $("#actualizarProduct").click(function() {
-alert("----------------------------------------------------")
-            if (("#codPrincipalActual").val() == "") {
+            alert("----------------------------------------------------")
+            if ($("#codPrincipalActual").val() == "") {
                 $('#mensajeCodPrincipalAA').fadeIn();
                 return false;
             } else {
@@ -197,7 +197,7 @@ alert("----------------------------------------------------")
                     return false;
                 } else {
                     $('#mensajeNomProductoAA').fadeOut();
-                    if (("#nomMarcaAcual").val() == "") {
+                    if ($("#nomMarcaAcual").val() == "") {
                         $('#mensajeMarProductoAA').fadeIn();
                         return false;
                     } else {
@@ -208,20 +208,12 @@ alert("----------------------------------------------------")
                         } else {
                             $('#mensajeModProductoAA').fadeOut();
 
-                            if (("#precioActual").val() == "") {
+                            if ($("#precioActual").val() == "") {
                                 $('#mensajeValUnitarioAA').fadeIn();
                                 return false;
                             } else {
                                 $('#mensajeValUnitarioAA').fadeOut();
-                                if ($("#stockActual").val() == "") {
-                                    $('#mensajeslt_IVAA').fadeIn();
-                                    return false;
-                                } else {
-                                    $('#mensajeslt_IVAA').fadeOut();
-                                    if ($("#ivaActual").val() == null) {
-                                        $('#mensajeslt_tipoA').fadeIn();
-                                        return false;
-                                    } else {
+
                                         $.ajax({
                                             type: "POST",
                                             url: "/actualizar",
@@ -246,12 +238,9 @@ alert("----------------------------------------------------")
                                             }
                                         });
 
-                                    }
 
 
-                                }
                             }
-
                         }
                     }
                 }
